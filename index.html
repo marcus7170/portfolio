@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio v2.3 | Marcus Soares</title>
-    
-    <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1063548453508091924/1401340589202608220/image.png?ex=689488e0&is=68933760&hm=a1b2a84d152d1445c17a990f2e9b4a7668e14f1f48fe6314b873c662e14a2565&=&format=webp&quality=lossless&width=560&height=613">
-    
+    <title data-translate-key="page_title">Portfólio v2.3 | Marcus Soares</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg-dark: #0d1117;
             --bg-surface: rgba(22, 27, 34, 0.8);
             --border-color: rgba(138, 43, 226, 0.2);
-            --primary-accent: #8A2BE2; 
+            --primary-accent: #8A2BE2;
             --secondary-accent: #00BFFF;
             --gold-accent: #FFD700;
             --text-light: #f0f0f8;
@@ -110,7 +108,7 @@
         #hero {
             height: 100vh;
             display: flex; align-items: center; justify-content: center; text-align: center;
-            padding-top: 60px;
+            padding: 60px 1rem;
         }
         .hero-content h1 {
             font-family: var(--font-display); font-size: 3.5rem;
@@ -141,6 +139,23 @@
             transform: none;
             box-shadow: none;
             filter: grayscale(80%);
+        }
+
+        .lang-switcher-hero {
+            margin-top: 2.5rem;
+        }
+        .lang-switcher-hero button {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            padding: 0 0.5rem;
+            opacity: 0.7;
+        }
+        .lang-switcher-hero button:hover {
+            transform: scale(1.2);
+            opacity: 1;
         }
 
 
@@ -177,7 +192,7 @@
         }
         .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
         .footer-bottom p a { color: var(--secondary-accent); }
-        
+
         #back-to-top {
             position: fixed; bottom: 30px; right: 30px;
             width: 50px; height: 50px;
@@ -199,7 +214,7 @@
             filter: brightness(1.2);
             transform: translateY(-3px);
         }
-        
+
         @keyframes blink { 50% { opacity: 0; } }
         @media (max-width: 768px) {
             .about-content { grid-template-columns: 1fr; }
@@ -211,99 +226,108 @@
 <body>
 
     <header class="main-header">
-        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
-        <button class="theme-toggle" aria-label="Alternar tema">🌓</button>
+        <button class="menu-toggle" aria-label="Abrir menu" data-translate-key="aria_open_menu">☰</button>
+        <button class="theme-toggle" aria-label="Alternar tema" data-translate-key="aria_toggle_theme">🌓</button>
     </header>
 
     <nav class="side-menu">
         <div class="menu-header">
-            <h3>Navegação</h3>
-            <button class="close-menu" aria-label="Fechar menu">&times;</button>
+            <h3 data-translate-key="nav_title">Navegação</h3>
+            <button class="close-menu" aria-label="Fechar menu" data-translate-key="aria_close_menu">&times;</button>
         </div>
         <ul>
-            <li><a href="#hero">Início</a></li>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#projects">Projetos</a></li>
-            <li><a href="#contact">Contato</a></li>
+            <li><a href="#hero" data-translate-key="nav_home">Início</a></li>
+            <li><a href="#about" data-translate-key="nav_about">Sobre</a></li>
+            <li><a href="#projects" data-translate-key="nav_projects">Projetos</a></li>
+            <li><a href="#contact" data-translate-key="nav_contact">Contato</a></li>
         </ul>
     </nav>
 
     <section id="hero">
         <div class="hero-content">
-            <h1>Olá, eu sou <span class="name">Marcus Soares</span></h1>
+            <h1><span data-translate-key="hero_greeting">Olá, eu sou</span> <span class="name">Marcus Soares</span></h1>
             <p class="subtitle"><span id="typing-text"></span><span class="typing-cursor"></span></p>
-            <p>Transformando ideias complexas em soluções de software robustas e elegantes.</p>
+            <p data-translate-key="hero_tagline">Transformando ideias complexas em soluções de software robustas e elegantes.</p>
             <div class="hero-links" style="margin-top: 2rem;">
-                <a href="#projects" class="btn">Ver Projetos</a>
-                <a href="#contact" class="btn">Entrar em Contato</a>
+                <a href="#projects" class="btn" data-translate-key="btn_view_projects">Ver Projetos</a>
+                <a href="#contact" class="btn" data-translate-key="btn_contact_me">Entrar em Contato</a>
+            </div>
+            <div class="lang-switcher-hero">
+                <button onclick="setLanguage('pt')" title="Português">🇧🇷</button>
+                <button onclick="setLanguage('en')" title="English">🇺🇸</button>
+                <button onclick="setLanguage('es')" title="Español">🇪🇸</button>
+                <button onclick="setLanguage('zh')" title="中文 (Chinese)">🇨🇳</button>
+                <button onclick="setLanguage('hi')" title="हिन्दी (Hindi)">🇮🇳</button>
+                <button onclick="setLanguage('ar')" title="العربية (Arabic)">🇸🇦</button>
+                <button onclick="setLanguage('ru')" title="Русский (Russian)">🇷🇺</button>
             </div>
         </div>
     </section>
 
     <main>
         <section id="about" class="container">
-            <h2 class="fade-in">Sobre Mim</h2>
+            <h2 class="fade-in" data-translate-key="about_title">Sobre Mim</h2>
             <div class="about-content fade-in">
                 <div class="about-text">
-                    <p>Desenvolvedor Full-Stack e Analista de Dados apaixonado por criar experiências digitais interativas e sistemas de backend eficientes. Com um foco especial em automação e lógica de jogos, busco constantemente desafios que expandam minhas habilidades.</p>
-                    <p>Minha jornada na tecnologia é marcada pela curiosidade e pela busca de soluções otimizadas, seja desenvolvendo um bot complexo para Discord, arquitetando um banco de dados relacional ou construindo uma interface web rica em animações.</p>
+                    <p data-translate-key="about_p1">Desenvolvedor Full-Stack e Analista de Dados apaixonado por criar experiências digitais interativas e sistemas de backend eficientes. Com um foco especial em automação e lógica de jogos, busco constantemente desafios que expandam minhas habilidades.</p>
+                    <p data-translate-key="about_p2">Minha jornada na tecnologia é marcada pela curiosidade e pela busca de soluções otimizadas, seja desenvolvendo um bot complexo para Discord, arquitetando um banco de dados relacional ou construindo uma interface web rica em animações.</p>
                 </div>
                 <div class="skills-grid">
-                    <div class="skill-card"><h3>Linguagens</h3><ul><li>🐍 Python</li><li>📜 Lua</li><li>✨ JavaScript (ES6+)</li></ul></div>
-                    <div class="skill-card"><h3>Backend & DB</h3><ul><li>🤖 Bots (Discord.py)</li><li>🌐 Flask & REST APIs</li><li>📊 MariaDB/MySQL</li></ul></div>
-                    <div class="skill-card"><h3>Frontend</h3><ul><li>뼈 HTML5</li><li>🎨 CSS3 & Animações</li><li>📱 Design Responsivo</li></ul></div>
+                    <div class="skill-card"><h3 data-translate-key="skills_langs">Linguagens</h3><ul><li>🐍 Python</li><li>📜 Lua</li><li>✨ JavaScript (ES6+)</li></ul></div>
+                    <div class="skill-card"><h3 data-translate-key="skills_backend">Backend & DB</h3><ul><li>🤖 Bots (Discord.py)</li><li>🌐 Flask & REST APIs</li><li>📊 MariaDB/MySQL</li></ul></div>
+                    <div class="skill-card"><h3 data-translate-key="skills_frontend">Frontend</h3><ul><li>뼈 HTML5</li><li>🎨 CSS3 & Animações</li><li>📱 Design Responsivo</li></ul></div>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="container">
-            <h2 class="fade-in">Meus Projetos</h2>
+            <h2 class="fade-in" data-translate-key="projects_title">Meus Projetos</h2>
             <div class="projects-grid">
-                
+
                 <article class="project-card featured fade-in">
                     <div class="project-content">
-                        <h3>Plataforma Full-Stack de Draft (rachaobsl.com.br)</h3>
-                        <p>Um ecossistema completo para gerenciamento de drafts de e-sports, com um backend em <strong>Python/Flask</strong> que serve uma <strong>API RESTful</strong> e se conecta a múltiplos bancos de dados <strong>MariaDB</strong>. O frontend em <strong>JavaScript puro</strong> consome a API para fornecer uma interface dinâmica e reativa.</p>
+                        <h3 data-translate-key="p1_title">Plataforma Full-Stack de Draft (rachaobsl.com.br)</h3>
+                        <p data-translate-key="p1_desc">Um ecossistema completo para gerenciamento de drafts de e-sports, com um backend em <strong>Python/Flask</strong> que serve uma <strong>API RESTful</strong> e se conecta a múltiplos bancos de dados <strong>MariaDB</strong>. O frontend em <strong>JavaScript puro</strong> consome a API para fornecer uma interface dinâmica e reativa.</p>
                         <div class="tech-tags"><span>Python</span><span>Flask</span><span>MariaDB</span><span>JavaScript</span><span>REST API</span><span>Data Analysis</span></div>
                         <div class="project-links">
-                            <a href="http://rachaobsl.com.br/" target="_blank" class="btn">Acessar Sistema</a>
-                            <button class="btn github" disabled>Repositório Privado</button>
+                            <a href="http://rachaobsl.com.br/" target="_blank" class="btn" data-translate-key="btn_access_system">Acessar Sistema</a>
+                            <button class="btn github" disabled data-translate-key="btn_private_repo">Repositório Privado</button>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card fade-in">
                     <div class="project-content">
-                        <h3>Simulador de Carreira de Futebol (BSL GameFut)</h3>
-                        <p>Demonstração de <strong>orientação a objetos em JavaScript</strong>. Um jogo imersivo para gerenciar a carreira de um jogador, com sistema de idade, mais de 40 eventos aleatórios e ligas dinâmicas.</p>
+                        <h3 data-translate-key="p2_title">Simulador de Carreira de Futebol (BSL GameFut)</h3>
+                        <p data-translate-key="p2_desc">Demonstração de <strong>orientação a objetos em JavaScript</strong>. Um jogo imersivo para gerenciar a carreira de um jogador, com sistema de idade, mais de 40 eventos aleatórios e ligas dinâmicas.</p>
                         <div class="tech-tags"><span>JavaScript (OOP)</span><span>Chart.js</span><span>LocalStorage</span></div>
                         <div class="project-links">
-                            <a href="https://marcus7170.github.io/BSL-GameFut/" target="_blank" class="btn">Jogar Agora</a>
-                            <a href="https://github.com/marcus7170/BSL-GameFut" target="_blank" class="btn github">Ver no GitHub</a>
+                            <a href="https://marcus7170.github.io/BSL-GameFut/" target="_blank" class="btn" data-translate-key="btn_play_now">Jogar Agora</a>
+                            <a href="https://github.com/marcus7170/BSL-GameFut" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card fade-in">
                      <div class="project-content">
-                        <h3>Simulador de Carreira de F1 (BSL Driver)</h3>
-                        <p>Um simulador de carreira de automobilismo construído com <strong>HTML, CSS e JavaScript puros</strong>, destacando a criação de lógica de jogo complexa sem frameworks.</p>
+                        <h3 data-translate-key="p3_title">Simulador de Carreira de F1 (BSL Driver)</h3>
+                        <p data-translate-key="p3_desc">Um simulador de carreira de automobilismo construído com <strong>HTML, CSS e JavaScript puros</strong>, destacando a criação de lógica de jogo complexa sem frameworks.</p>
                          <div class="tech-tags"><span>JavaScript (Vanilla)</span><span>Game Logic</span><span>HTML5/CSS3</span></div>
                          <div class="project-links">
-                             <a href="https://marcus7170.github.io/BSL_Driver/" target="_blank" class="btn">Jogar Agora</a>
-                             <a href="https://github.com/marcus7170/BSL_Driver" target="_blank" class="btn github">Ver no GitHub</a>
+                             <a href="https://marcus7170.github.io/BSL_Driver/" target="_blank" class="btn" data-translate-key="btn_play_now">Jogar Agora</a>
+                             <a href="https://github.com/marcus7170/BSL_Driver" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card fade-in">
                     <div class="project-content">
-                       <h3>Portal de Conscientização Hídrica (APS Água)</h3>
-                       <p>Site interativo para educação sobre o uso responsável da água. Combina dados científicos com orientações práticas, incluindo calculadora de consumo, quiz interativo e mapa de estresse hídrico.</p>
+                       <h3 data-translate-key="p4_title">Portal de Conscientização Hídrica (APS Água)</h3>
+                       <p data-translate-key="p4_desc">Site interativo para educação sobre o uso responsável da água. Combina dados científicos com orientações práticas, incluindo calculadora de consumo, quiz interativo e mapa de estresse hídrico.</p>
                         <div class="tech-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript (DOM)</span></div>
                         <div class="project-links">
-                            <a href="https://marcus7170.github.io/APS_Agua/" target="_blank" class="btn">Visitar Site</a>
-                            <a href="https://github.com/marcus7170/APS_Agua" target="_blank" class="btn github">Ver no GitHub</a>
+                            <a href="https://marcus7170.github.io/APS_Agua/" target="_blank" class="btn" data-translate-key="btn_visit_site">Visitar Site</a>
+                            <a href="https://github.com/marcus7170/APS_Agua" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
                        </div>
                    </div>
                </article>
@@ -312,13 +336,13 @@
         </section>
     </main>
 
-    <button id="back-to-top" aria-label="Voltar ao topo">↑</button>
+    <button id="back-to-top" aria-label="Voltar ao topo" data-translate-key="aria_back_to_top">↑</button>
 
     <footer id="contact">
         <div class="container" style="padding-top: 4rem; padding-bottom: 2rem;">
             <div class="footer-content fade-in">
-                <h2>Vamos Construir Algo Incrível?</h2>
-                <p>Estou sempre aberto a novos projetos e colaborações. Entre em contato!</p>
+                <h2 data-translate-key="footer_title">Vamos Construir Algo Incrível?</h2>
+                <p data-translate-key="footer_subtitle">Estou sempre aberto a novos projetos e colaborações. Entre em contato!</p>
                 <div class="contact-info" style="margin-bottom: 2rem;">
                      <a href="tel:+5513991906461">(13) 99190-6461</a>
                 </div>
@@ -331,11 +355,11 @@
                     </a>
                 </div>
                 <div class="footer-bottom">
-                    <p style="font-size: 0.8rem; margin-bottom: 1rem;">
-                        Este site foi totalmente construído em um único arquivo com menos de 500 linhas de código. Você pode acessá-lo aqui: 
+                    <p style="font-size: 0.8rem; margin-bottom: 1rem;" data-translate-key="footer_repo_link_text">
+                        Este site foi totalmente construído em um único arquivo com menos de 500 linhas de código. Você pode acessá-lo aqui:
                         <a href="https://github.com/marcus7170/portfolio" target="_blank">GitHub</a>.
                     </p>
-                    &copy; <span id="year"></span> | Desenvolvido com 💙 por Marcus Soares
+                    <span data-translate-key="footer_copyright">&copy; <span id="year"></span> | Desenvolvido com 💙 por Marcus Soares</span>
                 </div>
             </div>
         </div>
@@ -350,7 +374,7 @@
             const menuLinks = document.querySelectorAll('.side-menu a');
 
             const closeSideMenu = () => sideMenu.classList.remove('active');
-            
+
             menuToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
                 sideMenu.classList.add('active');
@@ -375,7 +399,7 @@
                 let theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
                 localStorage.setItem('theme', theme);
             });
-            
+
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -395,27 +419,6 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            const typingTextElement = document.getElementById('typing-text');
-            const words = ["Desenvolvedor Python", "Especialista em Lua", "Analista de Dados", "Expert em JavaScript"];
-            let wordIndex = 0, charIndex = 0, isDeleting = false;
-
-            function type() {
-                const currentWord = words[wordIndex];
-                if (isDeleting) {
-                    typingTextElement.textContent = currentWord.substring(0, charIndex--);
-                } else {
-                    typingTextElement.textContent = currentWord.substring(0, charIndex++);
-                }
-
-                if (!isDeleting && charIndex === currentWord.length + 1) {
-                    isDeleting = true; setTimeout(type, 2000);
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(type, 500);
-                } else {
-                    setTimeout(type, isDeleting ? 75 : 150);
-                }
-            }
-            type();
 
             const faders = document.querySelectorAll('.fade-in');
             const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -426,8 +429,368 @@
                 });
             }, { threshold: 0.1 });
             faders.forEach(fader => appearOnScroll.observe(fader));
-            
+
             document.getElementById('year').textContent = new Date().getFullYear();
+
+            // === TRANSLATION & TYPING LOGIC START ===
+            const typingTextElement = document.getElementById('typing-text');
+            let typeTimeout;
+
+            const translations = {
+                'pt': {
+                    page_title: "Portfólio v2.3 | Marcus Soares",
+                    aria_open_menu: "Abrir menu",
+                    aria_toggle_theme: "Alternar tema",
+                    aria_close_menu: "Fechar menu",
+                    nav_title: "Navegação",
+                    nav_home: "Início",
+                    nav_about: "Sobre",
+                    nav_projects: "Projetos",
+                    nav_contact: "Contato",
+                    hero_greeting: "Olá, eu sou",
+                    hero_tagline: "Transformando ideias complexas em soluções de software robustas e elegantes.",
+                    typing_words: ["Desenvolvedor Python", "Especialista em Lua", "Analista de Dados", "Expert em JavaScript"],
+                    btn_view_projects: "Ver Projetos",
+                    btn_contact_me: "Entrar em Contato",
+                    about_title: "Sobre Mim",
+                    about_p1: "Desenvolvedor Full-Stack e Analista de Dados apaixonado por criar experiências digitais interativas e sistemas de backend eficientes. Com um foco especial em automação e lógica de jogos, busco constantemente desafios que expandam minhas habilidades.",
+                    about_p2: "Minha jornada na tecnologia é marcada pela curiosidade e pela busca de soluções otimizadas, seja desenvolvendo um bot complexo para Discord, arquitetando um banco de dados relacional ou construindo uma interface web rica em animações.",
+                    skills_langs: "Linguagens",
+                    skills_backend: "Backend & DB",
+                    skills_frontend: "Frontend",
+                    projects_title: "Meus Projetos",
+                    p1_title: "Plataforma Full-Stack de Draft (rachaobsl.com.br)",
+                    p1_desc: "Um ecossistema completo para gerenciamento de drafts de e-sports, com um backend em <strong>Python/Flask</strong> que serve uma <strong>API RESTful</strong> e se conecta a múltiplos bancos de dados <strong>MariaDB</strong>. O frontend em <strong>JavaScript puro</strong> consome a API para fornecer uma interface dinâmica e reativa.",
+                    btn_access_system: "Acessar Sistema",
+                    btn_private_repo: "Repositório Privado",
+                    p2_title: "Simulador de Carreira de Futebol (BSL GameFut)",
+                    p2_desc: "Demonstração de <strong>orientação a objetos em JavaScript</strong>. Um jogo imersivo para gerenciar a carreira de um jogador, com sistema de idade, mais de 40 eventos aleatórios e ligas dinâmicas.",
+                    btn_play_now: "Jogar Agora",
+                    btn_view_github: "Ver no GitHub",
+                    p3_title: "Simulador de Carreira de F1 (BSL Driver)",
+                    p3_desc: "Um simulador de carreira de automobilismo construído com <strong>HTML, CSS e JavaScript puros</strong>, destacando a criação de lógica de jogo complexa sem frameworks.",
+                    p4_title: "Portal de Conscientização Hídrica (APS Água)",
+                    p4_desc: "Site interativo para educação sobre o uso responsável da água. Combina dados científicos com orientações práticas, incluindo calculadora de consumo, quiz interativo e mapa de estresse hídrico.",
+                    btn_visit_site: "Visitar Site",
+                    aria_back_to_top: "Voltar ao topo",
+                    footer_title: "Vamos Construir Algo Incrível?",
+                    footer_subtitle: "Estou sempre aberto a novos projetos e colaborações. Entre em contato!",
+                    footer_repo_link_text: "Este site foi totalmente construído em um único arquivo com menos de 500 linhas de código. Você pode acessá-lo aqui: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
+                    footer_copyright: "&copy; <span id=\"year\"></span> | Desenvolvido com 💙 por Marcus Soares",
+                },
+                'en': {
+                    page_title: "Portfolio v2.3 | Marcus Soares",
+                    aria_open_menu: "Open menu",
+                    aria_toggle_theme: "Toggle theme",
+                    aria_close_menu: "Close menu",
+                    nav_title: "Navigation",
+                    nav_home: "Home",
+                    nav_about: "About",
+                    nav_projects: "Projects",
+                    nav_contact: "Contact",
+                    hero_greeting: "Hello, I am",
+                    hero_tagline: "Transforming complex ideas into robust and elegant software solutions.",
+                    typing_words: ["Python Developer", "Lua Specialist", "Data Analyst", "JavaScript Expert"],
+                    btn_view_projects: "View Projects",
+                    btn_contact_me: "Get in Touch",
+                    about_title: "About Me",
+                    about_p1: "Full-Stack Developer and Data Analyst passionate about creating interactive digital experiences and efficient backend systems. With a special focus on automation and game logic, I constantly seek challenges that expand my skills.",
+                    about_p2: "My journey in technology is marked by curiosity and the pursuit of optimized solutions, whether it's developing a complex Discord bot, architecting a relational database, or building an animation-rich web interface.",
+                    skills_langs: "Languages",
+                    skills_backend: "Backend & DB",
+                    skills_frontend: "Frontend",
+                    projects_title: "My Projects",
+                    p1_title: "Full-Stack Draft Platform (rachaobsl.com.br)",
+                    p1_desc: "A complete ecosystem for managing e-sports drafts, with a <strong>Python/Flask</strong> backend serving a <strong>RESTful API</strong> and connecting to multiple <strong>MariaDB</strong> databases. The frontend in <strong>pure JavaScript</strong> consumes the API to provide a dynamic and reactive interface.",
+                    btn_access_system: "Access System",
+                    btn_private_repo: "Private Repository",
+                    p2_title: "Football Career Simulator (BSL GameFut)",
+                    p2_desc: "A demonstration of <strong>object-oriented programming in JavaScript</strong>. An immersive game to manage a player's career, with an age system, over 40 random events, and dynamic leagues.",
+                    btn_play_now: "Play Now",
+                    btn_view_github: "View on GitHub",
+                    p3_title: "F1 Career Simulator (BSL Driver)",
+                    p3_desc: "A motorsport career simulator built with <strong>pure HTML, CSS, and JavaScript</strong>, highlighting the creation of complex game logic without frameworks.",
+                    p4_title: "Water Awareness Portal (APS Água)",
+                    p4_desc: "Interactive site for education on responsible water use. It combines scientific data with practical guidance, including a consumption calculator, interactive quiz, and water stress map.",
+                    btn_visit_site: "Visit Site",
+                    aria_back_to_top: "Back to top",
+                    footer_title: "Let's Build Something Amazing?",
+                    footer_subtitle: "I'm always open to new projects and collaborations. Get in touch!",
+                    footer_repo_link_text: "This site was built entirely in a single file with under 500 lines of code. You can access it here: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
+                    footer_copyright: "&copy; <span id=\"year\"></span> | Developed with 💙 by Marcus Soares",
+                },
+                'es': {
+                    page_title: "Portafolio v2.3 | Marcus Soares",
+                    aria_open_menu: "Abrir menú",
+                    aria_toggle_theme: "Alternar tema",
+                    aria_close_menu: "Cerrar menú",
+                    nav_title: "Navegación",
+                    nav_home: "Inicio",
+                    nav_about: "Sobre mí",
+                    nav_projects: "Proyectos",
+                    nav_contact: "Contacto",
+                    hero_greeting: "Hola, soy",
+                    hero_tagline: "Transformando ideas complejas en soluciones de software robustas y elegantes.",
+                    typing_words: ["Desarrollador Python", "Especialista en Lua", "Analista de Datos", "Experto en JavaScript"],
+                    btn_view_projects: "Ver Proyectos",
+                    btn_contact_me: "Contacta conmigo",
+                    about_title: "Sobre Mí",
+                    about_p1: "Desarrollador Full-Stack y Analista de Datos apasionado por crear experiencias digitales interactivas y sistemas de backend eficientes. Con un enfoque especial en la automatización y la lógica de juegos, busco constantemente desafíos que amplíen mis habilidades.",
+                    about_p2: "Mi trayectoria en la tecnología está marcada por la curiosidad y la búsqueda de soluciones optimizadas, ya sea desarrollando un bot complejo para Discord, diseñando una base de datos relacional o construyendo una interfaz web rica en animaciones.",
+                    skills_langs: "Lenguajes",
+                    skills_backend: "Backend y BD",
+                    skills_frontend: "Frontend",
+                    projects_title: "Mis Proyectos",
+                    p1_title: "Plataforma Full-Stack de Draft (rachaobsl.com.br)",
+                    p1_desc: "Un ecosistema completo para la gestión de drafts de e-sports, con un backend en <strong>Python/Flask</strong> que sirve una <strong>API RESTful</strong> y se conecta a múltiples bases de datos <strong>MariaDB</strong>. El frontend en <strong>JavaScript puro</strong> consume la API para proporcionar una interfaz dinámica y reactiva.",
+                    btn_access_system: "Acceder al Sistema",
+                    btn_private_repo: "Repositorio Privado",
+                    p2_title: "Simulador de Carrera de Fútbol (BSL GameFut)",
+                    p2_desc: "Demostración de <strong>programación orientada a objetos en JavaScript</strong>. Un juego inmersivo para gestionar la carrera de un jugador, con sistema de edad, más de 40 eventos aleatorios y ligas dinámicas.",
+                    btn_play_now: "Jugar Ahora",
+                    btn_view_github: "Ver en GitHub",
+                    p3_title: "Simulador de Carrera de F1 (BSL Driver)",
+                    p3_desc: "Un simulador de carrera de automovilismo construido con <strong>HTML, CSS y JavaScript puros</strong>, destacando la creación de lógica de juego compleja sin frameworks.",
+                    p4_title: "Portal de Concienciación Hídrica (APS Água)",
+                    p4_desc: "Sitio interactivo para la educación sobre el uso responsable del agua. Combina datos científicos con orientación práctica, incluyendo una calculadora de consumo, un quiz interactivo y un mapa de estrés hídrico.",
+                    btn_visit_site: "Visitar Sitio",
+                    aria_back_to_top: "Volver arriba",
+                    footer_title: "¿Construimos Algo Increíble?",
+                    footer_subtitle: "Siempre estoy abierto a nuevos proyectos y colaboraciones. ¡Ponte en contacto!",
+                    footer_repo_link_text: "Este sitio fue construido enteramente en un solo archivo con menos de 500 líneas de código. Puedes acceder a él aquí: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
+                    footer_copyright: "&copy; <span id=\"year\"></span> | Desarrollado con 💙 por Marcus Soares",
+                },
+                'zh': {
+                    page_title: "作品集 v2.3 | Marcus Soares",
+                    aria_open_menu: "打开菜单",
+                    aria_toggle_theme: "切换主题",
+                    aria_close_menu: "关闭菜单",
+                    nav_title: "导航",
+                    nav_home: "首页",
+                    nav_about: "关于我",
+                    nav_projects: "项目",
+                    nav_contact: "联系",
+                    hero_greeting: "你好，我是",
+                    hero_tagline: "将复杂的想法转化为稳健而优雅的软件解决方案。",
+                    typing_words: ["Python开发者", "Lua专家", "数据分析师", "JavaScript专家"],
+                    btn_view_projects: "查看项目",
+                    btn_contact_me: "联系我",
+                    about_title: "关于我",
+                    about_p1: "我是一名全栈开发者和数据分析师，热衷于创造互动的数字体验和高效的后端系统。我特别关注自动化和游戏逻辑，并不断寻求挑战以扩展我的技能。",
+                    about_p2: "我的技术之旅充满了好奇心和对优化解决方案的追求，无论是开发复杂的Discord机器人，设计关系数据库，还是构建富含动画的Web界面。",
+                    skills_langs: "语言",
+                    skills_backend: "后端和数据库",
+                    skills_frontend: "前端",
+                    projects_title: "我的项目",
+                    p1_title: "全栈选秀平台 (rachaobsl.com.br)",
+                    p1_desc: "一个用于管理电子竞技选秀的完整生态系统，后端采用<strong>Python/Flask</strong>提供<strong>RESTful API</strong>服务，并连接到多个<strong>MariaDB</strong>数据库。前端使用<strong>纯JavaScript</strong>调用API，提供动态和响应式的界面。",
+                    btn_access_system: "访问系统",
+                    btn_private_repo: "私有仓库",
+                    p2_title: "足球生涯模拟器 (BSL GameFut)",
+                    p2_desc: "一个<strong>JavaScript面向对象编程</strong>的演示。这是一款管理球员生涯的沉浸式游戏，具有年龄系统、40多个随机事件和动态联赛。",
+                    btn_play_now: "开始游戏",
+                    btn_view_github: "在GitHub上查看",
+                    p3_title: "F1生涯模拟器 (BSL Driver)",
+                    p3_desc: "一款使用<strong>纯HTML、CSS和JavaScript</strong>构建的赛车生涯模拟器，突出展示了不使用框架创建复杂游戏逻辑的能力。",
+                    p4_title: "水资源意识门户 (APS Água)",
+                    p4_desc: "一个关于负责任用水教育的互动网站。它结合了科学数据和实用指导，包括消耗计算器、互动测验和水压力地图。",
+                    btn_visit_site: "访问网站",
+                    aria_back_to_top: "返回顶部",
+                    footer_title: "一起来创造些惊人的东西吧？",
+                    footer_subtitle: "我随时欢迎新项目和合作机会。随时联系！",
+                    footer_repo_link_text: "本网站完全由一个不足500行代码的单文件构建。你可以在这里访问它：<a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>。",
+                    footer_copyright: "&copy; <span id=\"year\"></span> | 由 Marcus Soares 用 💙 开发",
+                },
+                'hi': {
+                    page_title: "पोर्टफोलियो v2.3 | मार्कस सोरेस",
+                    aria_open_menu: "मेनू खोलें",
+                    aria_toggle_theme: "थीम बदलें",
+                    aria_close_menu: "मेनू बंद करें",
+                    nav_title: "नेविगेशन",
+                    nav_home: "होम",
+                    nav_about: "मेरे बारे में",
+                    nav_projects: "परियोजनाएं",
+                    nav_contact: "संपर्क",
+                    hero_greeting: "नमस्ते, मैं हूँ",
+                    hero_tagline: "जटिल विचारों को मजबूत और सुंदर सॉफ्टवेयर समाधानों में बदलना।",
+                    typing_words: ["पायथन डेवलपर", "लुआ विशेषज्ञ", "डेटा विश्लेषक", "जावास्क्रिप्ट विशेषज्ञ"],
+                    btn_view_projects: "परियोजनाएं देखें",
+                    btn_contact_me: "संपर्क करें",
+                    about_title: "मेरे बारे में",
+                    about_p1: "फुल-स्टैक डेवलपर और डेटा एनालिस्ट, जो इंटरैक्टिव डिजिटल अनुभव और कुशल बैकएंड सिस्टम बनाने का शौकीन है। स्वचालन और गेम लॉजिक पर विशेष ध्यान देने के साथ, मैं लगातार उन चुनौतियों की तलाश में रहता हूं जो मेरे कौशल का विस्तार करती हैं।",
+                    about_p2: "प्रौद्योगिकी में मेरी यात्रा जिज्ञासा और अनुकूलित समाधानों की खोज से चिह्नित है, चाहे वह एक जटिल डिस्कॉर्ड बॉट विकसित करना हो, एक रिलेशनल डेटाबेस को आर्किटेक्ट करना हो, या एनिमेशन से भरपूर वेब इंटरफ़ेस बनाना हो।",
+                    skills_langs: "भाषाएँ",
+                    skills_backend: "बैकएंड और डीबी",
+                    skills_frontend: "फ्रंटएंड",
+                    projects_title: "मेरी परियोजनाएं",
+                    p1_title: "फुल-स्टैक ड्राफ्ट प्लेटफॉर्म (rachaobsl.com.br)",
+                    p1_desc: "ई-स्पोर्ट्स ड्राफ्ट के प्रबंधन के लिए एक संपूर्ण पारिस्थितिकी तंत्र, जिसमें एक <strong>Python/Flask</strong> बैकएंड है जो एक <strong>RESTful API</strong> परोसता है और कई <strong>MariaDB</strong> डेटाबेस से जुड़ता है। <strong>शुद्ध जावास्क्रिप्ट</strong> में फ्रंटएंड एक गतिशील और प्रतिक्रियाशील इंटरफ़ेस प्रदान करने के लिए एपीआई का उपभोग करता है।",
+                    btn_access_system: "सिस्टम एक्सेस करें",
+                    btn_private_repo: "निजी रिपोजिटरी",
+                    p2_title: "फुटबॉल करियर सिम्युलेटर (BSL GameFut)",
+                    p2_desc: "<strong>जावास्क्रिप्ट में ऑब्जेक्ट-ओरिएंटेड प्रोग्रामिंग</strong> का प्रदर्शन। एक खिलाड़ी के करियर का प्रबंधन करने के लिए एक इमर्सिव गेम, जिसमें आयु प्रणाली, 40 से अधिक यादृच्छिक घटनाएं और गतिशील लीग हैं।",
+                    btn_play_now: "अभी खेलें",
+                    btn_view_github: "गिटहब पर देखें",
+                    p3_title: "F1 करियर सिम्युलेटर (BSL Driver)",
+                    p3_desc: "एक मोटरस्पोर्ट करियर सिम्युलेटर जो <strong>शुद्ध HTML, CSS, और जावास्क्रिप्ट</strong> के साथ बनाया गया है, जो बिना फ्रेमवर्क के जटिल गेम लॉजिक बनाने पर प्रकाश डालता है।",
+                    p4_title: "जल जागरूकता पोर्टल (APS Água)",
+                    p4_desc: "जिम्मेदार पानी के उपयोग पर शिक्षा के लिए इंटरैक्टिव साइट। यह खपत कैलकुलेटर, इंटरैक्टिव क्विज़ और जल तनाव मानचित्र सहित व्यावहारिक मार्गदर्शन के साथ वैज्ञानिक डेटा को जोड़ती है।",
+                    btn_visit_site: "साइट पर जाएँ",
+                    aria_back_to_top: "शीर्ष पर वापस जाएं",
+                    footer_title: "चलो कुछ अद्भुत बनाएं?",
+                    footer_subtitle: "मैं हमेशा नई परियोजनाओं और सहयोग के लिए खुला हूँ। संपर्क करें!",
+                    footer_repo_link_text: "यह साइट पूरी तरह से 500 से कम कोड लाइनों वाली एक ही फ़ाइल में बनाई गई थी। आप इसे यहाँ एक्सेस कर सकते हैं: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>।",
+                    footer_copyright: "&copy; <span id=\"year\"></span> | मार्कस सोरेस द्वारा 💙 से विकसित",
+                },
+                'ar': {
+                    page_title: "ملف الأعمال v2.3 | ماركوس سواريس",
+                    aria_open_menu: "فتح القائمة",
+                    aria_toggle_theme: "تبديل السمة",
+                    aria_close_menu: "إغلاق القائمة",
+                    nav_title: "التنقل",
+                    nav_home: "الرئيسية",
+                    nav_about: "عني",
+                    nav_projects: "المشاريع",
+                    nav_contact: "اتصل",
+                    hero_greeting: "مرحباً، أنا",
+                    hero_tagline: "تحويل الأفكار المعقدة إلى حلول برمجية قوية وأنيقة.",
+                    typing_words: ["مطور بايثون", "متخصص لوا", "محلل بيانات", "خبير جافاسكريبت"],
+                    btn_view_projects: "عرض المشاريع",
+                    btn_contact_me: "تواصل معي",
+                    about_title: "عني",
+                    about_p1: "مطور متكامل ومحلل بيانات شغوف بإنشاء تجارب رقمية تفاعلية وأنظمة خلفية فعالة. مع تركيز خاص على الأتمتة ومنطق الألعاب، أسعى باستمرار لتحديات توسع مهاراتي.",
+                    about_p2: "رحلتي في التكنولوجيا تتميز بالفضول والسعي وراء الحلول المثلى، سواء كان ذلك تطوير بوت ديسكورد معقد، أو تصميم قاعدة بيانات علائقية، أو بناء واجهة ويب غنية بالرسوم المتحركة.",
+                    skills_langs: "لغات",
+                    skills_backend: "الخلفية وقواعد البيانات",
+                    skills_frontend: "الواجهة الأمامية",
+                    projects_title: "مشاريعي",
+                    p1_title: "منصة اختيار كاملة (rachaobsl.com.br)",
+                    p1_desc: "نظام بيئي متكامل لإدارة اختيارات الرياضات الإلكترونية، مع خلفية <strong>Python/Flask</strong> تخدم <strong>API RESTful</strong> وتتصل بقواعد بيانات <strong>MariaDB</strong> متعددة. الواجهة الأمامية في <strong>JavaScript النقي</strong> تستهلك الواجهة البرمجية لتوفير واجهة ديناميكية وتفاعلية.",
+                    btn_access_system: "الوصول إلى النظام",
+                    btn_private_repo: "مستودع خاص",
+                    p2_title: "محاكي مسيرة كرة القدم (BSL GameFut)",
+                    p2_desc: "عرض للبرمجة <strong>الشيئية في جافاسكريبت</strong>. لعبة غامرة لإدارة مسيرة لاعب، مع نظام للعمر، وأكثر من 40 حدثًا عشوائيًا، ودوريات ديناميكية.",
+                    btn_play_now: "العب الآن",
+                    btn_view_github: "عرض على GitHub",
+                    p3_title: "محاكي مسيرة الفورمولا 1 (BSL Driver)",
+                    p3_desc: "محاكي مسيرة رياضة السيارات تم بناؤه باستخدام <strong>HTML و CSS و JavaScript النقي</strong>، مما يبرز إنشاء منطق لعبة معقد بدون أطر عمل.",
+                    p4_title: "بوابة التوعية بالمياه (APS Água)",
+                    p4_desc: "موقع تفاعلي للتثقيف حول الاستخدام المسؤول للمياه. يجمع بين البيانات العلمية والإرشادات العملية، بما في ذلك آلة حاسبة للاستهلاك، واختبار تفاعلي، وخريطة للإجهاد المائي.",
+                    btn_visit_site: "زيارة الموقع",
+                    aria_back_to_top: "العودة للأعلى",
+                    footer_title: "هل نبني شيئًا مذهلاً؟",
+                    footer_subtitle: "أنا دائمًا منفتح على المشاريع والتعاونات الجديدة. تواصل معي!",
+                    footer_repo_link_text: "تم بناء هذا الموقع بالكامل في ملف واحد بأقل من 500 سطر من التعليمات البرمجية. يمكنك الوصول إليه هنا: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
+                    footer_copyright: "&copy; <span id=\"year\"></span> | تم التطوير بـ 💙 بواسطة ماركوس سواريس",
+                },
+                'ru': {
+                    page_title: "Портфолио v2.3 | Маркус Соарес",
+                    aria_open_menu: "Открыть меню",
+                    aria_toggle_theme: "Переключить тему",
+                    aria_close_menu: "Закрыть меню",
+                    nav_title: "Навигация",
+                    nav_home: "Главная",
+                    nav_about: "Обо мне",
+                    nav_projects: "Проекты",
+                    nav_contact: "Контакты",
+                    hero_greeting: "Привет, я",
+                    hero_tagline: "Преобразование сложных идей в надежные и элегантные программные решения.",
+                    typing_words: ["Python-разработчик", "Специалист по Lua", "Аналитик данных", "Эксперт по JavaScript"],
+                    btn_view_projects: "Смотреть проекты",
+                    btn_contact_me: "Связаться",
+                    about_title: "Обо мне",
+                    about_p1: "Full-Stack разработчик и аналитик данных, увлеченный созданием интерактивных цифровых интерфейсов и эффективных бэкенд-систем. С особым вниманием к автоматизации и игровой логике я постоянно ищу вызовы, которые расширяют мои навыки.",
+                    about_p2: "Мой путь в технологии отмечен любопытством и поиском оптимизированных решений, будь то разработка сложного бота для Discord, проектирование реляционной базы данных или создание веб-интерфейса, богатого анимацией.",
+                    skills_langs: "Языки",
+                    skills_backend: "Бэкенд и БД",
+                    skills_frontend: "Фронтенд",
+                    projects_title: "Мои проекты",
+                    p1_title: "Full-Stack платформа для драфта (rachaobsl.com.br)",
+                    p1_desc: "Полная экосистема для управления драфтами в киберспорте с бэкендом на <strong>Python/Flask</strong>, который обслуживает <strong>RESTful API</strong> и подключается к нескольким базам данных <strong>MariaDB</strong>. Фронтенд на <strong>чистом JavaScript</strong> использует API для обеспечения динамичного и реактивного интерфейса.",
+                    btn_access_system: "Перейти к системе",
+                    btn_private_repo: "Приватный репозиторий",
+                    p2_title: "Симулятор футбольной карьеры (BSL GameFut)",
+                    p2_desc: "Демонстрация <strong>объектно-ориентированного программирования на JavaScript</strong>. Захватывающая игра для управления карьерой игрока с системой возраста, более чем 40 случайными событиями и динамическими лигами.",
+                    btn_play_now: "Играть сейчас",
+                    btn_view_github: "Смотреть на GitHub",
+                    p3_title: "Симулятор карьеры в F1 (BSL Driver)",
+                    p3_desc: "Симулятор гоночной карьеры, созданный на <strong>чистом HTML, CSS и JavaScript</strong>, подчеркивающий создание сложной игровой логики без фреймворков.",
+                    p4_title: "Портал по водной грамотности (APS Água)",
+                    p4_desc: "Интерактивный сайт для обучения ответственному использованию воды. Он сочетает научные данные с практическими рекомендациями, включая калькулятор потребления, интерактивный тест и карту водного стресса.",
+                    btn_visit_site: "Посетить сайт",
+                    aria_back_to_top: "Наверх",
+                    footer_title: "Давайте создадим что-нибудь потрясающее?",
+                    footer_subtitle: "Я всегда открыт для новых проектов и сотрудничества. Свяжитесь со мной!",
+                    footer_repo_link_text: "Этот сайт был полностью создан в одном файле, содержащем менее 500 строк кода. Вы можете получить к нему доступ здесь: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
+                    footer_copyright: "&copy; <span id=\"year\"></span> | Разработано с 💙 Маркусом Соаресом",
+                }
+            };
+
+            // Typing animation logic
+            function startTypingAnimation(words) {
+                clearTimeout(typeTimeout);
+                let wordIndex = 0, charIndex = 0, isDeleting = false;
+
+                function type() {
+                    const currentWord = words[wordIndex];
+                    if (isDeleting) {
+                        typingTextElement.textContent = currentWord.substring(0, charIndex--);
+                    } else {
+                        typingTextElement.textContent = currentWord.substring(0, charIndex++);
+                    }
+
+                    if (!isDeleting && charIndex === currentWord.length + 1) {
+                        isDeleting = true;
+                        typeTimeout = setTimeout(type, 2000);
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typeTimeout = setTimeout(type, 500);
+                    } else {
+                        typeTimeout = setTimeout(type, isDeleting ? 75 : 150);
+                    }
+                }
+                type();
+            }
+
+            window.setLanguage = (lang) => {
+                const translation = translations[lang];
+                if (!translation) return;
+
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.dataset.translateKey;
+                    const translationText = translation[key];
+
+                    if (translationText !== undefined) {
+                        if (key.startsWith('aria_')) {
+                            el.setAttribute('aria-label', translationText);
+                        } else if (key === 'footer_repo_link_text' || key === 'footer_copyright' || key.includes('_desc')) {
+                            el.innerHTML = translationText;
+                        } else {
+                            el.textContent = translationText;
+                        }
+                    }
+                });
+
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+                // Restart typing animation with translated words
+                startTypingAnimation(translation.typing_words);
+
+                localStorage.setItem('language', lang);
+
+                // Update copyright year
+                const yearSpan = document.getElementById('year');
+                if (yearSpan) {
+                   yearSpan.textContent = new Date().getFullYear();
+                }
+            };
+
+            const savedLang = localStorage.getItem('language') || 'pt';
+            setLanguage(savedLang);
+            // === TRANSLATION LOGIC END ===
+
         });
     </script>
 </body>
