@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio v2.2 | Marcus Soares</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-surface: rgba(22, 27, 34, 0.8);
+            --border-color: rgba(138, 43, 226, 0.2);
+            --primary-accent: #8A2BE2; 
+            --secondary-accent: #00BFFF;
+            --gold-accent: #FFD700;
+            --text-light: #f0f0f8;
+            --text-muted: #a0a0b0;
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --shadow-glow: 0 0 20px rgba(138, 43, 226, 0.5), 0 0 8px rgba(0, 191, 255, 0.4);
+        }
+
+        body.light-mode {
+            --bg-dark: #f0f2f5;
+            --bg-surface: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --primary-accent: #6a0dad;
+            --secondary-accent: #007acc;
+            --text-light: #1c1e21;
+            --text-muted: #555;
+        }
+
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            scrollbar-width: thin; scrollbar-color: var(--primary-accent) var(--bg-surface);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-dark); color: var(--text-light);
+            font-family: var(--font-body); line-height: 1.6;
+            overflow-x: hidden; transition: background-color 0.3s, color 0.3s;
+        }
+
+        .project-card, .skill-card, .about-text {
+            background: var(--bg-surface);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 1.5rem;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-glow);
+            border-color: var(--primary-accent);
+        }
+        .project-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 2rem;
+            background: var(--bg-surface);
+            -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+        .menu-toggle, .theme-toggle {
+            background: none; border: none; font-size: 1.5rem;
+            color: var(--text-light); cursor: pointer; transition: color 0.3s, transform 0.3s;
+        }
+        .menu-toggle:hover, .theme-toggle:hover {
+            color: var(--secondary-accent); transform: scale(1.1);
+        }
+
+        .side-menu {
+            position: fixed; top: 0; left: -300px;
+            width: 280px; height: 100%;
+            background: var(--bg-dark);
+            padding: 2rem 0;
+            z-index: 1001;
+            transition: left 0.4s ease;
+            display: flex; flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+        .side-menu.active { left: 0; }
+        .side-menu .menu-header { display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem 1rem; border-bottom: 1px solid var(--border-color);}
+        .side-menu .menu-header h3 { font-family: var(--font-display); color: var(--primary-accent); margin: 0;}
+        .close-menu { background: none; border: none; color: var(--text-light); font-size: 2rem; cursor: pointer;}
+        .side-menu ul { list-style: none; padding: 0; margin-top: 1rem; }
+        .side-menu ul li a {
+            display: block; padding: 1rem 1.5rem;
+            color: var(--text-muted); text-decoration: none;
+            font-family: var(--font-body); font-weight: bold;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .side-menu ul li a:hover { background-color: var(--primary-accent); color: white; }
+
+        #hero {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding-top: 60px;
+        }
+        .hero-content h1 {
+            font-family: var(--font-display); font-size: 3.5rem;
+            color: var(--text-light);
+        }
+        .hero-content .name { color: var(--primary-accent); text-shadow: var(--shadow-glow); }
+        .subtitle { font-family: var(--font-display); font-size: 1.5rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .typing-cursor { display: inline-block; width: 3px; height: 1.5rem; background-color: var(--secondary-accent); animation: blink 1s infinite; }
+        .btn {
+            display: inline-block; padding: 10px 24px;
+            background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent));
+            color: white; text-decoration: none;
+            border-radius: 50px; font-weight: bold; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none; cursor: pointer;
+            font-size: 0.9rem; margin-top: 0.5rem; margin-right: 0.5rem;
+        }
+        .btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-glow); }
+        .btn.github {
+            background: #333;
+        }
+        .btn.github:hover {
+            background: #444;
+        }
+        .btn[disabled] {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            filter: grayscale(80%);
+        }
+
+
+        .container { width: 90%; max-width: 1200px; margin: auto; padding: 6rem 0 4rem; }
+        h2 { font-family: var(--font-display); font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--secondary-accent); }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+        .about-text p { margin-bottom: 1rem; color: var(--text-muted); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+        .skill-card h3 { color: var(--gold-accent); font-family: var(--font-body); font-size: 1.2rem; }
+        .skill-card ul { list-style: none; color: var(--text-muted); }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card.featured { grid-column: 1 / -1; }
+        .project-content { padding: 0; display: flex; flex-direction: column; flex-grow: 1;}
+        .project-content p { flex-grow: 1;}
+        .project-content h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold-accent); }
+        .tech-tags { margin: 1rem 0;}
+        .tech-tags span { display: inline-block; background: rgba(0, 191, 255, 0.1); color: var(--secondary-accent); padding: 5px 10px; border-radius: 5px; margin: 5px 5px 5px 0; font-size: 0.8rem; font-weight: bold; }
+        .project-links { margin-top: auto; }
+
+        #contact { background: var(--bg-surface); padding: 4rem 0; text-align: center; border-top: 1px solid var(--border-color); }
+        .footer-content p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .contact-info a { color: var(--secondary-accent); text-decoration: none; margin: 0 1rem; font-weight: bold; }
+        .social-links a { display: inline-flex; align-items: center; justify-content: center; }
+        .social-links svg, .social-links img {
+            width: 32px; height: 32px; fill: var(--text-muted); margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover svg, .social-links a:hover img {
+            transform: scale(1.2);
+        }
+        .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem; }
+        
+        #back-to-top {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background-color: var(--primary-accent); color: white;
+            border: none; border-radius: 50%;
+            font-size: 1.5rem; font-weight: bold;
+            cursor: pointer; z-index: 999;
+            opacity: 0; visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center;
+        }
+        #back-to-top.show {
+            opacity: 1; visibility: visible;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            filter: brightness(1.2);
+            transform: translateY(-3px);
+        }
+        
+        @keyframes blink { 50% { opacity: 0; } }
+        @media (max-width: 768px) {
+            .about-content { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+        <button class="theme-toggle" aria-label="Alternar tema">🌓</button>
+    </header>
+
+    <nav class="side-menu">
+        <div class="menu-header">
+            <h3>Navegação</h3>
+            <button class="close-menu" aria-label="Fechar menu">&times;</button>
+        </div>
+        <ul>
+            <li><a href="#hero">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Olá, eu sou <span class="name">Marcus Soares</span></h1>
+            <p class="subtitle"><span id="typing-text"></span><span class="typing-cursor"></span></p>
+            <p>Transformando ideias complexas em soluções de software robustas e elegantes.</p>
+            <div class="hero-links" style="margin-top: 2rem;">
+                <a href="#projects" class="btn">Ver Projetos</a>
+                <a href="#contact" class="btn">Entrar em Contato</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="about" class="container">
+            <h2 class="fade-in">Sobre Mim</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>Desenvolvedor Full-Stack e Analista de Dados apaixonado por criar experiências digitais interativas e sistemas de backend eficientes. Com um foco especial em automação e lógica de jogos, busco constantemente desafios que expandam minhas habilidades.</p>
+                    <p>Minha jornada na tecnologia é marcada pela curiosidade e pela busca de soluções otimizadas, seja desenvolvendo um bot complexo para Discord, arquitetando um banco de dados relacional ou construindo uma interface web rica em animações.</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card"><h3>Linguagens</h3><ul><li>🐍 Python</li><li>📜 Lua</li><li>✨ JavaScript (ES6+)</li></ul></div>
+                    <div class="skill-card"><h3>Backend & DB</h3><ul><li>🤖 Bots (Discord.py)</li><li>🌐 Flask & REST APIs</li><li>📊 MariaDB/MySQL</li></ul></div>
+                    <div class="skill-card"><h3>Frontend</h3><ul><li>뼈 HTML5</li><li>🎨 CSS3 & Animações</li><li>📱 Design Responsivo</li></ul></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="container">
+            <h2 class="fade-in">Meus Projetos</h2>
+            <div class="projects-grid">
+                
+                <article class="project-card featured fade-in">
+                    <div class="project-content">
+                        <h3>Plataforma Full-Stack de Draft (rachaobsl.com.br)</h3>
+                        <p>Um ecossistema completo para gerenciamento de drafts de e-sports, com um backend em <strong>Python/Flask</strong> que serve uma <strong>API RESTful</strong> e se conecta a múltiplos bancos de dados <strong>MariaDB</strong>. O frontend em <strong>JavaScript puro</strong> consome a API para fornecer uma interface dinâmica e reativa.</p>
+                        <div class="tech-tags"><span>Python</span><span>Flask</span><span>MariaDB</span><span>JavaScript</span><span>REST API</span><span>Data Analysis</span></div>
+                        <div class="project-links">
+                            <a href="http://rachaobsl.com.br/" target="_blank" class="btn">Acessar Sistema</a>
+                            <button class="btn github" disabled>Repositório Privado</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                    <div class="project-content">
+                        <h3>Simulador de Carreira de Futebol (BSL GameFut)</h3>
+                        <p>Demonstração de <strong>orientação a objetos em JavaScript</strong>. Um jogo imersivo para gerenciar a carreira de um jogador, com sistema de idade, mais de 40 eventos aleatórios e ligas dinâmicas.</p>
+                        <div class="tech-tags"><span>JavaScript (OOP)</span><span>Chart.js</span><span>LocalStorage</span></div>
+                        <div class="project-links">
+                            <a href="https://marcus7170.github.io/BSL-GameFut/" target="_blank" class="btn">Jogar Agora</a>
+                            <a href="https://github.com/marcus7170/BSL-GameFut" target="_blank" class="btn github">Ver no GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                     <div class="project-content">
+                        <h3>Simulador de Carreira de F1 (BSL Driver)</h3>
+                        <p>Um simulador de carreira de automobilismo construído com <strong>HTML, CSS e JavaScript puros</strong>, destacando a criação de lógica de jogo complexa sem frameworks.</p>
+                         <div class="tech-tags"><span>JavaScript (Vanilla)</span><span>Game Logic</span><span>HTML5/CSS3</span></div>
+                         <div class="project-links">
+                             <a href="https://marcus7170.github.io/BSL_Driver/" target="_blank" class="btn">Jogar Agora</a>
+                             <a href="https://github.com/marcus7170/BSL_Driver" target="_blank" class="btn github">Ver no GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card fade-in">
+                    <div class="project-content">
+                       <h3>Portal de Conscientização Hídrica (APS Água)</h3>
+                       <p>Site interativo para educação sobre o uso responsável da água. Combina dados científicos com orientações práticas, incluindo calculadora de consumo, quiz interativo e mapa de estresse hídrico.</p>
+                        <div class="tech-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript (DOM)</span></div>
+                        <div class="project-links">
+                            <a href="https://marcus7170.github.io/APS_Agua/" target="_blank" class="btn">Visitar Site</a>
+                            <a href="https://github.com/marcus7170/APS_Agua" target="_blank" class="btn github">Ver no GitHub</a>
+                       </div>
+                   </div>
+               </article>
+
+            </div>
+        </section>
+    </main>
+
+    <button id="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+    <footer id="contact">
+        <div class="container" style="padding-top: 4rem; padding-bottom: 2rem;">
+            <div class="footer-content fade-in">
+                <h2>Vamos Construir Algo Incrível?</h2>
+                <p>Estou sempre aberto a novos projetos e colaborações. Entre em contato!</p>
+                <div class="contact-info" style="margin-bottom: 2rem;">
+                     <a href="tel:+5513991906461">(13) 99190-6461</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/marcus7170" target="_blank" title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+                    </a>
+                    <a href="https://discord.gg/ZFgy6x42ZG" target="_blank" title="Discord">
+                         <img src="https://media.discordapp.net/attachments/1063548453508091924/1402744260322791454/image.png?ex=689506e5&is=6893b565&hm=b7dbb48f4323cd0dbe67caa4c9743ee821753c1deeba14cb48533df416f4dc03&=&format=webp&quality=lossless&width=461&height=461" alt="Discord Icon" style="border-radius: 50%;">
+                    </a>
+                </div>
+                <div class="footer-bottom">&copy; <span id="year"></span> | Desenvolvido com 💙 por Marcus Soares</div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const closeMenu = document.querySelector('.close-menu');
+            const sideMenu = document.querySelector('.side-menu');
+            const menuLinks = document.querySelectorAll('.side-menu a');
+
+            const closeSideMenu = () => sideMenu.classList.remove('active');
+            
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sideMenu.classList.add('active');
+            });
+            closeMenu.addEventListener('click', closeSideMenu);
+            menuLinks.forEach(link => link.addEventListener('click', closeSideMenu));
+            document.addEventListener('click', (e) => {
+                if (!sideMenu.contains(e.target) && !menuToggle.contains(e.target) && sideMenu.classList.contains('active')) {
+                    closeSideMenu();
+                }
+            });
+
+            const themeToggle = document.querySelector('.theme-toggle');
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme === 'light') {
+                document.body.classList.add('light-mode');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                let theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+                localStorage.setItem('theme', theme);
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                backToTopButton.classList.toggle('show', window.scrollY > 400);
+            });
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            const typingTextElement = document.getElementById('typing-text');
+            const words = ["Desenvolvedor Python", "Especialista em Lua", "Analista de Dados", "Expert em JavaScript"];
+            let wordIndex = 0, charIndex = 0, isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    typingTextElement.textContent = currentWord.substring(0, charIndex--);
+                } else {
+                    typingTextElement.textContent = currentWord.substring(0, charIndex++);
+                }
+
+                if (!isDeleting && charIndex === currentWord.length + 1) {
+                    isDeleting = true; setTimeout(type, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(type, 500);
+                } else {
+                    setTimeout(type, isDeleting ? 75 : 150);
+                }
+            }
+            type();
+
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.1 });
+            faders.forEach(fader => appearOnScroll.observe(fader));
+            
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
