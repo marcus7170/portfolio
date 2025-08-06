@@ -72,4 +72,4 @@ E pronto! O site estará funcionando localmente.
 
 ## 📞 Contato
 
-**Marcus Soares** - [marcus.soares.dev@gmail.com](mailto:marcus.soares.dev@gmail.com)
+**Marcus Soares** - +55 (13) 991906461
