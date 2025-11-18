@@ -7,7 +7,7 @@
 </div>
 <br>
 <div align="center">
-  <img src="https://media.discordapp.net/attachments/1063548453508091924/1402746985769078977/image.png?ex=6895096f&is=6893b7ef&hm=e2f8d313a3063ac90075faa6347d06767afc7be2eb89c18dad0f6b2e7d64b140&=&format=webp&quality=lossless&width=1177&height=700" alt="Screenshot do Portfólio" width="800"/>
+<img width="897" height="413" alt="image" src="https://github.com/user-attachments/assets/8bcb4776-e51c-4c87-8a69-4f061e20d551" />
 </div>
 
 ## 📜 Sobre o Projeto
