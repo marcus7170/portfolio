@@ -6,9 +6,6 @@
   </a>
 </div>
 <br>
-<div align="center">
-<img width="897" height="413" alt="image" src="https://github.com/user-attachments/assets/8bcb4776-e51c-4c87-8a69-4f061e20d551" />
-</div>
 
 ## 📜 Sobre o Projeto
 
