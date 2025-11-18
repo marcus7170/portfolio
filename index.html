@@ -1105,7 +1105,7 @@ public class ListaContatos {
                     if (translationText !== undefined) {
                         if (key.startsWith('aria_')) {
                             el.setAttribute('aria-label', translationText);
-                        } else if (key === 'footer_repo_link_text' || key === 'footer_copyright' || key.includes('_desc')) {
+                        } else if (key === 'footer_repo_link_text' || key === 'footer_copyright' || key.includes('_desc') || key.startsWith('about_')) {
                             el.innerHTML = translationText;
                         } else {
                             el.textContent = translationText;
