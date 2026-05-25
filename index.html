@@ -1,1638 +1,1013 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de Marcus Soares - Desenvolvedor Full-Stack e Analista de Dados">
-    <title data-translate-key="page_title">Portfólio v2.3 | Marcus Soares</title>
+    <meta name="description" content="Marcus Soares — Desenvolvedor Full-Stack. Criador do BSL, plataforma esportiva em produção.">
+    <title>Marcus Soares — Desenvolvedor</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <style>
         :root {
-
-            --bg-dark: #0d1117;
-            --bg-surface: rgba(22, 27, 34, 0.8);
-            --bg-card: rgba(30, 35, 42, 0.8);
-            --border-color: rgba(0, 191, 255, 0.2);
-            --primary-accent: #8A2BE2;
-            --secondary-accent: #00BFFF;
-            --gold-accent: #FFD700;
-            --text-light: #f0f0f8;
-            --text-muted: #a0a0b0;
-            --gradient-primary: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
-            --gradient-card: linear-gradient(145deg, rgba(30, 35, 42, 0.9), rgba(22, 27, 34, 0.7));
-            
-
-            --font-display: 'Orbitron', sans-serif;
-            --font-body: 'Roboto', sans-serif;
-            
-
-            --shadow-glow: 0 0 20px rgba(138, 43, 226, 0.5), 0 0 8px rgba(0, 191, 255, 0.4);
-            --shadow-depth: 0 4px 20px rgba(0, 0, 0, 0.2);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
-            
-
-            --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --transition-fast: all 0.3s ease;
+            --bg:       #06010f;
+            --bg-card:  rgba(14, 3, 33, 0.65);
+            --purple:   #9F6CE0;
+            --gold:     #FFAB00;
+            --white:    #f0f0f8;
+            --muted:    #7a7a8c;
+            --border:   rgba(159, 108, 224, 0.22);
         }
 
-
-        body.light-mode {
-            --bg-dark: #f0f2f5;
-            --bg-surface: rgba(255, 255, 255, 0.8);
-            --bg-card: rgba(255, 255, 255, 0.9);
-            --border-color: rgba(0, 0, 0, 0.1);
-            --primary-accent: #6a0dad;
-            --secondary-accent: #007acc;
-            --text-light: #1c1e21;
-            --text-muted: #555;
-            --gradient-primary: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
-            --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.7));
-            --shadow-depth: 0 4px 20px rgba(0, 0, 0, 0.05);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-accent) var(--bg-surface);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--purple) #0e0320; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            transition: var(--transition-fast);
         }
+        a { color: inherit; text-decoration: none; }
+        .russo { font-family: 'Russo One', sans-serif; }
 
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 6rem 0 4rem;
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(6, 1, 15, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
         }
-
-        h2 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--secondary-accent);
-            text-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+        .nav-logo {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+        .nav-logo span { color: var(--purple); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a {
+            font-size: 0.8rem;
             font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            transition: color 0.2s;
         }
+        .nav-links a:hover { color: var(--white); }
 
+        /* ── CONTAINER ── */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
 
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: var(--bg-surface);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: var(--transition-fast);
-        }
-
-        .header-scrolled {
-            box-shadow: var(--shadow-depth);
-            padding: 0.75rem 2rem;
-        }
-
-        .menu-toggle, .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: var(--transition-fast);
-            padding: 0.5rem;
-            border-radius: 50%;
-        }
-
-        .menu-toggle:hover, .theme-toggle:hover {
-            color: var(--secondary-accent);
-            background: rgba(0, 191, 255, 0.1);
-            transform: scale(1.1);
-        }
-
-
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 280px;
-            height: 100%;
-            background: var(--bg-card);
-            padding: 2rem 0;
-            z-index: 1001;
-            transition: var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid var(--border-color);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-        }
-
-        .side-menu.active {
-            left: 0;
-        }
-
-        .side-menu .menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.5rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .side-menu .menu-header h3 {
-            font-family: var(--font-display);
-            color: var(--primary-accent);
-            margin: 0;
-        }
-
-        .close-menu {
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .close-menu:hover {
-            color: var(--secondary-accent);
-            transform: scale(1.1);
-        }
-
-        .side-menu ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-        }
-
-        .side-menu ul li a {
-            display: block;
-            padding: 1rem 1.5rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-family: var(--font-body);
-            font-weight: bold;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition-fast);
-        }
-
-        .side-menu ul li a:hover {
-            background-color: var(--primary-accent);
-            color: white;
-            padding-left: 2rem;
-        }
-
-
+        /* ── HERO ── */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 1rem;
+            padding-top: 70px;
             position: relative;
             overflow: hidden;
         }
-
-        #hero::before {
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .hero-bg::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 55% 55% at 10% 50%, rgba(159,108,224,0.10) 0%, transparent 60%),
+                radial-gradient(ellipse 35% 35% at 85% 25%, rgba(255,171,0,0.07) 0%, transparent 50%);
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 36px 36px;
+        }
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 64px;
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 20%, rgba(138, 43, 226, 0.15), transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(0, 191, 255, 0.1), transparent 50%);
-            z-index: -1;
         }
+        .hero-text { flex: 1; }
 
-        .hero-content h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .hero-content .name {
-            color: var(--primary-accent);
-            text-shadow: var(--shadow-glow);
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            font-family: var(--font-display);
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1.5rem;
-            background-color: var(--secondary-accent);
-            animation: blink 1s infinite;
-            margin-left: 2px;
-        }
-
-
-        .btn {
+        .hero-location {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            background: var(--gradient-primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: none;
+            gap: 7px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--purple);
+            background: rgba(159,108,224,0.1);
+            border: 1px solid rgba(159,108,224,0.28);
+            padding: 5px 13px;
+            border-radius: 20px;
+            margin-bottom: 22px;
+        }
+        .hero-name {
+            font-family: 'Russo One', sans-serif;
+            font-size: clamp(3rem, 6.5vw, 5rem);
+            line-height: 1.0;
+            margin-bottom: 10px;
+            background: linear-gradient(100deg, var(--white) 45%, var(--purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-role {
+            font-family: 'Russo One', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.35rem);
+            color: var(--gold);
+            margin-bottom: 22px;
+            letter-spacing: 0.3px;
+        }
+        .hero-desc {
+            color: var(--muted);
+            font-size: 0.93rem;
+            max-width: 460px;
+            margin-bottom: 36px;
+            line-height: 1.8;
+        }
+        .hero-desc strong { color: var(--white); font-weight: 700; }
+        .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        /* ── BOTÕES GLOBAIS ── */
+        .btn-primary {
+            padding: 11px 24px;
+            background: var(--purple);
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.83rem;
+            border: 1px solid var(--purple);
+            transition: 0.22s;
             cursor: pointer;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            margin-right: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .btn-primary:hover {
+            background: #b07ff0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(159,108,224,0.32);
+        }
+        .btn-ghost {
+            padding: 11px 24px;
+            background: transparent;
+            color: var(--muted);
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.83rem;
+            border: 1px solid rgba(255,255,255,0.13);
+            transition: 0.22s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .btn-ghost:hover { border-color: var(--purple); color: var(--white); }
+
+        /* ── DEV CARD (hero lateral) ── */
+        .hero-card { width: 210px; flex-shrink: 0; }
+        .dev-card {
+            background: linear-gradient(145deg, rgba(159,108,224,0.13) 0%, rgba(14,3,33,0.92) 100%);
+            border: 1px solid rgba(159,108,224,0.32);
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            backdrop-filter: blur(14px);
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
-
-        .btn::before {
+        .dev-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--secondary-accent), var(--primary-accent));
-            z-index: -1;
-            transition: opacity 0.3s ease;
-            opacity: 0;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-25deg);
+            animation: cardShine 6s ease-in-out infinite;
         }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-glow);
+        @keyframes cardShine {
+            0%, 70%, 100% { left: -100%; }
+            25% { left: 200%; }
         }
-
-        .btn:hover::before {
-            opacity: 1;
-        }
-
-        .btn.github {
-            background: #333;
-        }
-
-        .btn.github:hover {
-            background: #444;
-        }
-
-        .btn[disabled] {
-            background: #555;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-            filter: grayscale(80%);
-        }
-
-        .btn[disabled]:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        .lang-switcher-hero {
-            margin-top: 2.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .lang-switcher-hero button {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            padding: 0.5rem;
+        .dev-avatar {
+            width: 68px; height: 68px;
             border-radius: 50%;
-            opacity: 0.7;
+            border: 2px solid var(--gold);
+            background: rgba(255,171,0,0.07);
+            margin: 0 auto 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
+            font-size: 2rem;
+            box-shadow: 0 0 18px rgba(255,171,0,0.22);
+            animation: avatarPulse 3s ease-in-out infinite alternate;
         }
-
-        .lang-switcher-hero button:hover {
-            transform: scale(1.2);
-            opacity: 1;
-            background: rgba(0, 191, 255, 0.1);
+        @keyframes avatarPulse {
+            from { box-shadow: 0 0 10px rgba(255,171,0,0.18); }
+            to   { box-shadow: 0 0 24px rgba(255,171,0,0.38); }
         }
-
-
-        .project-card, .skill-card, .about-text {
-            background: var(--bg-card);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            transition: var(--transition-smooth);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-card);
-            position: relative;
-            overflow: hidden;
+        .dev-name {
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.85rem;
+            margin-bottom: 3px;
         }
-
-        .project-card::before, .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-card);
-            z-index: -1;
-            opacity: 0.8;
+        .dev-title {
+            font-size: 0.6rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            margin-bottom: 18px;
         }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--primary-accent);
-        }
-
-        .project-card {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card.featured {
-            grid-column: 1 / -1;
-            position: relative;
-        }
-
-        .project-card.featured::after {
-            content: 'Destaque';
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-
-        .about-content {
+        .dev-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 7px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            padding-top: 16px;
+        }
+        .dev-stat {
+            background: rgba(0,0,0,0.35);
+            border-radius: 8px;
+            padding: 9px 4px;
+        }
+        .dev-stat-val {
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.95rem;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .dev-stat-lbl {
+            font-size: 0.48rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+
+        /* ── SECTION ── */
+        section { padding: 90px 0; }
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 48px;
+        }
+        .section-line { flex: 1; height: 1px; background: var(--border); }
+        .section-label {
+            font-family: 'Russo One', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        /* ── SOBRE ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
             align-items: start;
         }
-
         .about-text p {
-            margin-bottom: 1rem;
-            color: var(--text-muted);
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-size: 0.93rem;
+            line-height: 1.8;
         }
-
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-card h3 {
-            color: var(--gold-accent);
-            font-family: var(--font-body);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-card ul {
-            list-style: none;
-            color: var(--text-muted);
-        }
-
-        .skill-card ul li {
-            margin-bottom: 0.25rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .skill-card ul li::before {
-            content: '▹';
-            margin-right: 0.5rem;
-            color: var(--secondary-accent);
-        }
-
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-content {
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-content p {
-            flex-grow: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-content h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--gold-accent);
-            margin-bottom: 1rem;
-        }
-
-        .tech-tags {
-            margin: 1rem 0;
-        }
-
-        .tech-tags span {
-            display: inline-block;
-            background: rgba(0, 191, 255, 0.1);
-            color: var(--secondary-accent);
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin: 5px 5px 5px 0;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transition: var(--transition-fast);
-        }
-
-        .tech-tags span:hover {
-            background: rgba(0, 191, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .project-links {
-            margin-top: auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-
-        #contact {
-            background: var(--bg-surface);
-            padding: 4rem 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-content p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .contact-info a {
-            color: var(--secondary-accent);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            transition: var(--transition-fast);
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-smooth);
-        }
-
-        .social-links svg, .social-links img {
-            width: 32px;
-            height: 32px;
-            fill: var(--text-muted);
-            transition: var(--transition-fast);
-        }
-
-        .social-links a:hover svg, .social-links a:hover img {
-            transform: scale(1.2);
-            fill: var(--secondary-accent);
-        }
-
-        .footer-bottom {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom p a {
-            color: var(--secondary-accent);
-            text-decoration: none;
-        }
-
-        .footer-bottom p a:hover {
-            text-decoration: underline;
-        }
-
-
-        #back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: var(--transition-smooth);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        #back-to-top:hover {
-            filter: brightness(1.2);
-            transform: translateY(-3px);
-        }
-
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7);
-            -webkit-backdrop-filter: blur(8px);
+        .about-text strong { color: var(--white); }
+        .about-highlights { display: flex; flex-direction: column; gap: 12px; }
+        .hi {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            padding: 16px 18px;
             backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            visibility: hidden;
+            gap: 14px;
+            transition: 0.25s;
         }
+        .hi:hover { border-color: rgba(159,108,224,0.45); transform: translateX(4px); }
+        .hi-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .hi-title { display: block; font-size: 0.87rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+        .hi-sub { font-size: 0.73rem; color: var(--muted); line-height: 1.4; }
 
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        /* ── STACK ── */
+        #stack { padding-top: 0; }
+        .stack-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 18px;
         }
-
-        .modal-content {
+        .stack-group {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            backdrop-filter: blur(8px);
+        }
+        .stack-group-title {
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: var(--purple);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+        .chip {
+            font-size: 0.73rem;
+            font-weight: 700;
+            padding: 4px 11px;
+            border-radius: 6px;
+            border: 1px solid;
+        }
+        .c-purple { background: rgba(159,108,224,0.12); color: #c4a0f5; border-color: rgba(159,108,224,0.28); }
+        .c-gold   { background: rgba(255,171,0,0.10);   color: #ffc84a; border-color: rgba(255,171,0,0.28); }
+        .c-blue   { background: rgba(52,152,219,0.10);  color: #7ec8f0; border-color: rgba(52,152,219,0.28); }
+        .c-green  { background: rgba(46,204,113,0.10);  color: #7ee8a8; border-color: rgba(46,204,113,0.28); }
+        .c-gray   { background: rgba(255,255,255,0.04); color: #aaa;    border-color: rgba(255,255,255,0.1); }
+
+        /* ── PROJETOS ── */
+        .project-featured {
+            background: linear-gradient(145deg, rgba(159,108,224,0.07) 0%, rgba(14,3,33,0.85) 100%);
+            border: 1px solid rgba(159,108,224,0.32);
+            border-radius: 20px;
+            padding: 38px;
+            margin-bottom: 22px;
+            backdrop-filter: blur(12px);
             position: relative;
-            box-shadow: var(--shadow-depth);
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
+            overflow: hidden;
         }
-
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-content h3 {
-            font-family: var(--font-display);
-            color: var(--gold-accent);
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .modal-content p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-close {
+        .project-featured::after {
+            content: '';
             position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            font-size: 2.5rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            line-height: 1;
-            padding: 0;
-            transition: var(--transition-fast);
+            top: -40px; right: -40px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(255,171,0,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .pf-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 11px;
+            border-radius: 20px;
+            background: rgba(46,204,113,0.1);
+            border: 1px solid rgba(46,204,113,0.38);
+            color: #7ee8a8;
+        }
+        .badge-live::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: #2ecc71;
+            border-radius: 50%;
+            animation: livePulse 1.6s ease infinite;
+        }
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.3); }
+        }
+        .badge-main {
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 4px 11px;
+            border-radius: 20px;
+            background: rgba(255,171,0,0.1);
+            border: 1px solid rgba(255,171,0,0.35);
+            color: var(--gold);
+        }
+        .project-featured h3 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.9rem;
+            color: var(--white);
+            margin-bottom: 14px;
+        }
+        .project-featured > p {
+            color: var(--muted);
+            font-size: 0.92rem;
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .project-featured > p strong { color: var(--white); }
+
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
+        .tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 5px;
+            background: rgba(159,108,224,0.1);
+            color: #c4a0f5;
+            border: 1px solid rgba(159,108,224,0.2);
         }
 
-        .modal-close:hover {
-            color: var(--text-light);
-            transform: scale(1.1);
+        .plinks { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 20px; }
+        .pl {
+            padding: 9px 17px;
+            border-radius: 9px;
+            font-weight: 700;
+            font-size: 0.77rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid;
         }
+        .pl-primary { background: var(--purple); color: #fff; border-color: var(--purple); }
+        .pl-primary:hover { background: #b07ff0; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(159,108,224,0.3); }
+        .pl-ghost { background: rgba(255,255,255,0.04); color: var(--muted); border-color: rgba(255,255,255,0.1); }
+        .pl-ghost:hover { border-color: rgba(159,108,224,0.5); color: var(--white); }
+        .pl-off { background: rgba(255,255,255,0.02); color: #444; border-color: rgba(255,255,255,0.06); cursor: default; }
 
-        .code-spoiler {
-            background: var(--bg-dark);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem;
-            overflow-x: auto;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(318px, 1fr));
+            gap: 18px;
         }
-
-        .code-spoiler pre {
-            margin: 0;
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+            transition: 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
         }
-
-        .code-spoiler code {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            color: #cdd6f4;
-            white-space: pre;
+        .project-card:hover {
+            border-color: rgba(159,108,224,0.48);
+            box-shadow: 0 12px 30px rgba(159,108,224,0.1);
+            transform: translateY(-4px);
         }
+        .project-card h4 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            font-size: 0.84rem;
+            color: var(--muted);
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 14px;
+        }
+        .project-card p strong { color: var(--white); }
 
-        /* Animações e utilidades */
-        .fade-in {
+        /* ── CONTATO ── */
+        #contact {
+            border-top: 1px solid var(--border);
+            background: linear-gradient(to bottom, transparent, rgba(159,108,224,0.03));
+        }
+        .contact-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+        .contact-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            margin-bottom: 14px;
+        }
+        .contact-sub {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            margin-bottom: 36px;
+        }
+        .contact-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .cl {
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.22s;
+            border: 1px solid;
+        }
+        .cl-github  { background: rgba(255,255,255,0.04); color: var(--white); border-color: rgba(255,255,255,0.13); }
+        .cl-github:hover { border-color: var(--purple); background: rgba(159,108,224,0.1); }
+        .cl-discord { background: rgba(88,101,242,0.1); color: #9ba4f7; border-color: rgba(88,101,242,0.28); }
+        .cl-discord:hover { background: rgba(88,101,242,0.18); }
+        .cl-whatsapp { background: rgba(37,211,102,0.08); color: #7ee8a8; border-color: rgba(37,211,102,0.28); }
+        .cl-whatsapp:hover { background: rgba(37,211,102,0.16); }
+        .cl-email { background: rgba(159,108,224,0.08); color: var(--purple); border-color: var(--border); }
+        .cl-email:hover { background: rgba(159,108,224,0.15); }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 22px 5%;
+            text-align: center;
+            font-size: 0.76rem;
+            color: #3a3a4a;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        footer a { color: var(--purple); transition: opacity 0.2s; }
+        footer a:hover { opacity: 0.8; }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(22px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
+        .reveal.visible { opacity: 1; transform: none; }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* ── BACK TO TOP ── */
+        #btt {
+            position: fixed;
+            bottom: 26px; right: 26px;
+            width: 40px; height: 40px;
+            background: rgba(159,108,224,0.8);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: 0.28s;
+            z-index: 99;
         }
+        #btt.show { opacity: 1; transform: none; }
+        #btt:hover { background: var(--purple); transform: translateY(-3px); }
 
-        .hidden {
-            display: none !important;
+        /* ── RESPONSIVE ── */
+        @media (max-width: 860px) {
+            .hero-inner { flex-direction: column-reverse; gap: 38px; text-align: center; }
+            .hero-cta { justify-content: center; }
+            .hero-desc { margin: 0 auto 32px; }
+            .about-grid { grid-template-columns: 1fr; }
         }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .project-links {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                margin-right: 0;
-            }
-            
-            .container {
-                padding: 4rem 0 2rem;
-            }
-            
-            .main-header {
-                padding: 1rem;
-            }
-            
-            .header-scrolled {
-                padding: 0.75rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .lang-switcher-hero button {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
+        @media (max-width: 640px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .project-featured { padding: 24px 20px; }
+            .project-featured h3 { font-size: 1.5rem; }
+            nav { padding: 12px 4%; }
+            .nav-links { gap: 18px; }
+            .nav-links a { font-size: 0.72rem; }
+            .hero-card { width: 190px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <button class="menu-toggle" aria-label="Abrir menu" data-translate-key="aria_open_menu">☰</button>
-        <button class="theme-toggle" aria-label="Alternar tema" data-translate-key="aria_toggle_theme">🌓</button>
-    </header>
+<!-- ── NAV ── -->
+<nav>
+    <div class="nav-logo russo">MARCUS<span>.</span>DEV</div>
+    <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#stack">Stack</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contact">Contato</a>
+    </div>
+</nav>
 
-    <nav class="side-menu">
-        <div class="menu-header">
-            <h3 data-translate-key="nav_title">Navegação</h3>
-            <button class="close-menu" aria-label="Fechar menu" data-translate-key="aria_close_menu">&times;</button>
+<!-- ── HERO ── -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+        <div class="hero-inner">
+
+            <div class="hero-text">
+                <div class="hero-location">
+                    <i class="bi bi-geo-alt-fill"></i> São Vicente, SP · Brasil
+                </div>
+                <h1 class="hero-name russo">Marcus<br>Soares</h1>
+                <div class="hero-role">Desenvolvedor Full-Stack</div>
+                <p class="hero-desc">
+                    Construo plataformas web completas — do backend em <strong>Flask</strong> ao banco de dados e
+                    ao frontend em <strong>JavaScript puro</strong>. CEO e único desenvolvedor do
+                    <strong>BSL</strong>, plataforma esportiva em produção com usuários reais desde 2023.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projetos" class="btn-primary">
+                        <i class="bi bi-grid-3x3-gap-fill"></i> Ver Projetos
+                    </a>
+                    <a href="https://github.com/marcus7170" target="_blank" class="btn-ghost">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="dev-card">
+                    <div class="dev-avatar">💻</div>
+                    <div class="dev-name russo">MARCUS SOARES</div>
+                    <div class="dev-title">Full-Stack Dev</div>
+                    <div class="dev-stats">
+                        <div class="dev-stat">
+                            <div class="dev-stat-val russo">8+</div>
+                            <div class="dev-stat-lbl">Projetos</div>
+                        </div>
+                        <div class="dev-stat">
+                            <div class="dev-stat-val russo">4</div>
+                            <div class="dev-stat-lbl">Linguagens</div>
+                        </div>
+                        <div class="dev-stat">
+                            <div class="dev-stat-val">🟢</div>
+                            <div class="dev-stat-lbl">Em Prod.</div>
+                        </div>
+                        <div class="dev-stat">
+                            <div class="dev-stat-val russo" style="font-size:0.72rem;">BSL</div>
+                            <div class="dev-stat-lbl">Plataforma</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <ul>
-            <li><a href="#hero" data-translate-key="nav_home">Início</a></li>
-            <li><a href="#about" data-translate-key="nav_about">Sobre</a></li>
-            <li><a href="#projects" data-translate-key="nav_projects">Projetos</a></li>
-            <li><a href="#contact" data-translate-key="nav_contact">Contato</a></li>
-        </ul>
-    </nav>
+    </div>
+</section>
 
-    <section id="hero">
-        <div class="hero-content">
-            <h1><span data-translate-key="hero_greeting">Olá, eu sou</span> <span class="name">Marcus Soares</span></h1>
-            <p class="subtitle"><span id="typing-text"></span><span class="typing-cursor"></span></p>
-            <p data-translate-key="hero_tagline">Transformando ideias complexas em soluções de software robustas e elegantes.</p>
-            <div class="hero-links" style="margin-top: 2rem;">
-                <a href="#projects" class="btn" data-translate-key="btn_view_projects">Ver Projetos</a>
-                <a href="#contact" class="btn" data-translate-key="btn_contact_me">Entrar em Contato</a>
-            </div>
-            <div class="lang-switcher-hero">
-                <button onclick="setLanguage('pt')" title="Português">🇧🇷</button>
-                <button onclick="setLanguage('en')" title="English">🇺🇸</button>
-                <button onclick="setLanguage('es')" title="Español">🇪🇸</button>
-            </div>
+<!-- ── SOBRE ── -->
+<section id="sobre">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-line"></div>
+            <span class="section-label" style="color:var(--purple)">Sobre Mim</span>
+            <div class="section-line"></div>
         </div>
-    </section>
-
-    <main>
-        <section id="about" class="container">
-            <h2 class="fade-in" data-translate-key="about_title">Sobre Mim</h2>
-            <div class="about-content fade-in">
-                <div class="about-text">
-                    <p data-translate-key="about_p1">Desenvolvedor Full-Stack e Analista de Dados apaixonado por criar experiências digitais interativas e sistemas de backend eficientes. Minha expertise abrange desde <strong>Python</strong>, com frameworks como <strong>Flask</strong> e <strong>discord.py</strong>, até <strong>Java</strong> focado em POO e aplicações de console.</p>
-                    <p data-translate-key="about_p2">Minha jornada na tecnologia é marcada pela curiosidade e pela busca de soluções otimizadas, seja desenvolvendo um bot de automação, implementando lógica de criptografia, arquitetando um banco de dados relacional (MariaDB/MySQL) ou construindo interfaces ricas, tanto para web (JS, HTML/CSS) quanto para desktop (<strong>Tkinter</strong>).</p>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-card"><h3 data-translate-key="skills_langs">Linguagens</h3><ul><li>🐍 Python</li><li>📜 Lua</li><li>✨ JavaScript (ES6+)</li><li>☕ Java</li></ul></div>
-                    <div class="skill-card"><h3 data-translate-key="skills_backend">Backend & DB</h3><ul><li>🤖 Bots (Discord.py)</li><li>🌐 Flask & REST APIs</li><li>📊 MariaDB/MySQL</li><li>🔐 Criptografia</li></ul></div>
-                    <div class="skill-card"><h3 data-translate-key="skills_frontend">Frontend</h3><ul><li>뼈 HTML5</li><li>🎨 CSS3 & Animações</li><li>📱 Design Responsivo</li></ul></div>
-                    <div class="skill-card"><h3 data-translate-key="skills_desktop">Desktop & Outros</h3><ul><li>🖥️ Tkinter (GUI)</li></ul></div>
-                </div>
+        <div class="about-grid reveal">
+            <div class="about-text">
+                <p>
+                    Comecei em 2012 escrevendo <strong>automações de navegador</strong> — scripts TypeScript
+                    e bots via Tampermonkey para resolver problemas que ninguém havia resolvido ainda.
+                    Não tinha curso, não tinha mentor. Só o console do browser e curiosidade.
+                </p>
+                <p>
+                    De 2018 a 2022 mergulhei fundo em <strong>modificações de jogos</strong>. Me tornei
+                    especialista em <strong>Lua e JavaScript</strong>, desenvolvendo dezenas de scripts
+                    complexos — principalmente para FiveM. Em 2019, a <strong>Compton City</strong> se
+                    tornou a modificação e loja mais conhecida da cena brasileira do FiveM naquele ano.
+                </p>
+                <p>
+                    Em 2022 virei a chave: <strong>análise de dados</strong>, backend Python, domínio
+                    completo de bots Discord e web dev de ponta a ponta. A lógica era a mesma — entender
+                    sistemas por dentro — mas agora aplicada a plataformas reais.
+                </p>
+                <p>
+                    Hoje sou o único desenvolvedor do <strong>BSL</strong>: design, backend Flask,
+                    banco de dados e deploy em VPS — tudo por uma pessoa. Código real, usuários reais,
+                    em produção desde 2023.
+                </p>
             </div>
-        </section>
-
-        <section id="projects" class="container">
-            <h2 class="fade-in" data-translate-key="projects_title">Meus Projetos</h2>
-            <div class="projects-grid">
-
-                <article class="project-card featured fade-in">
-                    <div class="project-content">
-                        <h3 style="color: var(--gold-accent); text-shadow: 0 0 8px var(--gold-accent);" data-translate-key="p_bsl_title">BSL SuperPro - Simulador de Futebol Full-Stack</h3>
-                        <p data-translate-key="p_bsl_desc">Meu projeto principal: um simulador de gerenciamento de futebol <strong>100% web</strong>. Construído com <strong>Python (Flask)</strong> para o backend e <strong>API RESTful</strong>, e <strong>JavaScript, HTML5 e CSS3</strong> puros para o frontend. O sistema é suportado por um banco de dados <strong>MariaDB</strong> e inclui um motor de simulação de partidas profundo, mercado de transferências, loja de pacotes, passe de batalha, DMEs (Desafios de Montagem de Elenco) e múltiplos modos de campeonatos. O projeto é complementado por um ecossistema de ferramentas públicas, incluindo uma <strong>Wiki detalhada</strong> que expõe a lógica da simulação, uma <strong>calculadora de overall</strong> interativa e guias de táticas.</p>
-                        <div class="tech-tags"><span>Python</span><span>Flask</span><span>JavaScript</span><span>MariaDB</span><span>Game Logic</span><span>Full-Stack</span><span>REST API</span><span>Ecosystem</span></div>
-                        <div class="project-links">
-                            <a href="https://bsl.lat/" target="_blank" class="btn" data-translate-key="btn_access_game">Acessar o Jogo</a>
-                            <a href="https://marcus7170.github.io/bsl_wiki/" target="_blank" class="btn github" data-translate-key="btn_view_wiki">Ver a Wiki</a>
-                            <a href="https://marcus7170.github.io/calculadora_superpro/" target="_blank" class="btn github" data-translate-key="btn_view_calc">Ver Calculadora</a>
-                            <a href="https://marcus7170.github.io/Superpro_tatica/" target="_blank" class="btn github" data-translate-key="btn_view_tactics">Guia de Táticas</a>
-                            <button class="btn github" disabled data-translate-key="btn_private_repo_backend">Backend (Repositório Privado)</button>
-                        </div>
+            <div class="about-highlights">
+                <div class="hi">
+                    <div class="hi-icon">🤖</div>
+                    <div>
+                        <span class="hi-title">Automações desde 2012</span>
+                        <span class="hi-sub">Scripts TypeScript e bots Tampermonkey — base de tudo que veio depois</span>
                     </div>
-                </article>
-
-                <article class="project-card featured fade-in">
-                    <div class="project-content">
-                        <h3 data-translate-key="p1_title">Sistema de Draft MD3 - Standalone</h3>
-                        <p data-translate-key="p1_desc">Uma ferramenta de draft <strong>100% frontend</strong> e standalone, criada para gerenciar a montagem de times no formato MD3. Desenvolvida com <strong>JavaScript, HTML5 e CSS3 puros</strong>, toda a lógica de processamento da lista de jogadores, seleção de capitães, sorteio "snake" e escolhas acontece diretamente no navegador do usuário, sem necessidade de backend ou banco de dados.</p>
-                        <div class="tech-tags"><span>JavaScript (ES6+)</span><span>HTML5</span><span>CSS3</span><span>Standalone</span><span>Game Logic</span></div>
-                        <div class="project-links">
-                            <a href="https://marcus7170.github.io/Draft-BSL/" target="_blank" class="btn" data-translate-key="btn_play_now">Jogar Agora</a>
-                            <a href="https://github.com/marcus7170/Draft-BSL/" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="project-card fade-in">
-                    <div class="project-content">
-                        <h3 data-translate-key="p6_title">APS-2: Quiz Criptografado (Flask & Tkinter)</h3>
-                        <p data-translate-key="p6_desc">Projeto acadêmico (2º Semestre) demonstrando criptografia simétrica. Um quiz web em <strong>Python/Flask</strong> criptografa perguntas com a biblioteca `cryptography`. Inclui uma ferramenta <strong>desktop (Tkinter)</strong> separada para descriptografar, provando o conceito da chave. O conteúdo foi simplificado para os requisitos da faculdade.</p>
-                        <div class="tech-tags"><span>Python</span><span>Flask</span><span>cryptography</span><span>JavaScript</span><span>Tkinter (GUI)</span><span>Full-Stack</span></div>
-                        <div class="project-links">
-                            <a href="https://github.com/marcus7170/APS-2" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
-                        </div>
-                    </div>
-                </article>
-                <article class="project-card fade-in">
-                    <div class="project-content">
-                        <h3 data-translate-key="p2_title">Simulador de Carreira de Futebol (BSL GameFut)</h3>
-                        <p data-translate-key="p2_desc">Demonstração de <strong>orientação a objetos em JavaScript</strong>. Um jogo imersivo para gerenciar a carreira de um jogador, com sistema de idade, mais de 40 eventos aleatórios e ligas dinâmicas.</p>
-                        <div class="tech-tags"><span>JavaScript (OOP)</span><span>Chart.js</span><span>LocalStorage</span></div>
-                        <div class="project-links">
-                            <a href="https://marcus7170.github.io/BSL-GameFut/" target="_blank" class="btn" data-translate-key="btn_play_now">Jogar Agora</a>
-                            <a href="https://github.com/marcus7170/BSL-GameFut" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card fade-in">
-                    <div class="project-content">
-                        <h3 data-translate-key="p3_title">Simulador de Carreira de F1 (BSL Driver)</h3>
-                        <p data-translate-key="p3_desc">Um simulador de carreira de automobilismo construído com <strong>HTML, CSS e JavaScript puros</strong>, destacando a criação de lógica de jogo complexa sem frameworks.</p>
-                        <div class="tech-tags"><span>JavaScript (Vanilla)</span><span>Game Logic</span><span>HTML5/CSS3</span></div>
-                        <div class="project-links">
-                            <a href="https://marcus7170.github.io/BSL_Driver/" target="_blank" class="btn" data-translate-key="btn_play_now">Jogar Agora</a>
-                            <a href="https://github.com/marcus7170/BSL_Driver" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card fade-in">
-                    <div class="project-content">
-                        <h3 data-translate-key="p4_title">Portal de Conscientização Hídrica (APS Água)</h3>
-                        <p data-translate-key="p4_desc">Site interativo para educação sobre o uso responsável da água. Combina dados científicos com orientações práticas, incluindo calculadora de consumo, quiz interativo e mapa de estresse hídrico.</p>
-                        <div class="tech-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript (DOM)</span></div>
-                        <div class="project-links">
-                            <a href="https://marcus7170.github.io/APS_Agua/" target="_blank" class="btn" data-translate-key="btn_visit_site">Visitar Site</a>
-                            <a href="https://github.com/marcus7170/APS_Agua" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="project-card fade-in">
-                    <div class="project-content">
-                        <h3 data-translate-key="p5_title">Bot de Backup de DB (Python & Discord)</h3>
-                        <p data-translate-key="p5_desc">Um script de automação em <strong>Python</strong> que usa <strong>discord.py</strong> e <strong>pymysql</strong> para criar backups .sql de um banco de dados MariaDB/MySQL. O bot exporta a estrutura (CREATE TABLE) e os dados (INSERT INTO) de cada tabela, envia o arquivo para um canal do Discord e verifica o limite de 25MB.</p>
-                        <div class="tech-tags"><span>Python</span><span>discord.py</span><span>PyMySQL</span><span>SQL</span><span>Automation</span><span>Backend</span></div>
-                        <div class="project-links">
-                            <button class="btn" data-modal-target="backup-bot-modal" data-translate-key="btn_view_code">Ver Código (Spoiler)</button>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card fade-in">
-                    <div class="project-content">
-                        <h3 data-translate-key="p7_title">Gerenciador de Contatos (Java)</h3>
-                        <p data-translate-key="p7_desc">Aplicação de console em <strong>Java</strong> pura para demonstrar conhecimento em <strong>POO</strong> (Programação Orientada a Objetos). O sistema gerencia uma lista de contatos com operações CRUD (Adicionar, Listar, Buscar, Remover) e ordenação alfabética, utilizando `ArrayList` e `Comparator`.</p>
-                        <div class="tech-tags"><span>Java</span><span>OOP</span><span>ArrayList</span><span>Console App</span></div>
-                        <div class="project-links">
-                            <button class="btn" data-modal-target="java-contact-modal" data-translate-key="btn_view_code">Ver Código (Spoiler)</button>
-                            <a href="https://github.com/marcus7170/Java" target="_blank" class="btn github" data-translate-key="btn_view_github">Ver no GitHub</a>
-                        </div>
-                    </div>
-                </article>
                 </div>
-        </section>
-    </main>
-
-    <button id="back-to-top" class="hidden" aria-label="Voltar ao topo" data-translate-key="aria_back_to_top">↑</button>
-
-    <div id="backup-bot-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Fechar modal">&times;</button>
-            <h3 data-translate-key="modal_backup_title">Bot de Backup de Banco de Dados (Python)</h3>
-            <p data-translate-key="modal_backup_desc">Este é o código-fonte principal do bot de automação. As chaves e credenciais foram omitidas por segurança.</p>
-            <div class="code-spoiler">
-<pre><code>import discord
-from discord.ext import tasks, commands
-import pymysql
-import os
-from datetime import datetime
-
-# --- CONFIGURAÇÃO ---
-DISCORD_TOKEN = "SEU_TOKEN_DO_DISCORD_AQUI" 
-CHANNEL_ID = 123456789012345678 # ID do canal de backups
-DB_NAME = "superpro"
-DB_USER = "SEU_USUARIO_DB"
-DB_PASSWORD = "SUA_SENHA_DB"
-DB_HOST = "localhost"
-
-intents = discord.Intents.default()
-bot = commands.Bot(command_prefix="!", intents=intents)
-
-def create_backup():
-    """
-    Cria um backup conectando-se diretamente ao banco de dados com PyMySQL.
-    """
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    backup_filename = f"backup_{DB_NAME}_{timestamp}.sql"
-    
-    print(f"[{datetime.now()}] Criando backup (método PyMySQL): {backup_filename}...")
-    db = None
-    try:
-        db = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME)
-        cursor = db.cursor()
-
-        with open(backup_filename, "w", encoding='utf-8') as backup_file:
-            cursor.execute("SHOW TABLES")
-            tables = cursor.fetchall()
-
-            for table_row in tables:
-                table_name = table_row[0]
-                
-                # 1. Adiciona o comando para apagar a tabela (DROP TABLE)
-                backup_file.write(f"\n-- Backup para a tabela {table_name}\n")
-                backup_file.write(f"DROP TABLE IF EXISTS `{table_name}`;\n")
-
-                # 2. Pega e escreve o comando de criação da tabela (CREATE TABLE)
-                cursor.execute(f"SHOW CREATE TABLE `{table_name}`")
-                create_table_statement = cursor.fetchone()[1]
-                backup_file.write(f"{create_table_statement};\n\n")
-
-                # 3. Pega e escreve os dados (INSERT INTO)
-                cursor.execute(f"SELECT * FROM `{table_name}`")
-                rows = cursor.fetchall()
-                for row in rows:
-                    formatted_values = []
-                    for value in row:
-                        if value is None:
-                            formatted_values.append("NULL")
-                        elif isinstance(value, (int, float)):
-                            formatted_values.append(str(value))
-                        else:
-                            # Escapa aspas simples
-                            escaped_value = str(value).replace("'", "''")
-                            formatted_values.append(f"'{escaped_value}'")
-                    
-                    values_string = ", ".join(formatted_values)
-                    backup_file.write(f"INSERT INTO `{table_name}` VALUES ({values_string});\n")
-            
-        print(f"Backup '{backup_filename}' criado com sucesso.")
-        return backup_filename
-
-    except Exception as e:
-        print(f"Ocorreu um erro ao gerar o backup: {e}")
-        if os.path.exists(backup_filename):
-            os.remove(backup_filename)
-        return None
-    finally:
-        if db:
-            db.close()
-
-@bot.event
-async def on_ready():
-    print(f'Bot conectado como {bot.user.name}')
-    backup_loop.start()
-
-@tasks.loop(seconds=60) # Produção: 3600 (1h) ou mais
-async def backup_loop():
-    channel = bot.get_channel(CHANNEL_ID)
-    if not channel:
-        print(f"Erro: Canal com ID {CHANNEL_ID} não encontrado.")
-        return
-
-    backup_file_path = create_backup()
-    
-    if backup_file_path:
-        try:
-            if os.path.getsize(backup_file_path) > 25 * 1024 * 1024: # Limite de 25MB
-                await channel.send(f"⚠️ **Falha no Backup!** O arquivo `{backup_file_path}` excedeu o limite de 25MB.")
-            else:
-                await channel.send(f"✅ Backup do banco de dados `{DB_NAME}` gerado:", file=discord.File(backup_file_path))
-                print(f"Arquivo '{backup_file_path}' enviado para o Discord.")
-        
-        except Exception as e:
-            print(f"Erro ao enviar o arquivo para o Discord: {e}")
-            await channel.send(f"🚨 **Erro!** Não foi possível enviar o arquivo de backup.")
-
-        finally:
-            print(f"Removendo arquivo local: {backup_file_path}")
-            os.remove(backup_file_path)
-
-@backup_loop.before_loop
-async def before_backup_loop():
-    await bot.wait_until_ready()
-
-try:
-    bot.run(DISCORD_TOKEN)
-except discord.errors.LoginFailure:
-    print("\nERRO DE LOGIN: O token fornecido é inválido.")
-</code></pre>
+                <div class="hi">
+                    <div class="hi-icon">🎮</div>
+                    <div>
+                        <span class="hi-title">Compton City — FiveM 2019</span>
+                        <span class="hi-sub">A modificação e loja mais famosa da cena brasileira de FiveM naquele ano</span>
+                    </div>
+                </div>
+                <div class="hi">
+                    <div class="hi-icon">🌐</div>
+                    <div>
+                        <span class="hi-title">bsl.lat — em produção</span>
+                        <span class="hi-sub">Plataforma esportiva com usuários reais rodando em VPS desde 2023</span>
+                    </div>
+                </div>
+                <div class="hi">
+                    <div class="hi-icon">🛠️</div>
+                    <div>
+                        <span class="hi-title">Solo Developer</span>
+                        <span class="hi-sub">Design, backend, banco de dados e deploy — do zero ao ar, por uma pessoa</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div id="java-contact-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Fechar modal">&times;</button>
-            <h3 data-translate-key="modal_java_title">Gerenciador de Contatos (Java)</h3>
-            <p data-translate-key="modal_java_desc">Este é o código-fonte principal da aplicação de console em Java. Demonstra o uso de POO, ArrayLists e manipulação de entrada do usuário.</p>
-            <div class="code-spoiler">
-<pre><code>import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Scanner;
+</section>
 
-class Contato {
-    String nome;
-    String telefone;
-    String email;
-
-    Contato(String nome, String telefone, String email) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-    }
-
-    public String toString() {
-        return "Nome: " + nome + " | Telefone: " + telefone + " | Email: " + email;
-    }
-}
-
-public class ListaContatos {
-    public static void main(String[] args) {
-        ArrayList&lt;Contato&gt; listaDeContatos = new ArrayList&lt;&gt;();
-        Scanner input = new Scanner(System.in);
-
-        int opcao = 0;
-
-        do {
-            System.out.println("\nMenu de Opções:");
-            System.out.println("1. Adicionar novo contato");
-            System.out.println("2. Listar contatos");
-            System.out.println("3. Exibir lista completa de contatos ordenada por ordem alfabética de nome");
-            System.out.println("4. Buscar contato pelo nome");
-            System.out.println("5. Remover contato pelo nome");
-            System.out.println("6. Sair");
-
-            System.out.print("Digite a opção desejada: ");
-            opcao = input.nextInt();
-
-            switch (opcao) {
-                case 1:
-                    System.out.print("Digite o nome do novo contato: ");
-                    String nome = input.next();
-                    System.out.print("Digite o telefone do novo contato: ");
-                    String telefone = input.next();
-                    System.out.print("Digite o email do novo contato: ");
-                    String email = input.next();
-                    listaDeContatos.add(new Contato(nome, telefone, email));
-                    System.out.println("Contato adicionado com sucesso!");
-                    break;
-
-                case 2:
-                    if (listaDeContatos.isEmpty()) {
-                        System.out.println("Não há contatos na lista!");
-                    } else {
-                        System.out.println("\nLista de contatos:");
-                        for (Contato contato : listaDeContatos) {
-                            System.out.println(contato);
-                        }
-                    }
-                    break;
-
-                case 3:
-                    if (listaDeContatos.isEmpty()) {
-                        System.out.println("Não há contatos na lista!");
-                    } else {
-                        Collections.sort(listaDeContatos, new Comparator&lt;Contato&gt;() {
-                            public int compare(Contato c1, Contato c2) {
-                                return c1.nome.compareTo(c2.nome);
-                            }
-                        });
-                        System.out.println("\nLista de contatos ordenada por nome:");
-                        for (Contato contato : listaDeContatos) {
-                            System.out.println(contato);
-                        }
-                    }
-                    break;
-
-                case 4:
-                    if (listaDeContatos.isEmpty()) {
-                        System.out.println("Não há contatos na lista!");
-                    } else {
-                        System.out.print("Digite o nome do contato que deseja buscar: ");
-                        String nomeBusca = input.next();
-                        boolean encontrado = false;
-                        for (Contato contato : listaDeContatos) {
-                            if (contato.nome.equalsIgnoreCase(nomeBusca)) {
-                                System.out.println("Contato encontrado:");
-                                System.out.println(contato);
-                                encontrado = true;
-                                break;
-                            }
-                        }
-                        if (!encontrado) {
-                            System.out.println("Contato não encontrado!");
-                        }
-                    }
-                    break;
-
-                    case 5:
-                    if (listaDeContatos.isEmpty()) {
-                        System.out.println("Não há contatos na lista!");
-                    } else {
-                        System.out.print("Digite o nome do contato que deseja remover: ");
-                        String nomeRemocao = input.next();
-                        boolean removido = false;
-                        for (Contato contato : listaDeContatos) {
-                            if (contato.nome.equalsIgnoreCase(nomeRemocao)) {
-                                listaDeContatos.remove(contato);
-                                System.out.println("Contato removido com sucesso!");
-                                removido = true;
-                                break;
-                            }
-                        }
-                        if (!removido) {
-                            System.out.println("Contato não encontrado!");
-                        }
-                    }
-                    break;
-
-                case 6:
-                    System.out.println("Saindo...");
-                    break;
-
-                default:
-                    System.out.println("Opção inválida!");
-                    break;
-            }
-
-        } while (opcao != 6);
-    }
-}
-</code></pre>
+<!-- ── STACK ── -->
+<section id="stack" style="padding-top:0">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-line"></div>
+            <span class="section-label" style="color:var(--gold)">Stack Técnica</span>
+            <div class="section-line"></div>
+        </div>
+        <div class="stack-groups reveal">
+            <div class="stack-group">
+                <div class="stack-group-title">Linguagens</div>
+                <div class="chips">
+                    <span class="chip c-blue">Python</span>
+                    <span class="chip c-gold">JavaScript ES6+</span>
+                    <span class="chip c-purple">Java</span>
+                    <span class="chip c-gray">HTML5 / CSS3</span>
+                    <span class="chip c-gray">Lua</span>
+                </div>
+            </div>
+            <div class="stack-group">
+                <div class="stack-group-title">Backend & APIs</div>
+                <div class="chips">
+                    <span class="chip c-purple">Flask</span>
+                    <span class="chip c-blue">REST APIs</span>
+                    <span class="chip c-green">discord.py</span>
+                    <span class="chip c-gray">PyMySQL</span>
+                    <span class="chip c-gray">cryptography</span>
+                </div>
+            </div>
+            <div class="stack-group">
+                <div class="stack-group-title">Banco de Dados</div>
+                <div class="chips">
+                    <span class="chip c-gold">MariaDB</span>
+                    <span class="chip c-gold">MySQL</span>
+                    <span class="chip c-gray">SQL</span>
+                    <span class="chip c-gray">LocalStorage</span>
+                </div>
+            </div>
+            <div class="stack-group">
+                <div class="stack-group-title">Frontend & Ferramentas</div>
+                <div class="chips">
+                    <span class="chip c-purple">CSS Animations</span>
+                    <span class="chip c-blue">Bootstrap 5</span>
+                    <span class="chip c-green">Chart.js</span>
+                    <span class="chip c-gray">Tkinter</span>
+                    <span class="chip c-gray">Tampermonkey</span>
+                    <span class="chip c-gray">VPS / Deploy</span>
+                </div>
             </div>
         </div>
     </div>
-    <footer id="contact">
-        <div class="container" style="padding-top: 4rem; padding-bottom: 2rem;">
-            <div class="footer-content fade-in">
-                <h2 data-translate-key="footer_title">Vamos Construir Algo Incrível?</h2>
-                <p data-translate-key="footer_subtitle">Estou sempre aberto a novos projetos e colaborações. Entre em contato!</p>
-                <div class="contact-info" style="margin-bottom: 2rem;">
-                    <a href="tel:+5513991906461">(13) 99190-6461</a>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/marcus7170" target="_blank" title="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
-                    </a>
-                    <a href="https://discord.gg/ZFgy6x42ZG" target="_blank" title="Discord">
-                        <img src="https://cdn-icons-png.flaticon.com/512/4945/4945973.png" alt="Discord Icon" style="border-radius: 50%;">
-                    </a>
-                </div>
-                <div class="footer-bottom">
-                    <p style="font-size: 0.8rem; margin-bottom: 1rem;" data-translate-key="footer_repo_link_text">
-                        Este site foi totalmente construído em um único arquivo com menos de 1200 linhas de código. Você pode acessá-lo aqui:
-                        <a href="https://github.com/marcus7170/portfolio" target="_blank">GitHub</a>.
-                    </p>
-                    <span data-translate-key="footer_copyright">&copy; <span id="year"></span> | Desenvolvido com 💙 por Marcus Soares</span>
-                </div>
+</section>
+
+<!-- ── PROJETOS ── -->
+<section id="projetos">
+    <div class="container">
+        <div class="section-head">
+            <div class="section-line"></div>
+            <span class="section-label" style="color:var(--white)">Projetos</span>
+            <div class="section-line"></div>
+        </div>
+
+        <!-- BSL — DESTAQUE -->
+        <div class="project-featured reveal">
+            <div class="pf-top">
+                <span class="badge-live">Live</span>
+                <span class="badge-main">Projeto Principal</span>
+            </div>
+            <h3 class="russo">Brazilian Sports League</h3>
+            <p>
+                Plataforma esportiva completa construída do zero. Backend em <strong>Python (Flask)</strong>
+                com API RESTful, banco de dados <strong>MariaDB</strong> e frontend em
+                <strong>JavaScript, HTML e CSS puros</strong>. Inclui motor de simulação de partidas,
+                mercado de transferências, loja de itens, bolão de palpites, sistema de sócios com tiers,
+                ranking com integração EA Sports FC, mini-games e painel administrativo completo.
+                Usuários reais, dados reais, em produção num VPS desde 2023.
+            </p>
+            <div class="tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">MariaDB</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">REST API</span>
+                <span class="tag">Full-Stack</span>
+                <span class="tag">VPS Deploy</span>
+            </div>
+            <div class="plinks">
+                <a href="https://bsl.lat/" target="_blank" class="pl pl-primary">
+                    <i class="bi bi-globe2"></i> Acessar bsl.lat
+                </a>
+                <a href="https://marcus7170.github.io/bsl_wiki/" target="_blank" class="pl pl-ghost">
+                    <i class="bi bi-book"></i> Wiki
+                </a>
+                <a href="https://marcus7170.github.io/calculadora_superpro/" target="_blank" class="pl pl-ghost">
+                    <i class="bi bi-calculator"></i> Calculadora
+                </a>
+                <a href="https://marcus7170.github.io/Superpro_tatica/" target="_blank" class="pl pl-ghost">
+                    <i class="bi bi-diagram-3"></i> Táticas
+                </a>
+                <span class="pl pl-off">
+                    <i class="bi bi-lock"></i> Backend Privado
+                </span>
             </div>
         </div>
-    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-
-            const menuToggle = document.querySelector('.menu-toggle');
-            const closeMenu = document.querySelector('.close-menu');
-            const sideMenu = document.querySelector('.side-menu');
-            const menuLinks = document.querySelectorAll('.side-menu a');
-            const themeToggle = document.querySelector('.theme-toggle');
-            const backToTopButton = document.getElementById('back-to-top');
-            const mainHeader = document.querySelector('.main-header');
-            const faders = document.querySelectorAll('.fade-in');
-
-
-            const closeSideMenu = () => sideMenu.classList.remove('active');
-
-
-            menuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sideMenu.classList.add('active');
-            });
-
-
-            closeMenu.addEventListener('click', closeSideMenu);
-            menuLinks.forEach(link => link.addEventListener('click', closeSideMenu));
-            document.addEventListener('click', (e) => {
-                if (!sideMenu.contains(e.target) && !menuToggle.contains(e.target) && sideMenu.classList.contains('active')) {
-                    closeSideMenu();
-                }
-            });
-
-
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme === 'light') {
-                document.body.classList.add('light-mode');
-            }
-
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
-                let theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
-                localStorage.setItem('theme', theme);
-            });
-
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-
-            window.addEventListener('scroll', () => {
-
-                if (window.scrollY > 400) {
-                    backToTopButton.classList.add('show');
-                    backToTopButton.classList.remove('hidden');
-                } else {
-                    backToTopButton.classList.remove('show');
-                    backToTopButton.classList.add('hidden');
-                }
-
-
-                if (window.scrollY > 100) {
-                    mainHeader.classList.add('header-scrolled');
-                } else {
-                    mainHeader.classList.remove('header-scrolled');
-                }
-            });
-
-            backToTopButton.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-
-            const appearOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                });
-            }, { threshold: 0.1 });
-            
-            faders.forEach(fader => appearOnScroll.observe(fader));
-
-
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-
-            document.querySelectorAll('[data-modal-target]').forEach(button => {
-                button.addEventListener('click', () => {
-                    const targetModalId = button.dataset.modalTarget;
-                    const modal = document.getElementById(targetModalId);
-                    if (modal) {
-                        modal.classList.add('active');
-                        modal.classList.remove('hidden');
-                    }
-                });
-            });
-
-            document.querySelectorAll('.modal-overlay .modal-close').forEach(button => {
-                button.addEventListener('click', () => {
-                    button.closest('.modal-overlay').classList.remove('active');
-                    setTimeout(() => {
-                        button.closest('.modal-overlay').classList.add('hidden');
-                    }, 300);
-                });
-            });
-
-            document.querySelectorAll('.modal-overlay').forEach(modal => {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        modal.classList.remove('active');
-                        setTimeout(() => {
-                            modal.classList.add('hidden');
-                        }, 300);
-                    }
-                });
-            });
-
-
-            const translations = {
-                'pt': {
-                    page_title: "Portfólio v2.3 | Marcus Soares",
-                    aria_open_menu: "Abrir menu",
-                    aria_toggle_theme: "Alternar tema",
-                    aria_close_menu: "Fechar menu",
-                    nav_title: "Navegação",
-                    nav_home: "Início",
-                    nav_about: "Sobre",
-                    nav_projects: "Projetos",
-                    nav_contact: "Contato",
-                    hero_greeting: "Olá, eu sou",
-                    hero_tagline: "Transformando ideias complexas em soluções de software robustas e elegantes.",
-                    typing_words: ["Desenvolvedor Python", "Especialista em Java", "Analista de Dados", "Expert em JavaScript"],
-                    btn_view_projects: "Ver Projetos",
-                    btn_contact_me: "Entrar em Contato",
-                    
-                    about_title: "Sobre Mim",
-                    about_p1: "Desenvolvedor Full-Stack e Analista de Dados apaixonado por criar experiências digitais interativas e sistemas de backend eficientes. Minha expertise abrange desde <strong>Python</strong>, com frameworks como <strong>Flask</strong> e <strong>discord.py</strong>, até <strong>Java</strong> focado em POO e aplicações de console.",
-                    about_p2: "Minha jornada na tecnologia é marcada pela curiosidade e pela busca de soluções otimizadas, seja desenvolvendo um bot de automação, implementando lógica de criptografia, arquitetando um banco de dados relacional (MariaDB/MySQL) ou construindo interfaces ricas, tanto para web (JS, HTML/CSS) quanto para desktop (<strong>Tkinter</strong>).",
-                    skills_langs: "Linguagens",
-                    skills_backend: "Backend & DB",
-                    skills_frontend: "Frontend",
-                    skills_desktop: "Desktop & Outros",
-
-                    projects_title: "Meus Projetos",
-                    
-                    p_bsl_title: "BSL SuperPro - Simulador de Futebol Full-Stack",
-                    p_bsl_desc: "Meu projeto principal: um simulador de gerenciamento de futebol <strong>100% web</strong>. Construído com <strong>Python (Flask)</strong> para o backend e <strong>API RESTful</strong>, e <strong>JavaScript, HTML5 e CSS3</strong> puros para o frontend. O sistema é suportado por um banco de dados <strong>MariaDB</strong> e inclui um motor de simulação de partidas profundo, mercado de transferências, loja de pacotes, passe de batalha, DMEs (Desafios de Montagem de Elenco) e múltiplos modos de campeonatos. O projeto é complementado por um ecossistema de ferramentas públicas, incluindo uma <strong>Wiki detalhada</strong> que expõe a lógica da simulação, uma <strong>calculadora de overall</strong> interativa e guias de táticas.",
-                    btn_access_game: "Acessar o Jogo",
-                    btn_view_wiki: "Ver a Wiki",
-                    btn_view_calc: "Ver Calculadora",
-                    btn_view_tactics: "Guia de Táticas",
-                    btn_private_repo_backend: "Backend (Repositório Privado)",
-
-                    p1_title: "Sistema de Draft MD3 - Standalone",
-                    p1_desc: "Uma ferramenta de draft <strong>100% frontend</strong> e standalone, criada para gerenciar a montagem de times no formato MD3. Desenvolvida com <strong>JavaScript, HTML5 e CSS3 puros</strong>, toda a lógica de processamento da lista de jogadores, seleção de capitães, sorteio \"snake\" e escolhas acontece diretamente no navegador do usuário, sem necessidade de backend ou banco de dados.",
-                    
-                    p2_title: "Simulador de Carreira de Futebol (BSL GameFut)",
-                    p2_desc: "Demonstração de <strong>orientação a objetos em JavaScript</strong>. Um jogo imersivo para gerenciar a carreira de um jogador, com sistema de idade, mais de 40 eventos aleatórios e ligas dinâmicas.",
-                    btn_play_now: "Jogar Agora",
-                    btn_view_github: "Ver no GitHub",
-                    p3_title: "Simulador de Carreira de F1 (BSL Driver)",
-                    p3_desc: "Um simulador de carreira de automobilismo construído com <strong>HTML, CSS e JavaScript puros</strong>, destacando a criação de lógica de jogo complexa sem frameworks.",
-                    p4_title: "Portal de Conscientização Hídrica (APS Água)",
-                    p4_desc: "Site interativo para educação sobre o uso responsável da água. Combina dados científicos com orientações práticas, incluindo calculadora de consumo, quiz interativo e mapa de estresse hídrico.",
-                    btn_visit_site: "Visitar Site",
-
-                    p5_title: "Bot de Backup de DB (Python & Discord)",
-                    p5_desc: "Um script de automação em <strong>Python</strong> que usa <strong>discord.py</strong> e <strong>pymysql</strong> para criar backups .sql de um banco de dados MariaDB/MySQL. O bot exporta a estrutura (CREATE TABLE) e os dados (INSERT INTO) de cada tabela, envia o arquivo para um canal do Discord e verifica o limite de 25MB.",
-                    btn_view_code: "Ver Código (Spoiler)",
-                    modal_backup_title: "Bot de Backup de Banco de Dados (Python)",
-                    modal_backup_desc: "Este é o código-fonte principal do bot de automação. As chaves e credenciais foram omitidas por segurança.",
-
-                    p6_title: "APS-2: Quiz Criptografado (Flask & Tkinter)",
-                    p6_desc: "Projeto acadêmico (2º Semestre) demonstrando criptografia simétrica. Um quiz web em <strong>Python/Flask</strong> criptografa perguntas com a biblioteca `cryptography`. Inclui uma ferramenta <strong>desktop (Tkinter)</strong> separada para descriptografar, provando o conceito da chave. O conteúdo foi simplificado para os requisitos da faculdade.",
-
-                    p7_title: "Gerenciador de Contatos (Java)",
-                    p7_desc: "Aplicação de console em <strong>Java</strong> pura para demonstrar conhecimento em <strong>POO</strong> (Programação Orientada a Objetos). O sistema gerencia uma lista de contatos com operações CRUD (Adicionar, Listar, Buscar, Remover) e ordenação alfabética, utilizando `ArrayList` e `Comparator`.",
-                    modal_java_title: "Gerenciador de Contatos (Java)",
-                    modal_java_desc: "Este é o código-fonte principal da aplicação de console em Java. Demonstra o uso de POO, ArrayLists e manipulação de entrada do usuário.",
-
-                    aria_back_to_top: "Voltar ao topo",
-                    footer_title: "Vamos Construir Algo Incrível?",
-                    footer_subtitle: "Estou sempre aberto a novos projetos e colaborações. Entre em contato!",
-                    footer_repo_link_text: "Este site foi totalmente construído em um único arquivo com menos de 1200 linhas de código. Você pode acessá-lo aqui: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
-                    footer_copyright: "&copy; <span id=\"year\"></span> | Desenvolvido com 💙 por Marcus Soares",
-                },
-                'en': {
-                    page_title: "Portfolio v2.3 | Marcus Soares",
-                    aria_open_menu: "Open menu",
-                    aria_toggle_theme: "Toggle theme",
-                    aria_close_menu: "Close menu",
-                    nav_title: "Navigation",
-                    nav_home: "Home",
-                    nav_about: "About",
-                    nav_projects: "Projects",
-                    nav_contact: "Contact",
-                    hero_greeting: "Hello, I am",
-                    hero_tagline: "Transforming complex ideas into robust and elegant software solutions.",
-                    typing_words: ["Python Developer", "Java Specialist", "Data Analyst", "JavaScript Expert"],
-                    btn_view_projects: "View Projects",
-                    btn_contact_me: "Get in Touch",
-
-                    about_title: "About Me",
-                    about_p1: "Full-Stack Developer and Data Analyst passionate about creating interactive digital experiences and efficient backend systems. My expertise ranges from <strong>Python</strong>, with frameworks like <strong>Flask</strong> and <strong>discord.py</strong>, to <strong>Java</strong> focused on OOP and console applications.",
-                    about_p2: "My journey in technology is marked by curiosity and the pursuit of optimized solutions, whether developing an automation bot, implementing encryption logic, architecting a relational database (MariaDB/MySQL), or building rich interfaces for both web (JS, HTML/CSS) and desktop (<strong>Tkinter</strong>).",
-                    skills_langs: "Languages",
-                    skills_backend: "Backend & DB",
-                    skills_frontend: "Frontend",
-                    skills_desktop: "Desktop & Other",
-
-                    projects_title: "My Projects",
-
-                    p_bsl_title: "BSL SuperPro - Full-Stack Football Simulator",
-                    p_bsl_desc: "My main project: a <strong>100% web-based</strong> football management simulator. Built with a <strong>Python (Flask)</strong> backend serving a <strong>RESTful API</strong>, and pure <strong>JavaScript, HTML5, & CSS3</strong> for the frontend. The system is backed by a <strong>MariaDB</strong> database and features a deep match simulation engine, a transfer market, pack openings (store), a battle pass, SBCs (Squad Building Challenges), and multiple championship modes. The project is complemented by an ecosystem of public tools, including a <strong>detailed Wiki</strong> exposing the simulation logic, an interactive <strong>overall calculator</strong>, and tactics guides.",
-                    btn_access_game: "Access Game",
-                    btn_view_wiki: "View the Wiki",
-                    btn_view_calc: "View Calculator",
-                    btn_view_tactics: "Tactics Guide",
-                    btn_private_repo_backend: "Backend (Private Repository)",
-
-                    p1_title: "MD3 Draft System - Standalone",
-                    p1_desc: "A <strong>100% frontend</strong> standalone draft tool, built to manage MD3 team creation. Developed with <strong>pure JavaScript, HTML5, and CSS3</strong>, all logic for processing player lists, selecting captains, the \"snake\" draft lottery, and picks happens directly in the user's browser, with no backend or database required.",
-
-                    p2_title: "Football Career Simulator (BSL GameFut)",
-                    p2_desc: "A demonstration of <strong>object-oriented programming in JavaScript</strong>. An immersive game to manage a player's career, with an age system, over 40 random events, and dynamic leagues.",
-                    btn_play_now: "Play Now",
-                    btn_view_github: "View on GitHub",
-                    p3_title: "F1 Career Simulator (BSL Driver)",
-                    p3_desc: "A motorsport career simulator built with <strong>pure HTML, CSS, and JavaScript</strong>, highlighting the creation of complex game logic without frameworks.",
-                    p4_title: "Water Awareness Portal (APS Água)",
-                    p4_desc: "Interactive site for education on responsible water use. It combines scientific data with practical guidance, including a consumption calculator, interactive quiz, and water stress map.",
-                    btn_visit_site: "Visit Site",
-
-                    p5_title: "DB Backup Bot (Python & Discord)",
-                    p5_desc: "A <strong>Python</strong> automation script using <strong>discord.py</strong> and <strong>pymysql</strong> to create .sql backups of a MariaDB/MySQL database. The bot exports the structure (CREATE TABLE) and data (INSERT INTO) for each table, sends the file to a Discord channel, and checks against Discord's 25MB limit.",
-                    btn_view_code: "View Code (Spoiler)",
-                    modal_backup_title: "Database Backup Bot (Python)",
-                    modal_backup_desc: "This is the main source code for the automation bot. Keys and credentials have been omitted for security.",
-
-                    p6_title: "APS-2: Encrypted Quiz (Flask & Tkinter)",
-                    p6_desc: "Academic project (2nd Semester) demonstrating symmetric encryption. A web quiz in <strong>Python/Flask</strong> encrypts questions using the `cryptography` library. Includes a separate <strong>desktop tool (Tkinter)</strong> to decrypt, proving the key concept. The content was simplified for faculty requirements.",
-
-                    p7_title: "Contact Manager (Java)",
-                    p7_desc: "A pure <strong>Java</strong> console application to demonstrate <strong>OOP</strong> (Object-Oriented Programming) knowledge. The system manages a contact list with CRUD operations (Add, List, Search, Remove) and alphabetical sorting, using `ArrayList` and `Comparator`.",
-                    modal_java_title: "Contact Manager (Java)",
-                    modal_java_desc: "This is the main source code for the Java console application. It demonstrates the use of OOP, ArrayLists, and user input handling.",
-
-                    aria_back_to_top: "Back to top",
-                    footer_title: "Let's Build Something Amazing?",
-                    footer_subtitle: "I'm always open to new projects and collaborations. Get in touch!",
-                    footer_repo_link_text: "This site was built entirely in a single file with under 1200 lines of code. You can access it here: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
-                    footer_copyright: "&copy; <span id=\"year\"></span> | Developed with 💙 by Marcus Soares",
-                },
-                'es': {
-                    page_title: "Portafolio v2.3 | Marcus Soares",
-                    aria_open_menu: "Abrir menú",
-                    aria_toggle_theme: "Alternar tema",
-                    aria_close_menu: "Cerrar menú",
-                    nav_title: "Navegación",
-                    nav_home: "Inicio",
-                    nav_about: "Sobre mí",
-                    nav_projects: "Proyectos",
-                    nav_contact: "Contacto",
-                    hero_greeting: "Hola, soy",
-                    hero_tagline: "Transformando ideas complejas en soluciones de software robustas y elegantes.",
-                    typing_words: ["Desarrollador Python", "Especialista en Java", "Analista de Datos", "Experto en JavaScript"],
-                    btn_view_projects: "Ver Proyectos",
-                    btn_contact_me: "Contacta conmigo",
-
-                    about_title: "Sobre Mí",
-                    about_p1: "Desarrollador Full-Stack y Analista de Datos apasionado por crear experiencias digitales interactivas y sistemas de backend eficientes. Mi experiencia abarca desde <strong>Python</strong>, con frameworks como <strong>Flask</strong> y <strong>discord.py</strong>, hasta <strong>Java</strong> enfocado en POO y aplicaciones de consola.",
-                    about_p2: "Mi trayectoria en la tecnología está marcada por la curiosidad y la búsqueda de soluciones optimizadas, ya sea desarrollando un bot de automatización, implementando lógica de cifrado, diseñando una base de datos relacional (MariaDB/MySQL) o construyendo interfaces ricas, tanto para web (JS, HTML/CSS) como para escritorio (<strong>Tkinter</strong>).",
-                    skills_langs: "Lenguajes",
-                    skills_backend: "Backend y BD",
-                    skills_frontend: "Frontend",
-                    skills_desktop: "Escritorio y Otros",
-
-                    projects_title: "Mis Proyectos",
-
-                    p_bsl_title: "BSL SuperPro - Simulador de Fútbol Full-Stack",
-                    p_bsl_desc: "Mi proyecto principal: un simulador de gestión de fútbol <strong>100% web</strong>. Construido con un backend en <strong>Python (Flask)</strong> que sirve una <strong>API RESTful</strong>, y <strong>JavaScript, HTML5 y CSS3</strong> puros para el frontend. El sistema está respaldado por una base de datos <strong>MariaDB</strong> e incluye un profundo motor de simulación de partidos, mercado de fichajes, apertura de paquetes (tienda), pase de batalla, DCPs (Desafíos de Creación de Plantillas) y múltiples modos de campeonatos. El proyecto se complementa con un ecosistema de herramientas públicas, incluyendo una <strong>Wiki detallada</strong> que expone la lógica de la simulación, una <strong>calculadora de media</strong> interactiva y guías de tácticas.",
-                    btn_access_game: "Acceder al Juego",
-                    btn_view_wiki: "Ver la Wiki",
-                    btn_view_calc: "Ver Calculadora",
-                    btn_view_tactics: "Guía de Tácticas",
-                    btn_private_repo_backend: "Backend (Repositorio Privado)",
-
-                    p1_title: "Sistema de Draft MD3 - Standalone",
-                    p1_desc: "Una herramienta de draft <strong>100% frontend</strong> y standalone, creada para gestionar la creación de equipos en formato MD3. Desarrollada con <strong>JavaScript, HTML5 y CSS3 puros</strong>, toda la lógica de procesamiento de listas de jugadores, selección de capitanes, sorteo \"snake\" y elecciones ocurre directamente en el navegador del usuario, sin necesidad de backend o base de datos.",
-
-                    p2_title: "Simulador de Carrera de Fútbol (BSL GameFut)",
-                    p2_desc: "Demostración de <strong>programación orientada a objetos en JavaScript</strong>. Un juego inmersivo para gestionar la carrera de un jugador, con sistema de edad, más de 40 eventos aleatorios y ligas dinámicas.",
-                    btn_play_now: "Jugar Ahora",
-                    btn_view_github: "Ver en GitHub",
-                    p3_title: "Simulador de Carrera de F1 (BSL Driver)",
-                    p3_desc: "Un simulador de carrera de automovilismo construído con <strong>HTML, CSS y JavaScript puros</strong>, destacando la creación de lógica de juego compleja sin frameworks.",
-                    p4_title: "Portal de Concienciación Hídrica (APS Água)",
-                    p4_desc: "Sitio interactivo para la educación sobre el uso responsable del agua. Combina datos científicos con orientación práctica, incluyendo una calculadora de consumo, un quiz interativo y un mapa de estrés hídrico.",
-                    btn_visit_site: "Visitar Sitio",
-
-                    p5_title: "Bot de Backup de BD (Python & Discord)",
-                    p5_desc: "Un script de automatización en <strong>Python</strong> que usa <strong>discord.py</strong> y <strong>pymysql</strong> para crear copias de seguridad .sql de una base de datos MariaDB/MySQL. El bot exporta la estructura (CREATE TABLE) y los datos (INSERT INTO) de cada tabla, envía el archivo a un canal de Discord y verifica el límite de 25MB.",
-                    btn_view_code: "Ver Código (Spoiler)",
-                    modal_backup_title: "Bot de Copia de Seguridad de BD (Python)",
-                    modal_backup_desc: "Este es el código fuente principal del bot de automatización. Las claves y credenciales se han omitido por seguridad.",
-
-                    p6_title: "APS-2: Quiz Cifrado (Flask & Tkinter)",
-                    p6_desc: "Proyecto académico (2º Semestre) que demuestra el cifrado simétrico. Un quiz web en <strong>Python/Flask</strong> cifra preguntas usando la biblioteca `cryptography`. Incluye una herramienta de <strong>escritorio (Tkinter)</strong> separada para descifrar, probando el concepto de la clave. El contenido fue simplificado para los requisitos de la facultad.",
-
-                    p7_title: "Gestor de Contactos (Java)",
-                    p7_desc: "Aplicación de consola en <strong>Java</strong> pura para demostrar conocimientos en <strong>POO</strong> (Programación Orientada a Objetos). El sistema gestiona una lista de contactos con operaciones CRUD (Añadir, Listar, Buscar, Eliminar) y ordenación alfabética, utilizando `ArrayList` y `Comparator`.",
-                    modal_java_title: "Gestor de Contactos (Java)",
-                    modal_java_desc: "Este es el código fuente principal de la aplicación de consola en Java. Demuestra el uso de POO, ArrayLists y manejo de entrada de usuario.",
-
-                    aria_back_to_top: "Volver arriba",
-                    footer_title: "¿Construimos Algo Increíble?",
-                    footer_subtitle: "Siempre estoy abierto a nuevos proyectos y colaboraciones. ¡Ponte en contacto!",
-                    footer_repo_link_text: "Este sitio fue construido enteramente en un solo archivo con menos de 1200 líneas de código. Puedes acceder a él aquí: <a href=\"https://github.com/marcus7170/portfolio\" target=\"_blank\">GitHub</a>.",
-                    footer_copyright: "&copy; <span id=\"year\"></span> | Desarrollado con 💙 por Marcus Soares",
-                }
-            };
-
-
-            let typeTimeout;
-            const typingTextElement = document.getElementById('typing-text');
-
-            function startTypingAnimation(words) {
-                clearTimeout(typeTimeout);
-                let wordIndex = 0, charIndex = 0, isDeleting = false;
-
-                function type() {
-                    const currentWord = words[wordIndex];
-                    if (isDeleting) {
-                        typingTextElement.textContent = currentWord.substring(0, charIndex--);
-                    } else {
-                        typingTextElement.textContent = currentWord.substring(0, charIndex++);
-                    }
-
-                    if (!isDeleting && charIndex === currentWord.length + 1) {
-                        isDeleting = true;
-                        typeTimeout = setTimeout(type, 2000);
-                    } else if (isDeleting && charIndex === 0) {
-                        isDeleting = false;
-                        wordIndex = (wordIndex + 1) % words.length;
-                        typeTimeout = setTimeout(type, 500);
-                    } else {
-                        typeTimeout = setTimeout(type, isDeleting ? 75 : 150);
-                    }
-                }
-                type();
-            }
-
-
-            window.setLanguage = (lang) => {
-                const translation = translations[lang];
-                if (!translation) return;
-
-                document.querySelectorAll('[data-translate-key]').forEach(el => {
-                    const key = el.dataset.translateKey;
-                    const translationText = translation[key];
-
-                    if (translationText !== undefined) {
-                        if (key.startsWith('aria_')) {
-                            el.setAttribute('aria-label', translationText);
-                        } else if (key === 'footer_repo_link_text' || key === 'footer_copyright' || key.includes('_desc') || key.startsWith('about_')) {
-                            el.innerHTML = translationText;
-                        } else {
-                            el.textContent = translationText;
-                        }
-                    }
-                });
-
-                document.documentElement.lang = lang;
-                document.documentElement.dir = 'ltr'; 
-
-                startTypingAnimation(translation.typing_words);
-
-
-                localStorage.setItem('language', lang);
-
-
-                const yearSpan = document.getElementById('year');
-                if (yearSpan) {
-                   yearSpan.textContent = new Date().getFullYear();
-                }
-            };
-
-
-            const savedLang = localStorage.getItem('language') || 'pt';
-            if (translations[savedLang]) {
-                setLanguage(savedLang);
-            } else {
-                setLanguage('pt');
+        <!-- GRID -->
+        <div class="projects-grid">
+
+            <div class="project-card reveal">
+                <h4 class="russo">Draft BSL — MD3</h4>
+                <div class="tech-tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">HTML5 / CSS3</span>
+                    <span class="tag">Standalone</span>
+                </div>
+                <p>
+                    Ferramenta de draft 100% frontend para torneios MD3. Seleção de capitães, snake draft animado,
+                    filtros por posição e controles de admin — roda direto no browser, sem backend.
+                </p>
+                <div class="plinks">
+                    <a href="https://marcus7170.github.io/Draft-BSL/" target="_blank" class="pl pl-primary">Abrir</a>
+                    <a href="https://github.com/marcus7170/Draft-BSL/" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <h4 class="russo">BSL GameFut — Carreira</h4>
+                <div class="tech-tags">
+                    <span class="tag">JavaScript OOP</span>
+                    <span class="tag">Chart.js</span>
+                    <span class="tag">LocalStorage</span>
+                </div>
+                <p>
+                    Simulador de carreira de futebol dos 16 aos 42 anos. 40+ eventos aleatórios, duas divisões com
+                    promoção e rebaixamento, gráficos de desempenho em tempo real e sistema de legado narrativo.
+                </p>
+                <div class="plinks">
+                    <a href="https://marcus7170.github.io/BSL-GameFut/" target="_blank" class="pl pl-primary">Jogar</a>
+                    <a href="https://github.com/marcus7170/BSL-GameFut" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <h4 class="russo">BSL Driver — F1</h4>
+                <div class="tech-tags">
+                    <span class="tag">Vanilla JS</span>
+                    <span class="tag">Game Logic</span>
+                    <span class="tag">HTML5/CSS3</span>
+                </div>
+                <p>
+                    Simulador de carreira na F1. Da Fórmula 3 até a elite, com 6 atributos, 20 rivais por
+                    temporada, 30+ eventos aleatórios, mercado de contratos e trilha sonora dinâmica.
+                </p>
+                <div class="plinks">
+                    <a href="https://marcus7170.github.io/BSL_Driver/" target="_blank" class="pl pl-primary">Jogar</a>
+                    <a href="https://github.com/marcus7170/BSL_Driver" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <h4 class="russo">Bot de Backup — Discord</h4>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">discord.py</span>
+                    <span class="tag">PyMySQL</span>
+                </div>
+                <p>
+                    Script de automação que gera backups <strong>.sql</strong> completos de um banco MariaDB
+                    (CREATE TABLE + INSERT INTO) e envia automaticamente para um canal no Discord,
+                    com verificação do limite de 25 MB.
+                </p>
+                <div class="plinks">
+                    <a href="https://github.com/marcus7170" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <h4 class="russo">APS-2 — Quiz Criptografado</h4>
+                <div class="tech-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">cryptography</span>
+                    <span class="tag">Tkinter</span>
+                </div>
+                <p>
+                    Quiz web em Flask que criptografa perguntas com AES. Um app desktop em <strong>Tkinter</strong>
+                    funciona como ferramenta de descriptografia separada — demonstra o conceito de chave simétrica
+                    na prática.
+                </p>
+                <div class="plinks">
+                    <a href="https://github.com/marcus7170/APS-2" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <h4 class="russo">TWBR — Tribal Wars Script</h4>
+                <div class="tech-tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Tampermonkey</span>
+                    <span class="tag">Discord Webhook</span>
+                </div>
+                <p>
+                    UserScript para Tribal Wars Brazil. Monitora notificações do jogo em tempo real —
+                    ataques, relatórios, mensagens — e as encaminha automaticamente para um canal do Discord
+                    via webhook.
+                </p>
+                <div class="plinks">
+                    <a href="https://github.com/marcus7170/TWBR" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i> GitHub</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ── CONTATO ── -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-inner reveal">
+            <h2 class="contact-title russo">Vamos conversar?</h2>
+            <p class="contact-sub">
+                Aberto a projetos freelance, colaborações e oportunidades.
+                A forma mais rápida de me alcançar é pelo Discord ou WhatsApp.
+            </p>
+            <div class="contact-row">
+                <a href="https://github.com/marcus7170" target="_blank" class="cl cl-github">
+                    <i class="bi bi-github"></i> GitHub
+                </a>
+                <a href="https://discord.gg/ZFgy6x42ZG" target="_blank" class="cl cl-discord">
+                    <i class="bi bi-discord"></i> Discord
+                </a>
+                <a href="https://wa.me/5513991906461" target="_blank" class="cl cl-whatsapp">
+                    <i class="bi bi-whatsapp"></i> WhatsApp
+                </a>
+                <a href="mailto:marcussoares527@gmail.com" class="cl cl-email">
+                    <i class="bi bi-envelope"></i> E-mail
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>
+        &copy; <span id="yr"></span> Marcus Soares
+        &nbsp;·&nbsp;
+        <a href="https://github.com/marcus7170/portfolio" target="_blank">Código no GitHub</a>
+        &nbsp;·&nbsp;
+        HTML · CSS · JavaScript puros
+    </p>
+</footer>
+
+<button id="btt" aria-label="Voltar ao topo">
+    <i class="bi bi-chevron-up"></i>
+</button>
+
+<script>
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
             }
         });
-    </script>
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const btt = document.getElementById('btt');
+    window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+        });
+    }, { passive: true });
+</script>
 </body>
 </html>
