@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Marcus Soares — Desenvolvedor Full-Stack. Criador do BSL, plataforma esportiva em produção.">
-    <title>Marcus Soares — Desenvolvedor</title>
+    <meta name="description" content="Marcus Soares, Desenvolvedor Full-Stack. Criador do BSL, plataforma esportiva em produção.">
+    <title>Marcus Soares · Desenvolvedor</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,6 @@
         a { color: inherit; text-decoration: none; }
         .russo { font-family: 'Russo One', sans-serif; }
 
-        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%;
@@ -54,6 +53,7 @@
             letter-spacing: 0.5px;
         }
         .nav-logo span { color: var(--purple); }
+        .nav-right { display: flex; align-items: center; gap: 24px; }
         .nav-links { display: flex; gap: 30px; }
         .nav-links a {
             font-size: 0.8rem;
@@ -64,11 +64,33 @@
             transition: color 0.2s;
         }
         .nav-links a:hover { color: var(--white); }
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            border-left: 1px solid rgba(255,255,255,0.08);
+            padding-left: 18px;
+        }
+        .lt {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            padding: 3px 6px;
+            border-radius: 4px;
+            transition: color 0.2s, background 0.2s;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+        }
+        .lt:hover { color: var(--white); }
+        .lt.active { color: var(--purple); background: rgba(159,108,224,0.1); }
+        .lang-sep { color: rgba(255,255,255,0.12); font-size: 0.6rem; user-select: none; }
 
-        /* ── CONTAINER ── */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
 
-        /* ── HERO ── */
         #hero {
             min-height: 100vh;
             display: flex;
@@ -77,11 +99,7 @@
             position: relative;
             overflow: hidden;
         }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
+        .hero-bg { position: absolute; inset: 0; pointer-events: none; }
         .hero-bg::before {
             content: '';
             position: absolute;
@@ -97,12 +115,7 @@
             background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
             background-size: 36px 36px;
         }
-        .hero-inner {
-            display: flex;
-            align-items: center;
-            gap: 64px;
-            width: 100%;
-        }
+        .hero-inner { display: flex; align-items: center; gap: 64px; width: 100%; }
         .hero-text { flex: 1; }
 
         .hero-location {
@@ -147,7 +160,6 @@
         .hero-desc strong { color: var(--white); font-weight: 700; }
         .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
 
-        /* ── BOTÕES GLOBAIS ── */
         .btn-primary {
             padding: 11px 24px;
             background: var(--purple);
@@ -183,7 +195,6 @@
         }
         .btn-ghost:hover { border-color: var(--purple); color: var(--white); }
 
-        /* ── DEV CARD (hero lateral) ── */
         .hero-card { width: 210px; flex-shrink: 0; }
         .dev-card {
             background: linear-gradient(145deg, rgba(159,108,224,0.13) 0%, rgba(14,3,33,0.92) 100%);
@@ -225,11 +236,7 @@
             from { box-shadow: 0 0 10px rgba(255,171,0,0.18); }
             to   { box-shadow: 0 0 24px rgba(255,171,0,0.38); }
         }
-        .dev-name {
-            font-family: 'Russo One', sans-serif;
-            font-size: 0.85rem;
-            margin-bottom: 3px;
-        }
+        .dev-name { font-family: 'Russo One', sans-serif; font-size: 0.85rem; margin-bottom: 3px; }
         .dev-title {
             font-size: 0.6rem;
             color: var(--gold);
@@ -244,17 +251,8 @@
             border-top: 1px solid rgba(255,255,255,0.07);
             padding-top: 16px;
         }
-        .dev-stat {
-            background: rgba(0,0,0,0.35);
-            border-radius: 8px;
-            padding: 9px 4px;
-        }
-        .dev-stat-val {
-            font-family: 'Russo One', sans-serif;
-            font-size: 0.95rem;
-            color: var(--gold);
-            line-height: 1;
-        }
+        .dev-stat { background: rgba(0,0,0,0.35); border-radius: 8px; padding: 9px 4px; }
+        .dev-stat-val { font-family: 'Russo One', sans-serif; font-size: 0.95rem; color: var(--gold); line-height: 1; }
         .dev-stat-lbl {
             font-size: 0.48rem;
             color: var(--muted);
@@ -263,14 +261,8 @@
             margin-top: 3px;
         }
 
-        /* ── SECTION ── */
         section { padding: 90px 0; }
-        .section-head {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 48px;
-        }
+        .section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 48px; }
         .section-line { flex: 1; height: 1px; background: var(--border); }
         .section-label {
             font-family: 'Russo One', sans-serif;
@@ -280,26 +272,15 @@
             white-space: nowrap;
         }
 
-        /* ── SOBRE ── */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 44px;
-            align-items: start;
-        }
-        .about-text p {
-            color: var(--muted);
-            margin-bottom: 16px;
-            font-size: 0.93rem;
-            line-height: 1.8;
-        }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
+        .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 0.93rem; line-height: 1.8; }
         .about-text strong { color: var(--white); }
-        .about-highlights { display: flex; flex-direction: column; gap: 12px; }
+        .about-highlights { display: flex; flex-direction: column; gap: 10px; }
         .hi {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 13px;
-            padding: 16px 18px;
+            padding: 14px 16px;
             backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
@@ -307,17 +288,12 @@
             transition: 0.25s;
         }
         .hi:hover { border-color: rgba(159,108,224,0.45); transform: translateX(4px); }
-        .hi-icon { font-size: 1.5rem; flex-shrink: 0; }
-        .hi-title { display: block; font-size: 0.87rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
-        .hi-sub { font-size: 0.73rem; color: var(--muted); line-height: 1.4; }
+        .hi-icon { font-size: 1.4rem; flex-shrink: 0; }
+        .hi-title { display: block; font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+        .hi-sub { font-size: 0.71rem; color: var(--muted); line-height: 1.4; }
 
-        /* ── STACK ── */
         #stack { padding-top: 0; }
-        .stack-groups {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 18px;
-        }
+        .stack-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
         .stack-group {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -336,20 +312,13 @@
             border-bottom: 1px solid var(--border);
         }
         .chips { display: flex; flex-wrap: wrap; gap: 7px; }
-        .chip {
-            font-size: 0.73rem;
-            font-weight: 700;
-            padding: 4px 11px;
-            border-radius: 6px;
-            border: 1px solid;
-        }
+        .chip { font-size: 0.73rem; font-weight: 700; padding: 4px 11px; border-radius: 6px; border: 1px solid; }
         .c-purple { background: rgba(159,108,224,0.12); color: #c4a0f5; border-color: rgba(159,108,224,0.28); }
         .c-gold   { background: rgba(255,171,0,0.10);   color: #ffc84a; border-color: rgba(255,171,0,0.28); }
         .c-blue   { background: rgba(52,152,219,0.10);  color: #7ec8f0; border-color: rgba(52,152,219,0.28); }
         .c-green  { background: rgba(46,204,113,0.10);  color: #7ee8a8; border-color: rgba(46,204,113,0.28); }
         .c-gray   { background: rgba(255,255,255,0.04); color: #aaa;    border-color: rgba(255,255,255,0.1); }
 
-        /* ── PROJETOS ── */
         .project-featured {
             background: linear-gradient(145deg, rgba(159,108,224,0.07) 0%, rgba(14,3,33,0.85) 100%);
             border: 1px solid rgba(159,108,224,0.32);
@@ -368,13 +337,7 @@
             background: radial-gradient(circle, rgba(255,171,0,0.05) 0%, transparent 70%);
             pointer-events: none;
         }
-        .pf-top {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
+        .pf-top { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
         .badge-live {
             display: inline-flex;
             align-items: center;
@@ -411,19 +374,8 @@
             border: 1px solid rgba(255,171,0,0.35);
             color: var(--gold);
         }
-        .project-featured h3 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 1.9rem;
-            color: var(--white);
-            margin-bottom: 14px;
-        }
-        .project-featured > p {
-            color: var(--muted);
-            font-size: 0.92rem;
-            max-width: 700px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
+        .project-featured h3 { font-family: 'Russo One', sans-serif; font-size: 1.9rem; color: var(--white); margin-bottom: 14px; }
+        .project-featured > p { color: var(--muted); font-size: 0.92rem; max-width: 700px; line-height: 1.8; margin-bottom: 20px; }
         .project-featured > p strong { color: var(--white); }
 
         .tech-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
@@ -455,11 +407,7 @@
         .pl-ghost:hover { border-color: rgba(159,108,224,0.5); color: var(--white); }
         .pl-off { background: rgba(255,255,255,0.02); color: #444; border-color: rgba(255,255,255,0.06); cursor: default; }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(318px, 1fr));
-            gap: 18px;
-        }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(318px, 1fr)); gap: 18px; }
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -475,38 +423,17 @@
             box-shadow: 0 12px 30px rgba(159,108,224,0.1);
             transform: translateY(-4px);
         }
-        .project-card h4 {
-            font-family: 'Russo One', sans-serif;
-            font-size: 1rem;
-            color: var(--white);
-            margin-bottom: 10px;
-        }
-        .project-card p {
-            font-size: 0.84rem;
-            color: var(--muted);
-            line-height: 1.7;
-            flex-grow: 1;
-            margin-bottom: 14px;
-        }
+        .project-card h4 { font-family: 'Russo One', sans-serif; font-size: 1rem; color: var(--white); margin-bottom: 10px; }
+        .project-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.7; flex-grow: 1; margin-bottom: 14px; }
         .project-card p strong { color: var(--white); }
 
-        /* ── CONTATO ── */
         #contact {
             border-top: 1px solid var(--border);
             background: linear-gradient(to bottom, transparent, rgba(159,108,224,0.03));
         }
         .contact-inner { max-width: 580px; margin: 0 auto; text-align: center; }
-        .contact-title {
-            font-family: 'Russo One', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-            margin-bottom: 14px;
-        }
-        .contact-sub {
-            color: var(--muted);
-            font-size: 0.92rem;
-            line-height: 1.75;
-            margin-bottom: 36px;
-        }
+        .contact-title { font-family: 'Russo One', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 14px; }
+        .contact-sub { color: var(--muted); font-size: 0.92rem; line-height: 1.75; margin-bottom: 36px; }
         .contact-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
         .cl {
             padding: 12px 22px;
@@ -528,7 +455,6 @@
         .cl-email { background: rgba(159,108,224,0.08); color: var(--purple); border-color: var(--border); }
         .cl-email:hover { background: rgba(159,108,224,0.15); }
 
-        /* ── FOOTER ── */
         footer {
             padding: 22px 5%;
             text-align: center;
@@ -539,15 +465,9 @@
         footer a { color: var(--purple); transition: opacity 0.2s; }
         footer a:hover { opacity: 0.8; }
 
-        /* ── SCROLL REVEAL ── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(22px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
-        }
+        .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
         .reveal.visible { opacity: 1; transform: none; }
 
-        /* ── BACK TO TOP ── */
         #btt {
             position: fixed;
             bottom: 26px; right: 26px;
@@ -569,7 +489,10 @@
         #btt.show { opacity: 1; transform: none; }
         #btt:hover { background: var(--purple); transform: translateY(-3px); }
 
-        /* ── RESPONSIVE ── */
+        @media (max-width: 920px) {
+            .nav-links { gap: 18px; }
+            .lang-toggle { padding-left: 12px; }
+        }
         @media (max-width: 860px) {
             .hero-inner { flex-direction: column-reverse; gap: 38px; text-align: center; }
             .hero-cta { justify-content: center; }
@@ -581,26 +504,34 @@
             .project-featured { padding: 24px 20px; }
             .project-featured h3 { font-size: 1.5rem; }
             nav { padding: 12px 4%; }
-            .nav-links { gap: 18px; }
+            .nav-links { gap: 14px; }
             .nav-links a { font-size: 0.72rem; }
             .hero-card { width: 190px; }
+            .lang-toggle { display: none; }
         }
     </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
     <div class="nav-logo russo">MARCUS<span>.</span>DEV</div>
-    <div class="nav-links">
-        <a href="#sobre">Sobre</a>
-        <a href="#stack">Stack</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contact">Contato</a>
+    <div class="nav-right">
+        <div class="nav-links">
+            <a href="#sobre" data-i18n="nav-sobre">Sobre</a>
+            <a href="#stack" data-i18n="nav-stack">Stack</a>
+            <a href="#projetos" data-i18n="nav-projetos">Projetos</a>
+            <a href="#contact" data-i18n="nav-contact">Contato</a>
+        </div>
+        <div class="lang-toggle">
+            <button class="lt active" data-lang="pt">PT</button>
+            <span class="lang-sep">·</span>
+            <button class="lt" data-lang="en">EN</button>
+            <span class="lang-sep">·</span>
+            <button class="lt" data-lang="es">ES</button>
+        </div>
     </div>
 </nav>
 
-<!-- ── HERO ── -->
 <section id="hero">
     <div class="hero-bg"></div>
     <div class="container">
@@ -608,18 +539,20 @@
 
             <div class="hero-text">
                 <div class="hero-location">
-                    <i class="bi bi-geo-alt-fill"></i> São Vicente, SP · Brasil
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span data-i18n="hero-location">São Vicente, SP · Brasil</span>
                 </div>
                 <h1 class="hero-name russo">Marcus<br>Soares</h1>
-                <div class="hero-role">Desenvolvedor Full-Stack</div>
-                <p class="hero-desc">
-                    Construo plataformas web completas — do backend em <strong>Flask</strong> ao banco de dados e
+                <div class="hero-role" data-i18n="hero-role">Desenvolvedor Full-Stack</div>
+                <p class="hero-desc" data-i18n="hero-desc">
+                    Construo plataformas web completas, do backend em <strong>Flask</strong> ao banco de dados e
                     ao frontend em <strong>JavaScript puro</strong>. CEO e único desenvolvedor do
                     <strong>BSL</strong>, plataforma esportiva em produção com usuários reais desde 2023.
                 </p>
                 <div class="hero-cta">
                     <a href="#projetos" class="btn-primary">
-                        <i class="bi bi-grid-3x3-gap-fill"></i> Ver Projetos
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                        <span data-i18n="hero-btn-projects">Ver Projetos</span>
                     </a>
                     <a href="https://github.com/marcus7170" target="_blank" class="btn-ghost">
                         <i class="bi bi-github"></i> GitHub
@@ -635,19 +568,19 @@
                     <div class="dev-stats">
                         <div class="dev-stat">
                             <div class="dev-stat-val russo">8+</div>
-                            <div class="dev-stat-lbl">Projetos</div>
+                            <div class="dev-stat-lbl" data-i18n="stat-projects">Projetos</div>
                         </div>
                         <div class="dev-stat">
-                            <div class="dev-stat-val russo">4</div>
-                            <div class="dev-stat-lbl">Linguagens</div>
+                            <div class="dev-stat-val russo">14</div>
+                            <div class="dev-stat-lbl" data-i18n="stat-years">Anos</div>
                         </div>
                         <div class="dev-stat">
                             <div class="dev-stat-val">🟢</div>
-                            <div class="dev-stat-lbl">Em Prod.</div>
+                            <div class="dev-stat-lbl" data-i18n="stat-prod">Em Prod.</div>
                         </div>
                         <div class="dev-stat">
                             <div class="dev-stat-val russo" style="font-size:0.72rem;">BSL</div>
-                            <div class="dev-stat-lbl">Plataforma</div>
+                            <div class="dev-stat-lbl" data-i18n="stat-platform">Plataforma</div>
                         </div>
                     </div>
                 </div>
@@ -657,65 +590,76 @@
     </div>
 </section>
 
-<!-- ── SOBRE ── -->
 <section id="sobre">
     <div class="container">
         <div class="section-head">
             <div class="section-line"></div>
-            <span class="section-label" style="color:var(--purple)">Sobre Mim</span>
+            <span class="section-label" style="color:var(--purple)" data-i18n="section-sobre">Sobre Mim</span>
             <div class="section-line"></div>
         </div>
         <div class="about-grid reveal">
             <div class="about-text">
-                <p>
-                    Comecei em 2012 escrevendo <strong>automações de navegador</strong> — scripts TypeScript
-                    e bots via Tampermonkey para resolver problemas que ninguém havia resolvido ainda.
-                    Não tinha curso, não tinha mentor. Só o console do browser e curiosidade.
+                <p data-i18n="about-p1">
+                    Comecei em 2012 com scripts TypeScript e bots via Tampermonkey: <strong>automações de navegador</strong> para resolver problemas que ninguém havia resolvido.
+                    Sem curso, sem mentor. Só o console do browser e curiosidade.
                 </p>
-                <p>
+                <p data-i18n="about-p2">
                     De 2018 a 2022 mergulhei fundo em <strong>modificações de jogos</strong>. Me tornei
                     especialista em <strong>Lua e JavaScript</strong>, desenvolvendo dezenas de scripts
-                    complexos — principalmente para FiveM. Em 2019, a <strong>Compton City</strong> se
+                    complexos, principalmente para FiveM. Em 2019, a <strong>Compton City</strong> se
                     tornou a modificação e loja mais conhecida da cena brasileira do FiveM naquele ano.
                 </p>
-                <p>
+                <p data-i18n="about-p3">
                     Em 2022 virei a chave: <strong>análise de dados</strong>, backend Python, domínio
-                    completo de bots Discord e web dev de ponta a ponta. A lógica era a mesma — entender
-                    sistemas por dentro — mas agora aplicada a plataformas reais.
+                    completo de bots Discord e web dev de ponta a ponta. Mesma lógica de sempre: entender
+                    sistemas por dentro. Só que agora aplicada a plataformas reais.
                 </p>
-                <p>
+                <p data-i18n="about-p4">
                     Hoje sou o único desenvolvedor do <strong>BSL</strong>: design, backend Flask,
-                    banco de dados e deploy em VPS — tudo por uma pessoa. Código real, usuários reais,
+                    banco de dados e deploy em VPS. Tudo por uma pessoa. Código real, usuários reais,
                     em produção desde 2023.
+                </p>
+                <p data-i18n="about-p5">
+                    Em 2026, o foco é <strong>IA e agentes</strong>. Estou aprofundando conhecimentos em
+                    modelos, pipelines e orquestração de agentes e aplicando no dia a dia. Imagine um
+                    programador com 14 anos de experiência operando com a velocidade que dezenas de agentes
+                    de IA conseguem oferecer trabalhando em conjunto. Isso é alavancagem técnica real.
                 </p>
             </div>
             <div class="about-highlights">
                 <div class="hi">
                     <div class="hi-icon">🤖</div>
                     <div>
-                        <span class="hi-title">Automações desde 2012</span>
-                        <span class="hi-sub">Scripts TypeScript e bots Tampermonkey — base de tudo que veio depois</span>
+                        <span class="hi-title" data-i18n="hi1-title">Automações desde 2012</span>
+                        <span class="hi-sub" data-i18n="hi1-sub">Scripts TypeScript e bots Tampermonkey, base de tudo que veio depois</span>
                     </div>
                 </div>
                 <div class="hi">
                     <div class="hi-icon">🎮</div>
                     <div>
-                        <span class="hi-title">Compton City — FiveM 2019</span>
-                        <span class="hi-sub">A modificação e loja mais famosa da cena brasileira de FiveM naquele ano</span>
+                        <span class="hi-title" data-i18n="hi2-title">Compton City · FiveM 2019</span>
+                        <span class="hi-sub" data-i18n="hi2-sub">A modificação e loja mais famosa da cena brasileira de FiveM naquele ano</span>
                     </div>
                 </div>
                 <div class="hi">
                     <div class="hi-icon">🌐</div>
                     <div>
-                        <span class="hi-title">bsl.lat — em produção</span>
-                        <span class="hi-sub">Plataforma esportiva com usuários reais rodando em VPS desde 2023</span>
+                        <span class="hi-title" data-i18n="hi3-title">bsl.lat em produção</span>
+                        <span class="hi-sub" data-i18n="hi3-sub">Plataforma esportiva com usuários reais rodando em VPS desde 2023</span>
                     </div>
                 </div>
                 <div class="hi">
                     <div class="hi-icon">🛠️</div>
                     <div>
-                        <span class="hi-title">Solo Developer</span>
-                        <span class="hi-sub">Design, backend, banco de dados e deploy — do zero ao ar, por uma pessoa</span>
+                        <span class="hi-title" data-i18n="hi4-title">Solo Developer</span>
+                        <span class="hi-sub" data-i18n="hi4-sub">Design, backend, banco de dados e deploy. Do zero ao ar, por uma pessoa</span>
+                    </div>
+                </div>
+                <div class="hi" style="border-color: rgba(255,171,0,0.28);">
+                    <div class="hi-icon">⚡</div>
+                    <div>
+                        <span class="hi-title" data-i18n="hi5-title" style="color: var(--gold);">2026: IA e Agentes</span>
+                        <span class="hi-sub" data-i18n="hi5-sub">Dev experiente + dezenas de agentes de IA = velocidade sem precedente</span>
                     </div>
                 </div>
             </div>
@@ -723,27 +667,27 @@
     </div>
 </section>
 
-<!-- ── STACK ── -->
 <section id="stack" style="padding-top:0">
     <div class="container">
         <div class="section-head">
             <div class="section-line"></div>
-            <span class="section-label" style="color:var(--gold)">Stack Técnica</span>
+            <span class="section-label" style="color:var(--gold)" data-i18n="section-stack">Stack Técnica</span>
             <div class="section-line"></div>
         </div>
         <div class="stack-groups reveal">
             <div class="stack-group">
-                <div class="stack-group-title">Linguagens</div>
+                <div class="stack-group-title" data-i18n="sg-langs">Linguagens</div>
                 <div class="chips">
                     <span class="chip c-blue">Python</span>
                     <span class="chip c-gold">JavaScript ES6+</span>
+                    <span class="chip c-gold">TypeScript</span>
                     <span class="chip c-purple">Java</span>
                     <span class="chip c-gray">HTML5 / CSS3</span>
                     <span class="chip c-gray">Lua</span>
                 </div>
             </div>
             <div class="stack-group">
-                <div class="stack-group-title">Backend & APIs</div>
+                <div class="stack-group-title" data-i18n="sg-backend">Backend & APIs</div>
                 <div class="chips">
                     <span class="chip c-purple">Flask</span>
                     <span class="chip c-blue">REST APIs</span>
@@ -753,7 +697,7 @@
                 </div>
             </div>
             <div class="stack-group">
-                <div class="stack-group-title">Banco de Dados</div>
+                <div class="stack-group-title" data-i18n="sg-db">Banco de Dados</div>
                 <div class="chips">
                     <span class="chip c-gold">MariaDB</span>
                     <span class="chip c-gold">MySQL</span>
@@ -762,7 +706,7 @@
                 </div>
             </div>
             <div class="stack-group">
-                <div class="stack-group-title">Frontend & Ferramentas</div>
+                <div class="stack-group-title" data-i18n="sg-frontend">Frontend & Ferramentas</div>
                 <div class="chips">
                     <span class="chip c-purple">CSS Animations</span>
                     <span class="chip c-blue">Bootstrap 5</span>
@@ -776,23 +720,21 @@
     </div>
 </section>
 
-<!-- ── PROJETOS ── -->
 <section id="projetos">
     <div class="container">
         <div class="section-head">
             <div class="section-line"></div>
-            <span class="section-label" style="color:var(--white)">Projetos</span>
+            <span class="section-label" style="color:var(--white)" data-i18n="section-projetos">Projetos</span>
             <div class="section-line"></div>
         </div>
 
-        <!-- BSL — DESTAQUE -->
         <div class="project-featured reveal">
             <div class="pf-top">
                 <span class="badge-live">Live</span>
-                <span class="badge-main">Projeto Principal</span>
+                <span class="badge-main" data-i18n="badge-main">Projeto Principal</span>
             </div>
             <h3 class="russo">Brazilian Sports League</h3>
-            <p>
+            <p data-i18n="bsl-desc">
                 Plataforma esportiva completa construída do zero. Backend em <strong>Python (Flask)</strong>
                 com API RESTful, banco de dados <strong>MariaDB</strong> e frontend em
                 <strong>JavaScript, HTML e CSS puros</strong>. Inclui motor de simulação de partidas,
@@ -811,85 +753,89 @@
             </div>
             <div class="plinks">
                 <a href="https://bsl.lat/" target="_blank" class="pl pl-primary">
-                    <i class="bi bi-globe2"></i> Acessar bsl.lat
+                    <i class="bi bi-globe2"></i>
+                    <span data-i18n="bsl-btn1">Acessar bsl.lat</span>
                 </a>
                 <a href="https://marcus7170.github.io/bsl_wiki/" target="_blank" class="pl pl-ghost">
-                    <i class="bi bi-book"></i> Wiki
+                    <i class="bi bi-book"></i>
+                    <span data-i18n="bsl-btn2">Wiki</span>
                 </a>
                 <a href="https://marcus7170.github.io/calculadora_superpro/" target="_blank" class="pl pl-ghost">
-                    <i class="bi bi-calculator"></i> Calculadora
+                    <i class="bi bi-calculator"></i>
+                    <span data-i18n="bsl-btn3">Calculadora</span>
                 </a>
                 <a href="https://marcus7170.github.io/Superpro_tatica/" target="_blank" class="pl pl-ghost">
-                    <i class="bi bi-diagram-3"></i> Táticas
+                    <i class="bi bi-diagram-3"></i>
+                    <span data-i18n="bsl-btn4">Táticas</span>
                 </a>
                 <span class="pl pl-off">
-                    <i class="bi bi-lock"></i> Backend Privado
+                    <i class="bi bi-lock"></i>
+                    <span data-i18n="bsl-btn5">Backend Privado</span>
                 </span>
             </div>
         </div>
 
-        <!-- GRID -->
         <div class="projects-grid">
 
             <div class="project-card reveal">
-                <h4 class="russo">Draft BSL — MD3</h4>
+                <h4 class="russo">Draft BSL · MD3</h4>
                 <div class="tech-tags">
                     <span class="tag">JavaScript</span>
                     <span class="tag">HTML5 / CSS3</span>
                     <span class="tag">Standalone</span>
                 </div>
-                <p>
+                <p data-i18n="draft-desc">
                     Ferramenta de draft 100% frontend para torneios MD3. Seleção de capitães, snake draft animado,
-                    filtros por posição e controles de admin — roda direto no browser, sem backend.
+                    filtros por posição e controles de admin. Roda direto no browser, sem backend.
                 </p>
                 <div class="plinks">
-                    <a href="https://marcus7170.github.io/Draft-BSL/" target="_blank" class="pl pl-primary">Abrir</a>
+                    <a href="https://marcus7170.github.io/Draft-BSL/" target="_blank" class="pl pl-primary" data-i18n="btn-open">Abrir</a>
                     <a href="https://github.com/marcus7170/Draft-BSL/" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i></a>
                 </div>
             </div>
 
             <div class="project-card reveal">
-                <h4 class="russo">BSL GameFut — Carreira</h4>
+                <h4 class="russo">BSL GameFut · Carreira</h4>
                 <div class="tech-tags">
                     <span class="tag">JavaScript OOP</span>
                     <span class="tag">Chart.js</span>
                     <span class="tag">LocalStorage</span>
                 </div>
-                <p>
+                <p data-i18n="gamefut-desc">
                     Simulador de carreira de futebol dos 16 aos 42 anos. 40+ eventos aleatórios, duas divisões com
                     promoção e rebaixamento, gráficos de desempenho em tempo real e sistema de legado narrativo.
                 </p>
                 <div class="plinks">
-                    <a href="https://marcus7170.github.io/BSL-GameFut/" target="_blank" class="pl pl-primary">Jogar</a>
+                    <a href="https://marcus7170.github.io/BSL-GameFut/" target="_blank" class="pl pl-primary" data-i18n="btn-play">Jogar</a>
                     <a href="https://github.com/marcus7170/BSL-GameFut" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i></a>
                 </div>
             </div>
 
             <div class="project-card reveal">
-                <h4 class="russo">BSL Driver — F1</h4>
+                <h4 class="russo">BSL Driver · F1</h4>
                 <div class="tech-tags">
                     <span class="tag">Vanilla JS</span>
                     <span class="tag">Game Logic</span>
                     <span class="tag">HTML5/CSS3</span>
                 </div>
-                <p>
+                <p data-i18n="driver-desc">
                     Simulador de carreira na F1. Da Fórmula 3 até a elite, com 6 atributos, 20 rivais por
                     temporada, 30+ eventos aleatórios, mercado de contratos e trilha sonora dinâmica.
                 </p>
                 <div class="plinks">
-                    <a href="https://marcus7170.github.io/BSL_Driver/" target="_blank" class="pl pl-primary">Jogar</a>
+                    <a href="https://marcus7170.github.io/BSL_Driver/" target="_blank" class="pl pl-primary" data-i18n="btn-play">Jogar</a>
                     <a href="https://github.com/marcus7170/BSL_Driver" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i></a>
                 </div>
             </div>
 
             <div class="project-card reveal">
-                <h4 class="russo">Bot de Backup — Discord</h4>
+                <h4 class="russo">Bot de Backup · Discord</h4>
                 <div class="tech-tags">
                     <span class="tag">Python</span>
                     <span class="tag">discord.py</span>
                     <span class="tag">PyMySQL</span>
                 </div>
-                <p>
+                <p data-i18n="backup-desc">
                     Script de automação que gera backups <strong>.sql</strong> completos de um banco MariaDB
                     (CREATE TABLE + INSERT INTO) e envia automaticamente para um canal no Discord,
                     com verificação do limite de 25 MB.
@@ -900,16 +846,16 @@
             </div>
 
             <div class="project-card reveal">
-                <h4 class="russo">APS-2 — Quiz Criptografado</h4>
+                <h4 class="russo">APS-2 · Quiz Criptografado</h4>
                 <div class="tech-tags">
                     <span class="tag">Python</span>
                     <span class="tag">Flask</span>
                     <span class="tag">cryptography</span>
                     <span class="tag">Tkinter</span>
                 </div>
-                <p>
+                <p data-i18n="aps2-desc">
                     Quiz web em Flask que criptografa perguntas com AES. Um app desktop em <strong>Tkinter</strong>
-                    funciona como ferramenta de descriptografia separada — demonstra o conceito de chave simétrica
+                    funciona como ferramenta de descriptografia separada e demonstra o conceito de chave simétrica
                     na prática.
                 </p>
                 <div class="plinks">
@@ -918,16 +864,15 @@
             </div>
 
             <div class="project-card reveal">
-                <h4 class="russo">TWBR — Tribal Wars Script</h4>
+                <h4 class="russo">TWBR · Tribal Wars Script</h4>
                 <div class="tech-tags">
                     <span class="tag">JavaScript</span>
                     <span class="tag">Tampermonkey</span>
                     <span class="tag">Discord Webhook</span>
                 </div>
-                <p>
-                    UserScript para Tribal Wars Brazil. Monitora notificações do jogo em tempo real —
-                    ataques, relatórios, mensagens — e as encaminha automaticamente para um canal do Discord
-                    via webhook.
+                <p data-i18n="twbr-desc">
+                    UserScript para Tribal Wars Brazil. Monitora notificações do jogo em tempo real: ataques,
+                    relatórios e mensagens. As encaminha automaticamente para um canal do Discord via webhook.
                 </p>
                 <div class="plinks">
                     <a href="https://github.com/marcus7170/TWBR" target="_blank" class="pl pl-ghost"><i class="bi bi-github"></i> GitHub</a>
@@ -938,12 +883,11 @@
     </div>
 </section>
 
-<!-- ── CONTATO ── -->
 <section id="contact">
     <div class="container">
         <div class="contact-inner reveal">
-            <h2 class="contact-title russo">Vamos conversar?</h2>
-            <p class="contact-sub">
+            <h2 class="contact-title russo" data-i18n="contact-title">Vamos conversar?</h2>
+            <p class="contact-sub" data-i18n="contact-sub">
                 Aberto a projetos freelance, colaborações e oportunidades.
                 A forma mais rápida de me alcançar é pelo Discord ou WhatsApp.
             </p>
@@ -966,13 +910,7 @@
 </section>
 
 <footer>
-    <p>
-        &copy; <span id="yr"></span> Marcus Soares
-        &nbsp;·&nbsp;
-        <a href="https://github.com/marcus7170/portfolio" target="_blank">Código no GitHub</a>
-        &nbsp;·&nbsp;
-        HTML · CSS · JavaScript puros
-    </p>
+    <p id="footer-text"></p>
 </footer>
 
 <button id="btt" aria-label="Voltar ao topo">
@@ -980,6 +918,189 @@
 </button>
 
 <script>
+    const year = new Date().getFullYear();
+    const T = {
+        pt: {
+            'nav-sobre':         'Sobre',
+            'nav-stack':         'Stack',
+            'nav-projetos':      'Projetos',
+            'nav-contact':       'Contato',
+            'hero-location':     'São Vicente, SP · Brasil',
+            'hero-role':         'Desenvolvedor Full-Stack',
+            'hero-desc':         'Construo plataformas web completas, do backend em <strong>Flask</strong> ao banco de dados e ao frontend em <strong>JavaScript puro</strong>. CEO e único desenvolvedor do <strong>BSL</strong>, plataforma esportiva em produção com usuários reais desde 2023.',
+            'hero-btn-projects': 'Ver Projetos',
+            'stat-projects':     'Projetos',
+            'stat-years':        'Anos',
+            'stat-prod':         'Em Prod.',
+            'stat-platform':     'Plataforma',
+            'section-sobre':     'Sobre Mim',
+            'section-stack':     'Stack Técnica',
+            'section-projetos':  'Projetos',
+            'about-p1':          'Comecei em 2012 com scripts TypeScript e bots via Tampermonkey: <strong>automações de navegador</strong> para resolver problemas que ninguém havia resolvido. Sem curso, sem mentor. Só o console do browser e curiosidade.',
+            'about-p2':          'De 2018 a 2022 mergulhei fundo em <strong>modificações de jogos</strong>. Me tornei especialista em <strong>Lua e JavaScript</strong>, desenvolvendo dezenas de scripts complexos, principalmente para FiveM. Em 2019, a <strong>Compton City</strong> se tornou a modificação e loja mais conhecida da cena brasileira do FiveM naquele ano.',
+            'about-p3':          'Em 2022 virei a chave: <strong>análise de dados</strong>, backend Python, domínio completo de bots Discord e web dev de ponta a ponta. Mesma lógica de sempre: entender sistemas por dentro. Só que agora aplicada a plataformas reais.',
+            'about-p4':          'Hoje sou o único desenvolvedor do <strong>BSL</strong>: design, backend Flask, banco de dados e deploy em VPS. Tudo por uma pessoa. Código real, usuários reais, em produção desde 2023.',
+            'about-p5':          'Em 2026, o foco é <strong>IA e agentes</strong>. Estou aprofundando conhecimentos em modelos, pipelines e orquestração de agentes e aplicando no dia a dia. Imagine um programador com 14 anos de experiência operando com a velocidade que dezenas de agentes de IA conseguem oferecer trabalhando em conjunto. Isso é alavancagem técnica real.',
+            'hi1-title':         'Automações desde 2012',
+            'hi1-sub':           'Scripts TypeScript e bots Tampermonkey, base de tudo que veio depois',
+            'hi2-title':         'Compton City · FiveM 2019',
+            'hi2-sub':           'A modificação e loja mais famosa da cena brasileira de FiveM naquele ano',
+            'hi3-title':         'bsl.lat em produção',
+            'hi3-sub':           'Plataforma esportiva com usuários reais rodando em VPS desde 2023',
+            'hi4-title':         'Solo Developer',
+            'hi4-sub':           'Design, backend, banco de dados e deploy. Do zero ao ar, por uma pessoa',
+            'hi5-title':         '2026: IA e Agentes',
+            'hi5-sub':           'Dev experiente + dezenas de agentes de IA = velocidade sem precedente',
+            'sg-langs':          'Linguagens',
+            'sg-backend':        'Backend & APIs',
+            'sg-db':             'Banco de Dados',
+            'sg-frontend':       'Frontend & Ferramentas',
+            'badge-main':        'Projeto Principal',
+            'bsl-desc':          'Plataforma esportiva completa construída do zero. Backend em <strong>Python (Flask)</strong> com API RESTful, banco de dados <strong>MariaDB</strong> e frontend em <strong>JavaScript, HTML e CSS puros</strong>. Inclui motor de simulação de partidas, mercado de transferências, loja de itens, bolão de palpites, sistema de sócios com tiers, ranking com integração EA Sports FC, mini-games e painel administrativo completo. Usuários reais, dados reais, em produção num VPS desde 2023.',
+            'bsl-btn1':          'Acessar bsl.lat',
+            'bsl-btn2':          'Wiki',
+            'bsl-btn3':          'Calculadora',
+            'bsl-btn4':          'Táticas',
+            'bsl-btn5':          'Backend Privado',
+            'btn-open':          'Abrir',
+            'btn-play':          'Jogar',
+            'draft-desc':        'Ferramenta de draft 100% frontend para torneios MD3. Seleção de capitães, snake draft animado, filtros por posição e controles de admin. Roda direto no browser, sem backend.',
+            'gamefut-desc':      'Simulador de carreira de futebol dos 16 aos 42 anos. 40+ eventos aleatórios, duas divisões com promoção e rebaixamento, gráficos de desempenho em tempo real e sistema de legado narrativo.',
+            'driver-desc':       'Simulador de carreira na F1. Da Fórmula 3 até a elite, com 6 atributos, 20 rivais por temporada, 30+ eventos aleatórios, mercado de contratos e trilha sonora dinâmica.',
+            'backup-desc':       'Script de automação que gera backups <strong>.sql</strong> completos de um banco MariaDB (CREATE TABLE + INSERT INTO) e envia automaticamente para um canal no Discord, com verificação do limite de 25 MB.',
+            'aps2-desc':         'Quiz web em Flask que criptografa perguntas com AES. Um app desktop em <strong>Tkinter</strong> funciona como ferramenta de descriptografia separada e demonstra o conceito de chave simétrica na prática.',
+            'twbr-desc':         'UserScript para Tribal Wars Brazil. Monitora notificações do jogo em tempo real: ataques, relatórios e mensagens. As encaminha automaticamente para um canal do Discord via webhook.',
+            'contact-title':     'Vamos conversar?',
+            'contact-sub':       'Aberto a projetos freelance, colaborações e oportunidades. A forma mais rápida de me alcançar é pelo Discord ou WhatsApp.',
+            'footer':            `&copy; ${year} Marcus Soares &nbsp;·&nbsp; <a href="https://github.com/marcus7170/portfolio" target="_blank">Código no GitHub</a> &nbsp;·&nbsp; HTML · CSS · JavaScript puros`,
+        },
+        en: {
+            'nav-sobre':         'About',
+            'nav-stack':         'Stack',
+            'nav-projetos':      'Projects',
+            'nav-contact':       'Contact',
+            'hero-location':     'São Vicente, SP · Brazil',
+            'hero-role':         'Full-Stack Developer',
+            'hero-desc':         'I build complete web platforms: from <strong>Flask</strong> backend to database and <strong>pure JavaScript</strong> frontend. CEO and sole developer of <strong>BSL</strong>, a sports platform in production with real users since 2023.',
+            'hero-btn-projects': 'View Projects',
+            'stat-projects':     'Projects',
+            'stat-years':        'Years',
+            'stat-prod':         'Live',
+            'stat-platform':     'Platform',
+            'section-sobre':     'About Me',
+            'section-stack':     'Tech Stack',
+            'section-projetos':  'Projects',
+            'about-p1':          'I started in 2012 with TypeScript scripts and bots via Tampermonkey: <strong>browser automations</strong> to solve problems no one had solved yet. No course, no mentor. Just the browser console and curiosity.',
+            'about-p2':          'From 2018 to 2022 I went deep into <strong>game modding</strong>. I became a specialist in <strong>Lua and JavaScript</strong>, developing dozens of complex scripts, mainly for FiveM. In 2019, <strong>Compton City</strong> became the most well-known modification and shop in the Brazilian FiveM scene that year.',
+            'about-p3':          'In 2022 I switched gears: <strong>data analysis</strong>, Python backend, full mastery of Discord bots and end-to-end web dev. Same logic as always: understanding systems from the inside. Now applied to real platforms.',
+            'about-p4':          'Today I\'m the sole developer of <strong>BSL</strong>: design, Flask backend, database and VPS deployment. Everything by one person. Real code, real users, in production since 2023.',
+            'about-p5':          'In 2026, the focus is <strong>AI and agents</strong>. I\'m deepening knowledge in models, pipelines and agent orchestration and applying it daily. Imagine a developer with 14 years of experience operating at the speed that dozens of AI agents can deliver working together. That is real technical leverage.',
+            'hi1-title':         'Automations since 2012',
+            'hi1-sub':           'TypeScript scripts and Tampermonkey bots, the foundation of everything that followed',
+            'hi2-title':         'Compton City · FiveM 2019',
+            'hi2-sub':           'The most famous modification and shop in the Brazilian FiveM scene that year',
+            'hi3-title':         'bsl.lat in production',
+            'hi3-sub':           'Sports platform with real users running on VPS since 2023',
+            'hi4-title':         'Solo Developer',
+            'hi4-sub':           'Design, backend, database and deployment. From zero to live, by one person',
+            'hi5-title':         '2026: AI & Agents',
+            'hi5-sub':           'Expert dev + dozens of AI agents = unprecedented speed',
+            'sg-langs':          'Languages',
+            'sg-backend':        'Backend & APIs',
+            'sg-db':             'Databases',
+            'sg-frontend':       'Frontend & Tools',
+            'badge-main':        'Main Project',
+            'bsl-desc':          'Complete sports platform built from scratch. Backend in <strong>Python (Flask)</strong> with RESTful API, <strong>MariaDB</strong> database and frontend in <strong>pure JavaScript, HTML and CSS</strong>. Includes a match simulation engine, transfer market, item shop, prediction pool, tiered membership system, ranking with EA Sports FC integration, mini-games and a full admin panel. Real users, real data, in production on a VPS since 2023.',
+            'bsl-btn1':          'Visit bsl.lat',
+            'bsl-btn2':          'Wiki',
+            'bsl-btn3':          'Calculator',
+            'bsl-btn4':          'Tactics',
+            'bsl-btn5':          'Private Backend',
+            'btn-open':          'Open',
+            'btn-play':          'Play',
+            'draft-desc':        '100% frontend draft tool for MD3 tournaments. Captain selection, animated snake draft, position filters and admin controls. Runs directly in the browser, no backend.',
+            'gamefut-desc':      'Football career simulator from age 16 to 42. 40+ random events, two divisions with promotion and relegation, real-time performance charts and a narrative legacy system.',
+            'driver-desc':       'F1 career simulator. From Formula 3 to the elite, with 6 attributes, 20 rivals per season, 30+ random events, contract market and dynamic soundtrack.',
+            'backup-desc':       'Automation script that generates complete <strong>.sql</strong> backups of a MariaDB database (CREATE TABLE + INSERT INTO) and automatically sends them to a Discord channel, with 25 MB limit checking.',
+            'aps2-desc':         'Flask web quiz that encrypts questions with AES. A desktop app in <strong>Tkinter</strong> serves as a separate decryption tool. Demonstrates the symmetric key concept in practice.',
+            'twbr-desc':         'UserScript for Tribal Wars Brazil. Monitors real-time game notifications: attacks, reports and messages. Automatically forwards them to a Discord channel via webhook.',
+            'contact-title':     'Let\'s talk?',
+            'contact-sub':       'Open to freelance projects, collaborations and opportunities. The fastest way to reach me is via Discord or WhatsApp.',
+            'footer':            `&copy; ${year} Marcus Soares &nbsp;·&nbsp; <a href="https://github.com/marcus7170/portfolio" target="_blank">Code on GitHub</a> &nbsp;·&nbsp; Pure HTML · CSS · JavaScript`,
+        },
+        es: {
+            'nav-sobre':         'Sobre',
+            'nav-stack':         'Stack',
+            'nav-projetos':      'Proyectos',
+            'nav-contact':       'Contacto',
+            'hero-location':     'São Vicente, SP · Brasil',
+            'hero-role':         'Desarrollador Full-Stack',
+            'hero-desc':         'Construyo plataformas web completas: desde el backend en <strong>Flask</strong> hasta la base de datos y el frontend en <strong>JavaScript puro</strong>. CEO y único desarrollador de <strong>BSL</strong>, plataforma deportiva en producción con usuarios reales desde 2023.',
+            'hero-btn-projects': 'Ver Proyectos',
+            'stat-projects':     'Proyectos',
+            'stat-years':        'Años',
+            'stat-prod':         'En Prod.',
+            'stat-platform':     'Plataforma',
+            'section-sobre':     'Sobre Mí',
+            'section-stack':     'Stack Técnico',
+            'section-projetos':  'Proyectos',
+            'about-p1':          'Empecé en 2012 con scripts TypeScript y bots vía Tampermonkey: <strong>automatizaciones de navegador</strong> para resolver problemas que nadie había resuelto. Sin curso, sin mentor. Solo la consola del navegador y curiosidad.',
+            'about-p2':          'De 2018 a 2022 me sumergí en las <strong>modificaciones de juegos</strong>. Me convertí en especialista en <strong>Lua y JavaScript</strong>, desarrollando docenas de scripts complejos, principalmente para FiveM. En 2019, <strong>Compton City</strong> se convirtió en la modificación y tienda más conocida de la escena brasileña de FiveM ese año.',
+            'about-p3':          'En 2022 cambié de rumbo: <strong>análisis de datos</strong>, backend Python, dominio completo de bots de Discord y desarrollo web de punta a punta. La misma lógica de siempre: entender sistemas desde adentro. Ahora aplicada a plataformas reales.',
+            'about-p4':          'Hoy soy el único desarrollador de <strong>BSL</strong>: diseño, backend Flask, base de datos y despliegue en VPS. Todo por una persona. Código real, usuarios reales, en producción desde 2023.',
+            'about-p5':          'En 2026, el foco es <strong>IA y agentes</strong>. Estoy profundizando conocimientos en modelos, pipelines y orquestación de agentes y aplicándolo en el día a día. Imagina un programador con 14 años de experiencia operando a la velocidad que decenas de agentes de IA pueden ofrecer trabajando juntos. Eso es apalancamiento técnico real.',
+            'hi1-title':         'Automatizaciones desde 2012',
+            'hi1-sub':           'Scripts TypeScript y bots Tampermonkey, base de todo lo que vino después',
+            'hi2-title':         'Compton City · FiveM 2019',
+            'hi2-sub':           'La modificación y tienda más famosa de la escena brasileña de FiveM ese año',
+            'hi3-title':         'bsl.lat en producción',
+            'hi3-sub':           'Plataforma deportiva con usuarios reales funcionando en VPS desde 2023',
+            'hi4-title':         'Solo Developer',
+            'hi4-sub':           'Diseño, backend, base de datos y despliegue. De cero al aire, por una persona',
+            'hi5-title':         '2026: IA y Agentes',
+            'hi5-sub':           'Dev experto + decenas de agentes de IA = velocidad sin precedente',
+            'sg-langs':          'Lenguajes',
+            'sg-backend':        'Backend & APIs',
+            'sg-db':             'Bases de Datos',
+            'sg-frontend':       'Frontend & Herramientas',
+            'badge-main':        'Proyecto Principal',
+            'bsl-desc':          'Plataforma deportiva completa construida desde cero. Backend en <strong>Python (Flask)</strong> con API RESTful, base de datos <strong>MariaDB</strong> y frontend en <strong>JavaScript, HTML y CSS puros</strong>. Incluye motor de simulación de partidos, mercado de fichajes, tienda de ítems, bolsa de predicciones, sistema de socios por niveles, ranking con integración EA Sports FC, mini-juegos y panel de administración completo. Usuarios reales, datos reales, en producción en VPS desde 2023.',
+            'bsl-btn1':          'Visitar bsl.lat',
+            'bsl-btn2':          'Wiki',
+            'bsl-btn3':          'Calculadora',
+            'bsl-btn4':          'Tácticas',
+            'bsl-btn5':          'Backend Privado',
+            'btn-open':          'Abrir',
+            'btn-play':          'Jugar',
+            'draft-desc':        'Herramienta de draft 100% frontend para torneos MD3. Selección de capitanes, snake draft animado, filtros por posición y controles de admin. Funciona directo en el navegador, sin backend.',
+            'gamefut-desc':      'Simulador de carrera de fútbol de los 16 a los 42 años. 40+ eventos aleatorios, dos divisiones con ascenso y descenso, gráficos de rendimiento en tiempo real y sistema de legado narrativo.',
+            'driver-desc':       'Simulador de carrera en F1. Desde la Fórmula 3 hasta la élite, con 6 atributos, 20 rivales por temporada, 30+ eventos aleatorios, mercado de contratos y banda sonora dinámica.',
+            'backup-desc':       'Script de automatización que genera backups <strong>.sql</strong> completos de una base de datos MariaDB (CREATE TABLE + INSERT INTO) y los envía automáticamente a un canal de Discord, con verificación del límite de 25 MB.',
+            'aps2-desc':         'Quiz web en Flask que cifra preguntas con AES. Una app de escritorio en <strong>Tkinter</strong> funciona como herramienta de descifrado separada y demuestra el concepto de clave simétrica en práctica.',
+            'twbr-desc':         'UserScript para Tribal Wars Brazil. Monitorea notificaciones del juego en tiempo real: ataques, informes y mensajes. Las reenvía automáticamente a un canal de Discord vía webhook.',
+            'contact-title':     '¿Hablamos?',
+            'contact-sub':       'Abierto a proyectos freelance, colaboraciones y oportunidades. La forma más rápida de contactarme es por Discord o WhatsApp.',
+            'footer':            `&copy; ${year} Marcus Soares &nbsp;·&nbsp; <a href="https://github.com/marcus7170/portfolio" target="_blank">Código en GitHub</a> &nbsp;·&nbsp; HTML · CSS · JavaScript puros`,
+        }
+    };
+
+    function setLang(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (T[lang][key] !== undefined) el.innerHTML = T[lang][key];
+        });
+        document.getElementById('footer-text').innerHTML = T[lang]['footer'];
+        document.querySelectorAll('.lt').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+        localStorage.setItem('lang', lang);
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'pt';
+    setLang(savedLang);
+
+    document.querySelectorAll('.lt').forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(e => {
@@ -994,8 +1115,6 @@
     const btt = document.getElementById('btt');
     window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    document.getElementById('yr').textContent = new Date().getFullYear();
 
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
