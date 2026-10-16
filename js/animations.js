@@ -96,34 +96,55 @@
             }
         });
 
-        // --- C. BATCH REVEAL DE PROJETOS NO SCROLL ---
-        ScrollTrigger.batch(".project-card", {
-            start: "top 85%",
-            interval: 0.1,
-            batchMax: 3,
-            onEnter: (batch) => {
-                gsap.to(batch, {
-                    autoAlpha: 1,
-                    y: 0,
-                    stagger: 0.15,
-                    duration: 0.7,
-                    ease: "power2.out",
-                    overwrite: "auto"
-                });
-            }
-        });
+        // --- C. REVEAL DE PROJETOS NO SCROLL ---
+        if (isDesktop) {
+            ScrollTrigger.batch(".project-card", {
+                start: "top 85%",
+                interval: 0.1,
+                batchMax: 3,
+                onEnter: (batch) => {
+                    gsap.to(batch, {
+                        autoAlpha: 1,
+                        y: 0,
+                        stagger: 0.15,
+                        duration: 0.7,
+                        ease: "power2.out",
+                        overwrite: "auto"
+                    });
+                }
+            });
+        } else {
+            // No Mobile: Gatilho único e leve com once: true para não congelar o touch scroll
+            ScrollTrigger.create({
+                trigger: "#projects-grid",
+                start: "top 90%",
+                once: true,
+                onEnter: () => {
+                    gsap.to(".project-card", {
+                        autoAlpha: 1,
+                        y: 0,
+                        stagger: 0.08,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        overwrite: "auto"
+                    });
+                }
+            });
+        }
 
         // --- D. TIMELINE / TRAJETÓRIA REVEAL ---
         gsap.utils.toArray(".timeline-node").forEach((node) => {
             gsap.from(node, {
                 scrollTrigger: {
                     trigger: node,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
+                    start: "top 90%",
+                    once: !isDesktop, // No mobile, dispara apenas uma vez
+                    toggleActions: isDesktop ? "play none none reverse" : "play none none none"
                 },
-                x: -30,
+                x: isDesktop ? -30 : 0,
+                y: isDesktop ? 0 : 20,
                 autoAlpha: 0,
-                duration: 0.7,
+                duration: isDesktop ? 0.7 : 0.45,
                 ease: "power2.out"
             });
         });
@@ -132,15 +153,16 @@
         gsap.from(".terminal-container", {
             scrollTrigger: {
                 trigger: "#terminal-section",
-                start: "top 80%"
+                start: "top 85%",
+                once: !isDesktop
             },
-            y: 40,
+            y: isDesktop ? 40 : 20,
             autoAlpha: 0,
-            duration: 0.9,
-            ease: "power3.out"
+            duration: isDesktop ? 0.9 : 0.5,
+            ease: "power2.out"
         });
 
-        // --- F. 3D TILT EFFECT NOS CARDS (Motion Design) ---
+        // --- F. 3D TILT EFFECT NOS CARDS (Apenas Desktop) ---
         if (isDesktop) {
             initTiltEffect();
         }

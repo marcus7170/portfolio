@@ -1054,7 +1054,7 @@ footer {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE & PERFORMANCE MOBILE (GPU OFFLOAD)
    ========================================================================== */
 @media (max-width: 992px) {
     .hero-grid {
@@ -1062,7 +1062,7 @@ footer {
     }
     #three-canvas-container {
         width: 100%;
-        opacity: 0.45;
+        opacity: 0.40;
     }
     .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1073,18 +1073,76 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* 1. Navegação fluida sem backdrop-filter pesado no mobile */
     .nav-links {
         display: none;
     }
+    nav.scrolled {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: rgba(7, 7, 10, 0.96);
+    }
+
+    /* 2. Otimização de GPU: Remove filtros de blur em camadas fixed no mobile */
+    .ambient-glow-1,
+    .ambient-glow-2 {
+        filter: none !important;
+    }
+    .ambient-glow-1 {
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(circle, rgba(255, 184, 0, 0.05) 0%, transparent 60%);
+    }
+    .ambient-glow-2 {
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.04) 0%, transparent 60%);
+    }
+
+    /* 3. Simplifica a máscara da grade no mobile */
+    .grid-overlay {
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+        opacity: 0.35;
+    }
+
+    /* 4. Canvas Three.js leve e contido no mobile */
+    #three-canvas-container {
+        height: 75%;
+        opacity: 0.30;
+        will-change: transform;
+    }
+
+    /* 5. Modern Web API: content-visibility evita cálculo de layout offscreen */
+    #projects-section,
+    #terminal-section,
+    #trajectory-section {
+        content-visibility: auto;
+        contain-intrinsic-size: 550px;
+    }
+
+    /* 6. Layouts responsivos de alta fluidez */
     .metrics-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     .terminal-actions-bar {
         flex-direction: column;
         gap: 8px;
         align-items: flex-start;
+    }
+    .filter-tabs {
+        overflow-x: auto;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+    }
+    .filter-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
     }
 }
