@@ -29,7 +29,9 @@ export default {
 
             const now = Date.now();
             const lastSeen = ipCooldownMap.get(clientIp);
-            if (lastSeen && (now - lastSeen) < RATE_LIMIT_MS) {
+            const isCampaignOrRef = Boolean(body.customRef || (body.referrer && /linkedin|github|instagram|google/i.test(body.referrer)) || (userAgent && /linkedin/i.test(userAgent)));
+            const cooldownToUse = isCampaignOrRef ? 10 * 1000 : RATE_LIMIT_MS;
+            if (lastSeen && (now - lastSeen) < cooldownToUse) {
                 return new Response(JSON.stringify({ status: 'rate_limited', reason: 'IP em cooldown' }), {
                     headers: corsHeaders()
                 });
@@ -46,7 +48,7 @@ export default {
             const country = cf.country || 'BR';
             const isp = cf.asOrganization || cf.asn || 'Provedor';
 
-            const originInfo = formatOrigin(body.referrer, body.customRef);
+            const originInfo = formatOrigin(body.referrer, body.customRef, userAgent);
 
             const brasiliaTime = new Date().toLocaleString('pt-BR', {
                 timeZone: 'America/Sao_Paulo',
@@ -72,7 +74,6 @@ export default {
             const chatId = env.TELEGRAM_CHAT_ID || '5982643537';
 
             if (!botToken || !chatId) {
-                console.error('Credenciais do Telegram não configuradas no Worker.');
                 return new Response(JSON.stringify({ 
                     error: 'Configure TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID nas variáveis de ambiente do Cloudflare Worker.' 
                 }), {
@@ -114,7 +115,6 @@ export default {
             });
 
         } catch (err) {
-            console.error('Erro ao processar notificação:', err);
             return new Response(JSON.stringify({ error: err.message }), {
                 status: 500,
                 headers: corsHeaders()
@@ -123,9 +123,18 @@ export default {
     }
 };
 
-function formatOrigin(referrer, customRef) {
+function formatOrigin(referrer, customRef, userAgent) {
     if (customRef) {
+        if (customRef.toLowerCase().includes('linkedin')) {
+            return `💼 LinkedIn (Campanha)`;
+        }
         return `🎯 Campanha Direta (${customRef})`;
+    }
+    if (userAgent && /linkedin/i.test(userAgent)) {
+        return '💼 LinkedIn (App Mobile)';
+    }
+    if (userAgent && /instagram/i.test(userAgent)) {
+        return '📸 Instagram (App)';
     }
     if (!referrer || referrer === '') {
         return '🔗 Acesso Direto / Mensagem';
