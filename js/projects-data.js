@@ -5,7 +5,7 @@
 const PROJECTS_DATA = [
     {
         id: "bsl-lat-saas",
-        title: "BSL (Brasil Super League) — Plataforma SaaS em Produção",
+        title: "BSL (Brazilian eSports League) — Plataforma SaaS em Produção",
         category: "saas",
         categoryLabel: "Flagship • SaaS em Produção",
         featured: true,

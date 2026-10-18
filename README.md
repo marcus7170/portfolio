@@ -6,7 +6,7 @@
 [![BSL.LAT](https://img.shields.io/badge/BSL.LAT-SaaS_em_Produção-F59E0B?style=for-the-badge)](https://bsl.lat)
 
 Repositório oficial do portfólio web de **Marcus Vinícius Soares da Silva** ([@marcus7170](https://github.com/marcus7170)).  
-Desenvolvedor Backend, Engenheiro de IA e Co-Fundador da **BSL Super Pro**. Graduando em Ciência da Computação na UNIP (conclusão em 2028).
+Desenvolvedor Backend, Engenheiro de IA e Co-Fundador da **BSL (Brazilian eSports League) / BSL.LAT**. Graduando em Ciência da Computação na UNIP (conclusão em 2028).
 
 ---
 
