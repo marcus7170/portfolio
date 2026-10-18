@@ -1,21 +1,11 @@
-/**
- * Cloudflare Worker: Notificador Oficial de Visitas no Telegram
- * Marcus Vinícius Soares da Silva (Marcus7170)
- * 
- * Vantagens do Telegram:
- * - 100% Gratuito, oficial da plataforma, sem limite de mensagens e nunca fica cheio
- * - Notificações push em tempo real no celular (iOS / Android / Desktop)
- * - Formatação segura em HTML (imune a erros de parse com caracteres especiais)
- * - Geolocalização nativa de borda da Cloudflare (Cidade, Estado, País, Provedor ISP)
- * - Rate-limiting por IP (anti-spam de 20 minutos) e filtro de robôs/crawlers
- */
+
 
 const ipCooldownMap = new Map();
-const RATE_LIMIT_MS = 20 * 60 * 1000; // 20 minutos por IP
+const RATE_LIMIT_MS = 20 * 60 * 1000; 
 
 export default {
     async fetch(request, env) {
-        // 1. Trata CORS Preflight (OPTIONS)
+        
         if (request.method === 'OPTIONS') {
             return handleCors();
         }
@@ -30,7 +20,6 @@ export default {
             const clientIp = request.headers.get('cf-connecting-ip') || 'Desconhecido';
             const userAgent = body.userAgent || request.headers.get('user-agent') || '';
 
-            // 2. Filtro de Bots (Googlebot, Bing, Scanners, Lighthouse)
             const isBot = /bot|crawler|spider|crawling|lighthouse|headless|curl|wget|python|postman/i.test(userAgent);
             if (isBot) {
                 return new Response(JSON.stringify({ status: 'ignored', reason: 'Bot detectado' }), {
@@ -38,7 +27,6 @@ export default {
                 });
             }
 
-            // 3. Rate-Limiting por IP (Anti-Spam)
             const now = Date.now();
             const lastSeen = ipCooldownMap.get(clientIp);
             if (lastSeen && (now - lastSeen) < RATE_LIMIT_MS) {
@@ -52,17 +40,14 @@ export default {
                 ipCooldownMap.clear();
             }
 
-            // 4. Dados Geográficos da Borda da Cloudflare
             const cf = request.cf || {};
             const city = cf.city || 'Cidade Desconhecida';
             const region = cf.region || cf.regionCode || '';
             const country = cf.country || 'BR';
             const isp = cf.asOrganization || cf.asn || 'Provedor';
 
-            // 5. Origem Formatada (99Freelas, LinkedIn, etc.)
             const originInfo = formatOrigin(body.referrer, body.customRef);
 
-            // 6. Horário de Brasília
             const brasiliaTime = new Date().toLocaleString('pt-BR', {
                 timeZone: 'America/Sao_Paulo',
                 day: '2-digit',
@@ -73,7 +58,6 @@ export default {
                 second: '2-digit'
             });
 
-            // 7. Montagem da Mensagem em HTML Seguro (Evita quebra por caracteres como _ ou &)
             const messageHtml = [
                 '🚨 <b>NOVO ACESSO NO PORTFÓLIO!</b>',
                 '',
@@ -84,7 +68,6 @@ export default {
                 `⏰ <b>Horário:</b> ${brasiliaTime}`
             ].join('\n');
 
-            // 8. Validação das Credenciais do Telegram (com suas credenciais já configuradas)
             const botToken = env.TELEGRAM_BOT_TOKEN || '8664127545:AAGwDC5VnXm-n9UfN56GI4uvTKUFAArhXZI';
             const chatId = env.TELEGRAM_CHAT_ID || '5982643537';
 
@@ -98,7 +81,6 @@ export default {
                 });
             }
 
-            // 9. Envio para a API Oficial do Telegram
             const tgUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
             const tgPayload = {
                 chat_id: chatId,
@@ -107,7 +89,6 @@ export default {
                 disable_web_page_preview: true
             };
 
-            // Se a visita veio de uma URL com link, adiciona botão inline direto no Telegram
             if (body.referrer && body.referrer.startsWith('http')) {
                 tgPayload.reply_markup = {
                     inline_keyboard: [

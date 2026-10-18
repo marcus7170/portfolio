@@ -1,7 +1,4 @@
-/**
- * Main Interactive Logic for Portfolio v2
- * Marcus Vinícius Soares da Silva (Marcus7170)
- */
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initProjectsGrid();
@@ -9,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initTerminalTabs();
     initNavbarScroll();
     initCopyButtons();
+    initTelemetryWidget();
+    initDefenseSystem();
 });
 
-// 1. Renderização dos Projetos a partir de PROJECTS_DATA
 function initProjectsGrid() {
     const grid = document.getElementById('projects-grid');
     if (!grid || typeof PROJECTS_DATA === 'undefined') return;
@@ -62,13 +60,11 @@ function initProjectsGrid() {
         grid.appendChild(card);
     });
 
-    // Se o ScrollTrigger estiver ativo, recalcula após render
     if (typeof ScrollTrigger !== 'undefined') {
         ScrollTrigger.refresh();
     }
 }
 
-// 2. Filtros de Projetos por Categoria
 function initProjectFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     if (!filterButtons.length) return;
@@ -100,7 +96,6 @@ function initProjectFilters() {
     });
 }
 
-// 3. Terminal Interativo de Código
 function initTerminalTabs() {
     const tabButtons = document.querySelectorAll('.terminal-tab');
     const codeEl = document.getElementById('terminal-code-content');
@@ -118,7 +113,6 @@ function initTerminalTabs() {
 
         codeEl.textContent = snippet.code;
 
-        // Animação de digitação/transição suave com GSAP
         if (typeof gsap !== 'undefined') {
             gsap.fromTo(codeEl, { opacity: 0.3 }, { opacity: 1, duration: 0.3 });
         }
@@ -133,11 +127,9 @@ function initTerminalTabs() {
         });
     });
 
-    // Carrega o primeiro snippet como padrão
     loadSnippet('pool');
 }
 
-// 4. Copiar Código do Terminal & Contatos
 function initCopyButtons() {
     const copyTerminalBtn = document.getElementById('btn-copy-code');
     const codeEl = document.getElementById('terminal-code-content');
@@ -150,7 +142,6 @@ function initCopyButtons() {
         });
     }
 
-    // Botões de cópia rápida no rodapé
     const copyEmailBtn = document.getElementById('btn-copy-email');
     if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', (e) => {
@@ -162,7 +153,6 @@ function initCopyButtons() {
     }
 }
 
-// Toast de Feedback
 function showToast(message) {
     let toast = document.getElementById('app-toast');
     if (!toast) {
@@ -178,7 +168,6 @@ function showToast(message) {
     }, 3200);
 }
 
-// 5. Navbar Scroll Effect & Mobile Menu
 function initNavbarScroll() {
     const nav = document.getElementById('main-nav');
     if (!nav) return;
@@ -191,7 +180,6 @@ function initNavbarScroll() {
         }
     }, { passive: true });
 
-    // Smooth scroll para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
@@ -206,4 +194,178 @@ function initNavbarScroll() {
             }
         });
     });
+}
+
+function initTelemetryWidget() {
+    const toast = document.getElementById('telemetry-toast');
+    const pill = document.getElementById('telemetry-pill');
+    const btnClose = document.getElementById('btn-close-telemetry');
+    const btnDismiss = document.getElementById('btn-telemetry-dismiss');
+    const btnToTerminal = document.getElementById('btn-telemetry-to-terminal');
+
+    if (!toast) return;
+
+    const timeEl = document.getElementById('tg-mockup-time');
+    const geoEl = document.getElementById('tg-mockup-geo');
+    const refEl = document.getElementById('tg-mockup-ref');
+    const deviceEl = document.getElementById('tg-mockup-device');
+
+    if (timeEl) {
+        timeEl.textContent = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    if (deviceEl) {
+        const isMobile = window.innerWidth <= 768;
+        deviceEl.textContent = `${isMobile ? 'Mobile' : 'Desktop'} (${window.screen.width}x${window.screen.height})`;
+    }
+
+    if (refEl) {
+        const referrer = document.referrer ? document.referrer.toLowerCase() : '';
+        if (referrer.includes('99freelas')) refEl.textContent = '💼 99Freelas';
+        else if (referrer.includes('linkedin')) refEl.textContent = '💼 LinkedIn';
+        else if (referrer.includes('github')) refEl.textContent = '🐙 GitHub';
+        else if (referrer.includes('google')) refEl.textContent = '🔍 Busca Google';
+        else refEl.textContent = '🔗 Acesso Direto / Link';
+    }
+
+    const isDismissed = sessionStorage.getItem('telemetry_toast_closed') === 'true';
+
+    if (isDismissed) {
+        if (pill) pill.classList.add('active');
+    } else {
+        setTimeout(() => {
+            toast.classList.add('active');
+            toast.setAttribute('aria-hidden', 'false');
+        }, 3500);
+    }
+
+    function closeToast() {
+        toast.classList.remove('active');
+        toast.setAttribute('aria-hidden', 'true');
+        if (pill) pill.classList.add('active');
+        sessionStorage.setItem('telemetry_toast_closed', 'true');
+    }
+
+    if (btnClose) btnClose.addEventListener('click', closeToast);
+    if (btnDismiss) btnDismiss.addEventListener('click', closeToast);
+
+    if (pill) {
+        pill.addEventListener('click', () => {
+            pill.classList.remove('active');
+            toast.classList.add('active');
+            toast.setAttribute('aria-hidden', 'false');
+        });
+    }
+
+    if (btnToTerminal) {
+        btnToTerminal.addEventListener('click', () => {
+            closeToast();
+
+            const tgTab = document.querySelector('.terminal-tab[data-snippet="telegram_bot"]');
+            if (tgTab) {
+                tgTab.click();
+            }
+
+            const terminalSection = document.getElementById('terminal-section');
+            if (terminalSection) {
+                terminalSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+}
+
+function initDefenseSystem() {
+    const modal = document.getElementById('defense-modal');
+    const triggerNameEl = document.getElementById('defense-trigger-name');
+    const btnClose = document.getElementById('btn-close-defense');
+    const btnDismiss = document.getElementById('btn-defense-dismiss');
+    const backdrop = document.getElementById('defense-modal-backdrop');
+    const btnToTerminal = document.getElementById('btn-defense-to-terminal');
+    const devTagBtn = document.getElementById('dev-tag-f12');
+    const btnInlineTest = document.getElementById('btn-test-defense-click');
+
+    if (!modal) return;
+
+    function openDefenseModal(triggerReason) {
+        if (triggerNameEl) {
+            triggerNameEl.textContent = triggerReason || 'Atalho F12 / DevTools';
+        }
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+
+        if (navigator.vibrate) {
+            navigator.vibrate([40, 60, 40]);
+        }
+    }
+
+    function closeDefenseModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    window.addEventListener('keydown', (e) => {
+        const isF12 = e.key === 'F12' || e.keyCode === 123;
+        const isInspect = (e.ctrlKey || e.metaKey) && e.shiftKey && 
+                          (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c');
+        const isViewSource = (e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U');
+
+        if (isF12) {
+            e.preventDefault();
+            e.stopPropagation();
+            openDefenseModal('Tecla F12 (DevTools)');
+            return false;
+        }
+
+        if (isInspect) {
+            e.preventDefault();
+            e.stopPropagation();
+            openDefenseModal('Atalho de Inspeção (Ctrl+Shift+' + e.key.toUpperCase() + ')');
+            return false;
+        }
+
+        if (isViewSource) {
+            e.preventDefault();
+            e.stopPropagation();
+            openDefenseModal('Exibir Código Fonte (Ctrl+U)');
+            return false;
+        }
+
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeDefenseModal();
+        }
+    }, true);
+
+    window.addEventListener('contextmenu', (e) => {
+        
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        e.preventDefault();
+        openDefenseModal('Clique com Botão Direito (Inspecionar)');
+    }, true);
+
+    if (devTagBtn) {
+        devTagBtn.addEventListener('click', () => {
+            openDefenseModal('Demonstração Interativa (Tag Hero)');
+        });
+    }
+
+    if (btnInlineTest) {
+        btnInlineTest.addEventListener('click', () => {
+            openDefenseModal('Simulação de Boas Práticas de Defesa');
+        });
+    }
+
+    if (btnClose) btnClose.addEventListener('click', closeDefenseModal);
+    if (btnDismiss) btnDismiss.addEventListener('click', closeDefenseModal);
+    if (backdrop) backdrop.addEventListener('click', closeDefenseModal);
+
+    if (btnToTerminal) {
+        btnToTerminal.addEventListener('click', () => {
+            closeDefenseModal();
+            const terminalSection = document.getElementById('terminal-section');
+            if (terminalSection) {
+                terminalSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
 }

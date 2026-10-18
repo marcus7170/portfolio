@@ -1,8 +1,4 @@
-/**
- * Hero 3D Interactive Scene — Three.js
- * Marcus Vinícius (Marcus7170)
- * Renderização procedural em WebGL com iluminação dinâmica e partículas
- */
+
 
 (function () {
     const container = document.getElementById('three-canvas-container');
@@ -23,14 +19,11 @@
     function init() {
         isMobile = window.innerWidth < 768;
 
-        // 1. Cena
         scene = new THREE.Scene();
 
-        // 2. Câmera
         camera = new THREE.PerspectiveCamera(55, container.clientWidth / container.clientHeight, 0.1, 1000);
         camera.position.z = isMobile ? 28 : 24;
 
-        // 3. Renderer com perfil inteligente (leve no mobile, ultra-HD no desktop)
         renderer = new THREE.WebGLRenderer({
             alpha: true,
             antialias: !isMobile,
@@ -40,20 +33,15 @@
         renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Grupo Principal
         mainGroup = new THREE.Group();
         scene.add(mainGroup);
 
-        // 4. Criação do Núcleo 3D Procedural
         createCoreNode();
 
-        // 5. Criação das Órbitas de Dados
         createOrbitalRings();
 
-        // 6. Nuvem de Partículas Ambientais
         createParticleField();
 
-        // 7. Iluminação
         const ambientLight = new THREE.AmbientLight(0xffb800, isMobile ? 0.9 : 0.8);
         scene.add(ambientLight);
 
@@ -67,13 +55,11 @@
             scene.add(pointLight2);
         }
 
-        // Eventos
         window.addEventListener('resize', onWindowResize, { passive: true });
         if (!isMobile) {
             window.addEventListener('mousemove', onMouseMove, { passive: true });
         }
 
-        // Performance: Pausa quando a aba perde foco
         document.addEventListener('visibilitychange', () => {
             isVisible = !document.hidden;
             if (isVisible && isHeroInView && !animationFrameId) {
@@ -81,13 +67,10 @@
             }
         });
 
-        // Performance Crítica: Pausa o Three.js quando o Hero sai da tela (Economiza 100% de GPU/CPU offscreen)
         setupHeroObserver();
 
-        // Scroll listener com throttling via requestAnimationFrame
         setupScrollSync();
 
-        // Inicia Loop de Renderização
         animate();
     }
 
@@ -124,7 +107,6 @@
         }, { passive: true });
     }
 
-    // Núcleo Geométrico Multifacetado
     function createCoreNode() {
         const detail = isMobile ? 1 : 2;
         const coreGeometry = new THREE.IcosahedronGeometry(6.2, detail);
@@ -139,7 +121,6 @@
         coreMesh = new THREE.Mesh(coreGeometry, wireframeMaterial);
         mainGroup.add(coreMesh);
 
-        // Nós luminosos nos vértices
         const nodePositions = [];
         const posAttribute = coreGeometry.getAttribute('position');
         const step = isMobile ? 6 : 3;
@@ -175,7 +156,6 @@
         coreMesh.add(vertexNodes);
     }
 
-    // Anéis Orbitais com Rotações Independentes
     function createOrbitalRings() {
         const radialSegments = isMobile ? 8 : 16;
         const tubularSegments = isMobile ? 40 : 80;
@@ -206,7 +186,6 @@
         });
     }
 
-    // Campo de Partículas de Dados em Profundidade
     function createParticleField() {
         const particleCount = isMobile ? 70 : 220;
         const positions = new Float32Array(particleCount * 3);
@@ -263,7 +242,7 @@
     }
 
     function animate() {
-        // Se a aba estiver oculta ou o Hero estiver fora do viewport, pausa o loop
+        
         if (!isVisible || !isHeroInView) {
             animationFrameId = null;
             return;
@@ -271,7 +250,6 @@
 
         animationFrameId = requestAnimationFrame(animate);
 
-        // Interpolação suave do mouse (no desktop)
         if (!isMobile) {
             targetX += (mouseX - targetX) * 0.04;
             targetY += (mouseY - targetY) * 0.04;
@@ -285,14 +263,12 @@
             mainGroup.rotation.y += 0.002;
         }
 
-        // Rotação dos anéis orbitais
         for (let i = 0; i < orbitalRings.length; i++) {
             const ring = orbitalRings[i];
             ring.rotation.z += ring.userData.rotSpeed;
             ring.rotation.x += ring.userData.rotSpeed * 0.5;
         }
 
-        // Oscilação suave do campo de partículas
         if (particleSystem) {
             particleSystem.rotation.y -= 0.0006;
         }
@@ -300,7 +276,6 @@
         renderer.render(scene, camera);
     }
 
-    // Inicializa quando o DOM estiver pronto
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {

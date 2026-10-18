@@ -1,6 +1,4 @@
-/**
- * Projetos & Repositórios — Marcus Vinícius (Marcus7170)
- */
+
 
 const PROJECTS_DATA = [
     {
@@ -18,7 +16,7 @@ const PROJECTS_DATA = [
             { label: "Queries no Boot", value: "0 DDL", detail: "227 queries eliminadas" }
         ],
         tags: ["Python", "Flask", "MariaDB", "Akamai Bypass", "OAuth2", "Mercado Pago", "SaaS Multi-tenant", "EA FC 27 API"],
-        github: null, // Código proprietário de produção na pasta BSL
+        github: null, 
         live: "https://bsl.lat",
         liveSecondary: "http://bslsuperpro.com.br/",
         details: "Engenharia de backend com connection pooling seguro (SafePooledConnection), controle de versão de schema com _schema_migrations, cache em memória com TTL e ingestão automática de partidas de consoles da atual geração (PS5, Xbox Series X|S, PC)."
@@ -324,5 +322,47 @@ public class Lote implements Comparable<Lote> {
         return Integer.compare(this.idLote, outro.idLote);
     }
 }`
+    },
+    telegram_bot: {
+        filename: "worker/portfolio-notifier.js (Cloudflare Edge)",
+        language: "javascript",
+        title: "Serverless Edge Telemetry & Telegram Dispatcher",
+        description: "Automação serverless em produção na Cloudflare que captura geolocalização nativa de borda, filtra bots, aplica rate-limiting por IP e envia alerta push instantâneo com formato seguro via API Oficial do Telegram.",
+        code: `// Cloudflare Worker Serverless: Captura de Borda & Envio Telegram
+export default {
+    async fetch(request, env) {
+        if (request.method !== 'POST') return new Response('Not Found', { status: 404 });
+
+        const body = await request.json();
+        const cf = request.cf || {};
+        
+        // Geolocalização nativa de borda da Cloudflare (Sem overhead de API externa)
+        const city = cf.city || 'Desconhecida';
+        const region = cf.region || '';
+        const country = cf.country || 'BR';
+        const isp = cf.asOrganization || 'Provedor';
+
+        const messageHtml = [
+            '🚨 <b>NOVO ACESSO NO PORTFÓLIO!</b>',
+            '',
+            \`📍 <b>Local:</b> \${city}, \${region} - \${country} (\${isp})\`,
+            \`🔗 <b>Origem:</b> \${body.referrer || 'Acesso Direto'}\`,
+            \`💻 <b>Dispositivo:</b> \${body.deviceType} (\${body.screenResolution})\`,
+            \`⏰ <b>Horário:</b> \${new Date().toLocaleTimeString('pt-BR')}\`
+        ].join('\\n');
+
+        // Disparo assíncrono para a API Oficial do Telegram
+        const tgUrl = \`https://api.telegram.org/bot\${env.TELEGRAM_BOT_TOKEN}/sendMessage\`;
+        return await fetch(tgUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: env.TELEGRAM_CHAT_ID,
+                text: messageHtml,
+                parse_mode: 'HTML'
+            })
+        });
+    }
+};`
     }
 };

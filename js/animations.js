@@ -1,11 +1,7 @@
-/**
- * UI Animations & Micro-interactions — GSAP & ScrollTrigger
- * Marcus Vinícius (Marcus7170)
- * Orquestração de timelines, contadores com scrub e efeitos 3D interativos
- */
+
 
 (function () {
-    // 1. Registro seguro do ScrollTrigger
+    
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
     } else {
@@ -13,13 +9,11 @@
         return;
     }
 
-    // Configuração global de defaults
     gsap.defaults({
         ease: "power2.out",
         duration: 0.8
     });
 
-    // 2. Sistema Responsivo & Acessibilidade (gsap.matchMedia)
     const mm = gsap.matchMedia();
 
     mm.add({
@@ -30,7 +24,7 @@
         const { isDesktop, reduceMotion } = context.conditions;
 
         if (reduceMotion) {
-            // Acessibilidade: exibe os elementos sem movimentação brusca
+            
             gsap.set(".hero-reveal, .metric-card, .project-card, .timeline-card", {
                 autoAlpha: 1,
                 y: 0
@@ -38,7 +32,6 @@
             return;
         }
 
-        // --- A. TIMELINE DO HERO SECTION (Snappy & Fluid) ---
         const heroTl = gsap.timeline();
 
         heroTl.from(".hero-badge", {
@@ -73,13 +66,12 @@
             ease: "back.out(1.2)"
         }, "-=0.3");
 
-        // --- B. CONTADORES DE MÉTRICAS COM SCROLLTRIGGER ---
         ScrollTrigger.create({
             trigger: "#metrics-section",
             start: "top 80%",
             once: true,
             onEnter: () => {
-                // Animação de entrada dos cards de métricas
+                
                 gsap.from(".metric-card", {
                     y: 35,
                     autoAlpha: 0,
@@ -88,7 +80,6 @@
                     ease: "power2.out"
                 });
 
-                // Contadores numéricos progressivos
                 animateCounter("counter-boot", -99.4, 1, "%", 2.2);
                 animateCounter("counter-latency", 45, 0, "ms", 2.0);
                 animateCounter("counter-queries", 0, 0, " DDL", 1.8);
@@ -96,7 +87,6 @@
             }
         });
 
-        // --- C. REVEAL DE PROJETOS NO SCROLL ---
         if (isDesktop) {
             ScrollTrigger.batch(".project-card", {
                 start: "top 85%",
@@ -114,7 +104,7 @@
                 }
             });
         } else {
-            // No Mobile: Gatilho único e leve com once: true para não congelar o touch scroll
+            
             ScrollTrigger.create({
                 trigger: "#projects-grid",
                 start: "top 90%",
@@ -132,13 +122,12 @@
             });
         }
 
-        // --- D. TIMELINE / TRAJETÓRIA REVEAL ---
         gsap.utils.toArray(".timeline-node").forEach((node) => {
             gsap.from(node, {
                 scrollTrigger: {
                     trigger: node,
                     start: "top 90%",
-                    once: !isDesktop, // No mobile, dispara apenas uma vez
+                    once: !isDesktop, 
                     toggleActions: isDesktop ? "play none none reverse" : "play none none none"
                 },
                 x: isDesktop ? -30 : 0,
@@ -149,7 +138,6 @@
             });
         });
 
-        // --- E. TERMINAL INTERATIVO REVEAL ---
         gsap.from(".terminal-container", {
             scrollTrigger: {
                 trigger: "#terminal-section",
@@ -162,13 +150,11 @@
             ease: "power2.out"
         });
 
-        // --- F. 3D TILT EFFECT NOS CARDS (Apenas Desktop) ---
         if (isDesktop) {
             initTiltEffect();
         }
     });
 
-    // Função de contagem animada numérica
     function animateCounter(elementId, targetValue, decimals, suffix, duration) {
         const el = document.getElementById(elementId);
         if (!el) return;
@@ -189,7 +175,6 @@
         });
     }
 
-    // Efeito 3D Card Tilt com iluminação dinâmica
     function initTiltEffect() {
         const tiltCards = document.querySelectorAll('.tilt-card');
 
@@ -213,7 +198,6 @@
                     duration: 0.3
                 });
 
-                // Atualiza brilho radial na posição do mouse
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
@@ -229,7 +213,6 @@
         });
     }
 
-    // Refresh do ScrollTrigger após carregamento de imagens e DOM
     window.addEventListener('load', () => {
         ScrollTrigger.refresh();
     });

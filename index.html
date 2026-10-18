@@ -12,29 +12,24 @@
 
     <title>Marcus Soares · Desenvolvedor Backend & Engenharia de IA</title>
 
-    <!-- Preconnect CDNs -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Custom CSS (Preto OLED & Cyber Gold) -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Elementos de Iluminação e Grade de Fundo -->
     <div class="ambient-bg">
         <div class="ambient-glow-1"></div>
         <div class="ambient-glow-2"></div>
         <div class="grid-overlay"></div>
     </div>
 
-    <!-- NAVBAR -->
     <nav id="main-nav">
         <div class="container nav-inner">
             <a href="#hero" class="nav-brand">
@@ -64,27 +59,25 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (3D THREE.JS CANVAS) -->
     <section id="hero">
         <div id="three-canvas-container"></div>
 
         <div class="container">
             <div class="hero-grid">
-                
-                <!-- Coluna de Texto e Apresentação -->
+
                 <div class="hero-content">
                     <div class="hero-badge hero-reveal">
                         <span class="pulse-dot"></span>
-                        Disponível para Vagas & Projetos Backend / IA
+                        Disponível para Vagas & Projetos Backend &bull; AI Engineering
                     </div>
 
                     <h1 class="hero-title hero-reveal">
                         <div class="hero-title-line">Arquitetura Backend</div>
-                        <div class="hero-title-line">e Sistemas com <span class="text-gold">IA</span>.</div>
+                        <div class="hero-title-line">& <span class="text-gold">AI Engineering</span>.</div>
                     </h1>
 
                     <p class="hero-subtitle hero-reveal">
-                        Sou <strong>Marcus Vinícius</strong>, Desenvolvedor Backend, Engenheiro de IA e <strong>Co-Fundador da BSL (Brazilian eSports League)</strong>. Graduando em <strong>Ciência da Computação na UNIP</strong>, combino rigor analítico, otimização extrema de bancos de dados relacionais e automações inteligentes em produção.
+                        Sou <strong>Marcus Vinícius</strong>, Desenvolvedor Backend, <strong>AI Engineer</strong> e <strong>Co-Fundador da BSL (Brazilian eSports League)</strong>. Graduando em <strong>Ciência da Computação na UNIP</strong>, combino rigor analítico, otimização extrema de bancos de dados relacionais e engenharia de agentes inteligentes em produção.
                     </p>
 
                     <div class="hero-cta-group hero-reveal">
@@ -97,14 +90,13 @@
                     </div>
                 </div>
 
-                <!-- Coluna do Dev Profile Card com Foto Real -->
                 <div class="hero-card-col hero-reveal">
                     <div class="hero-dev-card tilt-card">
                         <div class="dev-card-avatar">
                             <img src="assets/img/marcus_avatar.jpg" alt="Foto Marcus Soares">
                         </div>
                         <h2 class="dev-card-name">Marcus Soares</h2>
-                        <div class="dev-card-role">Backend & AI Specialist</div>
+                        <div class="dev-card-role">Backend &bull; AI Engineer</div>
 
                         <div class="dev-card-tags">
                             <span class="mini-tag">Python / Flask</span>
@@ -113,6 +105,7 @@
                             <span class="mini-tag">Claude / Gemini AI</span>
                             <span class="mini-tag">Lua</span>
                             <span class="mini-tag">SaaS Architecture</span>
+                            <button type="button" class="mini-tag tag-defense-trigger" id="dev-tag-f12" title="Clique para testar o sistema de defesa client-side"><i class="bi bi-shield-lock-fill text-gold"></i> Boas Práticas de Defesa</button>
                         </div>
 
                         <div class="dev-card-socials">
@@ -136,7 +129,6 @@
         </div>
     </section>
 
-    <!-- PAINEL DE MÉTRICAS DE ENGENHARIA (GSAP SCRUB COUNTERS) -->
     <section id="metrics-section">
         <div class="container">
             <div class="metrics-grid">
@@ -169,7 +161,6 @@
         </div>
     </section>
 
-    <!-- VITRINE DE PROJETOS E REPOSITÓRIOS GITHUB -->
     <section id="projects-section">
         <div class="container">
             <div class="section-header">
@@ -180,7 +171,6 @@
                 </p>
             </div>
 
-            <!-- Abas de Filtros -->
             <div class="filter-tabs">
                 <button class="filter-btn active" data-filter="all">Todos os Projetos</button>
                 <button class="filter-btn" data-filter="saas">Backend & SaaS</button>
@@ -189,12 +179,10 @@
                 <button class="filter-btn" data-filter="tools">Ferramentas & Web</button>
             </div>
 
-            <!-- Grid de Projetos Renderizado via JS -->
             <div class="projects-grid" id="projects-grid"></div>
         </div>
     </section>
 
-    <!-- TERMINAL INTERATIVO (CODE INSPECTOR) -->
     <section id="terminal-section">
         <div class="container">
             <div class="section-header">
@@ -218,6 +206,7 @@
                         <button class="terminal-tab" data-snippet="ea_sync">fc_clubs_api.py (EA FC 27)</button>
                         <button class="terminal-tab" data-snippet="schema_perf">schema_versioning.py</button>
                         <button class="terminal-tab" data-snippet="fefo_sort">Lote.java (APS-4 FEFO)</button>
+                        <button class="terminal-tab" data-snippet="telegram_bot">telegram_notifier.js (Cloudflare)</button>
                     </div>
                 </div>
 
@@ -235,7 +224,6 @@
         </div>
     </section>
 
-    <!-- TRAJETÓRIA, USIMINAS & FORMAÇÃO UNIP -->
     <section id="trajectory-section">
         <div class="container">
             <div class="section-header">
@@ -247,8 +235,7 @@
             </div>
 
             <div class="timeline-wrapper">
-                
-                <!-- BSL (Brazilian eSports League) / BSL.LAT -->
+
                 <div class="timeline-node">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
@@ -262,7 +249,6 @@
                     </div>
                 </div>
 
-                <!-- Usiminas / Ormec -->
                 <div class="timeline-node">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
@@ -276,7 +262,6 @@
                     </div>
                 </div>
 
-                <!-- Freelancer -->
                 <div class="timeline-node">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
@@ -290,7 +275,6 @@
                     </div>
                 </div>
 
-                <!-- UNIP -->
                 <div class="timeline-node">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
@@ -308,14 +292,13 @@
         </div>
     </section>
 
-    <!-- FOOTER & CONTATO DIRETO -->
     <footer id="contact-section">
         <div class="container">
             <div class="footer-grid">
                 <div>
                     <h2 class="footer-title">Vamos construir soluções de alto impacto juntos?</h2>
                     <p class="footer-desc">
-                        Estou aberto a oportunidades como <strong>Desenvolvedor Backend</strong>, projetos em <strong>Inteligência Artificial</strong> e consultorias de engenharia de software em modelos Remoto, Híbrido ou Presencial.
+                        Estou aberto a oportunidades como <strong>Desenvolvedor Backend</strong>, <strong>AI Engineer</strong> e consultorias de engenharia de software em modelos Remoto, Híbrido ou Presencial.
                     </p>
                 </div>
 
@@ -339,14 +322,169 @@
         </div>
     </footer>
 
-    <!-- Three.js (r128) -->
+    <aside id="telemetry-toast" class="telemetry-toast" aria-hidden="true" role="dialog" aria-labelledby="telemetry-toast-title">
+        <div class="telemetry-toast-inner">
+            <div class="telemetry-toast-header">
+                <div class="telemetry-status-badge">
+                    <span class="telemetry-pulse"></span>
+                    <span>Automação em Tempo Real</span>
+                </div>
+                <button type="button" class="telemetry-close-btn" id="btn-close-telemetry" aria-label="Fechar notificação">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="telemetry-toast-body">
+                <h3 class="telemetry-title" id="telemetry-toast-title">
+                    Você sabia que seu acesso neste portfólio acabou de me notificar no Telegram?
+                </h3>
+                <p class="telemetry-desc">
+                    Este é um exemplo prático das soluções em <strong>Engenharia de Software, Serverless Edge (Cloudflare) e Bots Autônomos</strong> que desenvolvo e coloco em produção.
+                </p>
+
+                <div class="telegram-mockup">
+                    <div class="telegram-msg-header">
+                        <span class="tg-bot-icon"><i class="bi bi-telegram"></i></span>
+                        <div class="tg-bot-meta">
+                            <span class="tg-bot-name">Marcus Dev Alerts</span>
+                            <span class="tg-bot-tag">bot</span>
+                        </div>
+                        <span class="tg-msg-time" id="tg-mockup-time">Agora</span>
+                    </div>
+
+                    <div class="telegram-bubble">
+                        <div class="tg-alert-title">🚨 NOVO ACESSO NO PORTFÓLIO!</div>
+                        <div class="tg-meta-item">
+                            <i class="bi bi-geo-alt-fill text-gold"></i> 
+                            <span><strong>Local:</strong> <span id="tg-mockup-geo">São Vicente, SP - BR (Telefônica)</span></span>
+                        </div>
+                        <div class="tg-meta-item">
+                            <i class="bi bi-link-45deg text-gold"></i> 
+                            <span><strong>Origem:</strong> <span id="tg-mockup-ref">Acesso Direto / GitHub</span></span>
+                        </div>
+                        <div class="tg-meta-item">
+                            <i class="bi bi-laptop text-gold"></i> 
+                            <span><strong>Dispositivo:</strong> <span id="tg-mockup-device">Desktop / Navegador</span></span>
+                        </div>
+                        <div class="tg-bubble-footer">
+                            <span class="tg-action-pill"><i class="bi bi-box-arrow-up-right"></i> Ver Link de Origem</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="telemetry-code-preview">
+                    <div class="code-preview-bar">
+                        <span><i class="bi bi-code-slash text-gold"></i> Cloudflare Worker Snippet</span>
+                        <span class="code-badge">Serverless Edge</span>
+                    </div>
+                    <pre><code>const tgUrl = `https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`;
+await fetch(tgUrl, { method: 'POST', body: JSON.stringify(tgPayload) });</code></pre>
+                </div>
+
+                <div class="telemetry-challenge-box">
+                    <div class="challenge-header">
+                        <i class="bi bi-shield-shaded text-gold"></i>
+                        <span>Desafio de Defesa (BSL.LAT):</span>
+                    </div>
+                    <p class="challenge-desc">
+                        Tente pressionar <kbd>F12</kbd>, <kbd>Ctrl+Shift+I</kbd> ou clicar com o botão direito para testar a trava de integridade client-side.
+                    </p>
+                    <button type="button" class="btn-test-defense-inline" id="btn-test-defense-click">
+                        <i class="bi bi-play-circle-fill"></i> Testar Boas Práticas de Defesa
+                    </button>
+                </div>
+            </div>
+
+            <div class="telemetry-toast-footer">
+                <button type="button" class="telemetry-action-btn btn-view-terminal" id="btn-telemetry-to-terminal">
+                    <i class="bi bi-terminal-fill"></i> Inspecionar no Terminal
+                </button>
+                <button type="button" class="telemetry-action-btn btn-dismiss-toast" id="btn-telemetry-dismiss">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <button type="button" id="telemetry-pill" class="telemetry-pill" aria-label="Ver detalhes da telemetria">
+        <span class="telemetry-pulse"></span>
+        <span class="pill-text">Telemetria Ativa</span>
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <div id="defense-modal" class="defense-modal" aria-hidden="true" role="dialog" aria-labelledby="defense-modal-title">
+        <div class="defense-modal-backdrop" id="defense-modal-backdrop"></div>
+        <div class="defense-modal-box">
+            <div class="defense-hud-scanner"></div>
+            
+            <div class="defense-modal-header">
+                <div class="defense-badge">
+                    <span class="defense-pulse-red"></span>
+                    <span>BSL.LAT DEFENSE PROTOCOL &bull; LEVEL 1</span>
+                </div>
+                <button type="button" class="defense-close-btn" id="btn-close-defense" aria-label="Fechar alerta de segurança">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="defense-modal-body">
+                <div class="defense-icon-wrap">
+                    <i class="bi bi-shield-slash-fill"></i>
+                </div>
+
+                <h3 class="defense-title" id="defense-modal-title">
+                    Tentativa de Inspeção Interceptada!
+                </h3>
+
+                <div class="defense-trigger-badge">
+                    <i class="bi bi-terminal-x"></i> Gatilho Detectado: <span id="defense-trigger-name">Atalho F12 / DevTools</span>
+                </div>
+
+                <p class="defense-desc">
+                    Você acabou de acionar a <strong>mecânica de defesa e integridade client-side</strong> desenvolvida para este portfólio, inspirada nas rotinas de segurança que aplico em produção no <strong>BSL.LAT</strong> (onde protegemos WebSockets, telemetria e fluxos contra scraping, botting e inspeção superficial de DOM).
+                </p>
+
+                <div class="defense-specs-grid">
+                    <div class="defense-spec-item">
+                        <i class="bi bi-check2-circle text-gold"></i>
+                        <span>F12 & DevTools Shortcuts Locked</span>
+                    </div>
+                    <div class="defense-spec-item">
+                        <i class="bi bi-check2-circle text-gold"></i>
+                        <span>Context Menu Intercepted</span>
+                    </div>
+                    <div class="defense-spec-item">
+                        <i class="bi bi-check2-circle text-gold"></i>
+                        <span>Client-Side Integrity Guard</span>
+                    </div>
+                    <div class="defense-spec-item">
+                        <i class="bi bi-check2-circle text-gold"></i>
+                        <span>Zero Dependencies (Vanilla JS)</span>
+                    </div>
+                </div>
+
+                <div class="defense-curiosity-callout">
+                    <i class="bi bi-lightbulb-fill text-gold"></i>
+                    <span><strong>Quer conferir a engenharia de verdade?</strong> Não precisa inspecionar o DOM minificado: disponibilizei os códigos reais e arquiteturas diretamente no Terminal do portfólio!</span>
+                </div>
+            </div>
+
+            <div class="defense-modal-footer">
+                <button type="button" class="defense-btn defense-btn-gold" id="btn-defense-to-terminal">
+                    <i class="bi bi-cpu-fill"></i> Explorar Códigos no Terminal
+                </button>
+                <button type="button" class="defense-btn defense-btn-outline" id="btn-defense-dismiss">
+                    Entendido, Continuar Navegando
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <!-- GSAP Core & ScrollTrigger -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Custom Scripts -->
     <script defer src="js/projects-data.js"></script>
     <script defer src="js/three-hero.js"></script>
     <script defer src="js/animations.js"></script>
